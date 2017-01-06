@@ -1,0 +1,17 @@
+{
+  "version": "2.1.4",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "allowJs": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
