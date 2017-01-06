@@ -1,0 +1,41 @@
+{
+  "name": "hydrajs",
+  "version": "0.0.1",
+  "description": "Client side JavaScript library to interact with Hydra",
+  "main": "dist/hydra.min.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node node_modules/mocha/bin/_mocha --timeout 10000 --compilers ts:ts-node/register --ui bdd src/**/*.test.ts",
+    "build": "webpack --config webpack.unminified.config.js --bail --progress --profile && webpack --config webpack.minified.config.js --bail --progress --profile",
+    "prepublish": "npm run test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redhataccess/hydrajs"
+  },
+  "author": "Samuel Mendenhall <Samuel.Mendenhall@gmail.com> (https://github.com/engineersamuel)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/redhataccess/hydrajs/issues"
+  },
+  "homepage": "https://github.com/redhataccess/hydrajs#readme",
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/es6-promise": "0.0.32",
+    "@types/isomorphic-fetch": "0.0.31",
+    "@types/jsuri": "^1.3.29",
+    "@types/mocha": "^2.2.35",
+    "@types/node": "^6.0.57",
+    "btoa-lite": "^1.0.0",
+    "chai": "^3.5.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jsuri": "^1.3.1",
+    "mocha": "^3.2.0",
+    "ts-loader": "^1.3.3",
+    "ts-node": "^2.0.0",
+    "typescript": "^2.1.4",
+    "webpack": "^1.14.0"
+  }
+}
