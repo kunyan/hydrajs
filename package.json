@@ -8,8 +8,7 @@
   },
   "scripts": {
     "test": "node node_modules/mocha/bin/_mocha --timeout 10000 --compilers ts:ts-node/register --ui bdd src/**/*.test.ts",
-    "build": "webpack --config webpack.unminified.config.js --bail --progress --profile && webpack --config webpack.minified.config.js --bail --progress --profile",
-    "prepublish": "npm run test && npm run build"
+    "build": "webpack --config webpack.unminified.config.js --bail --progress --profile && webpack --config webpack.minified.config.js --bail --progress --profile"
   },
   "repository": {
     "type": "git",
