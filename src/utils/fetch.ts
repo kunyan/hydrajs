@@ -1,5 +1,7 @@
-import fetch =  require('isomorphic-fetch');
-import Env      from '../utils/env'
+// Since we aren't transpiling to babel can't use ES6 imports here
+const fetch = require('isomorphic-fetch');
+
+import Env    from '../utils/env'
 
 export function fetchUri<T>(uri: Uri) {
     let getParams: RequestInit = {

@@ -1,5 +1,6 @@
-import Uri  = require('jsuri');
-import btoa = require('btoa-lite');
+// Since we aren't transpiling to babel can't use ES6 imports here
+const Uri  = require('jsuri');
+const btoa = require('btoa-lite');
 
 export function createBasicAuth(user: string, pass: string) {
     return `Basic ${btoa(user + ':' + pass)}`;
