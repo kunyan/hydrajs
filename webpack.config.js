@@ -5,7 +5,7 @@ const path = require('path');
 
 module.exports = function (options) {
     const config = {
-        entry: './src/hydra',
+        entry: './src/index',
         output: {
             filename: options.filename,
             library: 'hydra',
