@@ -2,7 +2,7 @@
   "name": "hydrajs",
   "version": "0.0.1",
   "description": "Client side JavaScript library to interact with Hydra",
-  "main": "dist/hydra.min.js",
+  "main": "dist/hydra.js",
   "directories": {
     "test": "test"
   },
