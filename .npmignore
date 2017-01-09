@@ -5,6 +5,10 @@
 /npm-debug.log
 /node_modules
 
+.babelrc
+tsconfig.json
+webpack.*
+
 # OS generated files #
 # ######################
 .DS_Store
