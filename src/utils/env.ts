@@ -22,6 +22,8 @@ if (process && process.env && process.env.HYDRA_HOSTNAME) {
         hydraHostName = new Uri('http://qa-cee-integration-admin.dist.qa.ext.phx1.redhat.com/hydra/rest/');
     } else if (window.location.hostname === 'access.devgssfte.devlab.phx1.redhat.com' || window.location.hostname === 'fte.foo.redhat.com' || window.location.hostname === 'foofte.redhat.com') {
         hydraHostName = new Uri('http://fuseadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
+    } else if (window.location.hostname === 'access.devgssci.devlab.phx1.redhat.com' || window.location.hostname === 'ci.foo.redhat.com' || window.location.hostname === 'fooci.redhat.com') {
+        hydraHostName = new Uri('http://fuseadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
     } else if (window.location.hostname === 'access.stage.redhat.com' || window.location.hostname === 'stage.foo.redhat.com' || window.location.hostname === 'foostage.redhat.com') {
         hydraHostName = new Uri('http://cee-integration-admin.dist.stage.ext.phx2.redhat.com/hydra/rest/');
     }
