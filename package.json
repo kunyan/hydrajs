@@ -23,6 +23,7 @@
   "homepage": "https://github.com/redhataccess/hydrajs#readme",
   "devDependencies": {
     "@types/chai": "^3.4.34",
+    "@types/es6-promise": "0.0.32",
     "@types/mocha": "^2.2.35",
     "@types/node": "^6.0.57",
     "btoa-lite": "^1.0.0",
@@ -34,7 +35,6 @@
     "webpack": "^1.14.0"
   },
   "dependencies": {
-    "@types/es6-promise": "0.0.32",
     "@types/isomorphic-fetch": "0.0.31",
     "@types/jsuri": "^1.3.29",
     "isomorphic-fetch": "^2.2.1",
