@@ -1,21 +1,22 @@
-// Since we aren't transpiling to babel can't use ES6 imports here
-const fetch = require('isomorphic-fetch');
-
-import Env    from '../utils/env'
+// Since we aren't transpiling to babel can't use ES6 imports here.  Also we can't specify the Response and Request
+// types for fetch since A) They happen automatically with import which we can't use and B) the reference paths would
+// be different in downstream apps
+const fetch    = require('isomorphic-fetch');
+import Env      from '../utils/env'
 
 export function fetchUri<T>(uri: Uri) {
-    let getParams: RequestInit = {
+    let getParams = {
         credentials: 'same-origin',
         headers: {}
     };
     if (Env.auth) {
         getParams.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), getParams).then((response: IResponse) => response.json() as Promise<T>);
+    return fetch(uri.toString(), getParams).then(response => response.json() as Promise<T>);
 }
 
 export function postUri(uri: string, body) {
-    let postParams: RequestInit = {
+    let postParams = {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
@@ -24,5 +25,5 @@ export function postUri(uri: string, body) {
         },
         body: JSON.stringify(body)
     };
-    return fetch(uri.toString(), postParams).then((response: IResponse) => response.json() )
+    return fetch(uri.toString(), postParams).then(response => response.json() )
 }
