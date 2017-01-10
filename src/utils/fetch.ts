@@ -6,7 +6,7 @@ import Env      from '../utils/env'
 
 export function fetchUri<T>(uri: Uri) {
     let getParams = {
-        credentials: 'same-origin',
+        credentials: 'include',
         headers: {}
     };
     if (Env.auth) {
@@ -18,7 +18,7 @@ export function fetchUri<T>(uri: Uri) {
 export function postUri(uri: string, body) {
     let postParams = {
         method: 'POST',
-        credentials: 'same-origin',
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
