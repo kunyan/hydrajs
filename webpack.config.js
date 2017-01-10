@@ -8,7 +8,7 @@ module.exports = function (options) {
         entry: './src/index',
         output: {
             filename: options.filename,
-            library: 'hydra',
+            library: 'hydrajs',
             libraryTarget: 'umd'
         },
         module: {
