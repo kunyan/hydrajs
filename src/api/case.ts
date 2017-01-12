@@ -1,5 +1,4 @@
 import { fetchUri } from '../utils/fetch';
-import { Promise } from 'es6-promise';
 import Env from '../utils/env';
 import {ICase_Comment__c, ICase_Comment__c_fields} from '../models/case';
 
