@@ -1,5 +1,6 @@
 import {IContact}   from './contact';
 import {IUser}      from './user';
+import {IBugzillaComment__c} from "./bugzilla";
 
 export interface ICase_Comment__c {
     // issueLink?: IIssueLinkResource
@@ -40,6 +41,7 @@ export interface ICase_Comment__c {
     Sort_Date__c: string;
     TargetDate__c: string;
 
+    Bugzilla_Comment__r?: IBugzillaComment__c;
     Created_By_User__r?: IUser;
     Last_Modified_By_User__r?: IUser;
     Created_By_Contact__r?: IContact;
