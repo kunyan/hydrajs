@@ -1,5 +1,6 @@
 import {IContact}   from './contact';
 import {IUser}      from './user';
+import {IBugzillaComment__c} from "./bugzilla";
 
 export interface ICase_Comment__c {
     // issueLink?: IIssueLinkResource
@@ -40,22 +41,28 @@ export interface ICase_Comment__c {
     Sort_Date__c: string;
     TargetDate__c: string;
 
+    Bugzilla_Comment__r?: IBugzillaComment__c;
     Created_By_User__r?: IUser;
     Last_Modified_By_User__r?: IUser;
     Created_By_Contact__r?: IContact;
     Last_Modified_By_Contact__r: IContact;
 }
 
-// Not sure Typescript can elegantly handle nested keyof references, hardcode for now
+// Not sure Typescript can elegantly handle nested keyof references, hard code for now.  While verbose, the primary
+// benefit of defining this is to allow for typed field integrity when performaing API calls against Hydra
 interface ICase_Comment__c_nested {
     'Created_By_User__r.Id': string;
     'Created_By_User__r.Full_Name__c': string;
+    'Created_By_User__r.SSO_Username__c': string;
     'Last_Modified_By_User__r.Id': string;
     'Last_Modified_By_User__r.Full_Name__c': string;
+    'Last_Modified_By_User__r.SSO_Username__c': string;
     'Created_By_Contact__r.Id': string;
     'Created_By_Contact__r.Full_Name__c': string;
+    'Created_By_Contact__r.SSO_Username__c': string;
     'Last_Modified_By_Contact__r.Id': string;
     'Last_Modified_By_Contact__r.Full_Name__c': string;
+    'Last_Modified_By_Contact__r.SSO_Username__c': string;
 }
 
 export type ICase_Comment__c_fields = Array<keyof ICase_Comment__c | keyof ICase_Comment__c_nested>;

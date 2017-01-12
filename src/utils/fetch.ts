@@ -2,7 +2,6 @@
 // types for fetch since A) They happen automatically with import which we can't use and B) the reference paths would
 // be different in downstream apps
 const fetch    = require('isomorphic-fetch');
-import jsUri   from 'jsuri';
 import Env     from '../utils/env';
 
 export function fetchUri<T>(uri: Uri) {
