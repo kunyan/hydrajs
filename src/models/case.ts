@@ -1,6 +1,6 @@
-import {IContact}   from './contact';
-import {IUser}      from './user';
-import {IBugzillaComment__c} from "./bugzilla";
+import {IContact}               from './contact';
+import {IUser}                  from './user';
+import {IBugzillaComment__c}    from './bugzilla';
 
 export interface ICase_Comment__c {
     // issueLink?: IIssueLinkResource
