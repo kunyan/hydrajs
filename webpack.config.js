@@ -3,7 +3,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
-module.exports = function (options) {
+module.exports = function(options) {
     const config = {
         entry: './src/index',
         output: {
@@ -12,16 +12,18 @@ module.exports = function (options) {
             libraryTarget: 'umd'
         },
         module: {
-            loaders: [
-                {
-                    test: /\.ts$/,
-                    loader: 'ts',
-                    exclude: [
-                        path.resolve(__dirname, 'node_modules'),
-                        "*.test.ts"
-                    ]
-                }
-            ]
+            loaders: [{
+                test: /\.ts$/,
+                loader: 'ts',
+                exclude: [
+                    path.resolve(__dirname, 'node_modules'),
+                    '*.test.ts'
+                ]
+            }],
+            preLoaders: [{
+                test: /\.ts$/,
+                loader: 'tslint-loader'
+            }]
         },
         plugins: [
             new webpack.optimize.OccurenceOrderPlugin(),
@@ -32,7 +34,7 @@ module.exports = function (options) {
             })
         ],
         resolve: {
-            extensions: ["", ".js", ".ts"]
+            extensions: ['', '.js', '.ts']
         }
     };
 
@@ -45,6 +47,6 @@ module.exports = function (options) {
             })
         )
     }
-    
+
     return config;
 };
