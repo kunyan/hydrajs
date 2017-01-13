@@ -1,7 +1,7 @@
-import { getCaseComments } from './api/case';
+import { getComments } from './api/case';
 
 export default {
     kase: {
-        getCaseComments: getCaseComments
+        getComments: getComments
     }
 };

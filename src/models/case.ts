@@ -3,8 +3,7 @@ import {IUser}                  from './user';
 import {IBugzillaComment__c}    from './bugzilla';
 
 export interface ICase_Comment__c {
-    // issueLink?: IIssueLinkResource
-
+    External_Id__c: string // Bugzilla Comment External Id
     CaseNumber__c: string;
     Case_Comment_Id__c: string;
     Case__c: string;
