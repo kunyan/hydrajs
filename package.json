@@ -1,6 +1,6 @@
 {
   "name": "hydrajs",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Client side JavaScript library to interact with Hydra",
   "main": "dist/hydra.js",
   "types": "src/index.d.ts",
