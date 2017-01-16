@@ -48,20 +48,32 @@ export interface ICase_Comment__c {
 }
 
 // Not sure Typescript can elegantly handle nested keyof references, hard code for now.  While verbose, the primary
-// benefit of defining this is to allow for typed field integrity when performaing API calls against Hydra
+// benefit of defining this is to allow for typed field integrity when performing API calls against Hydra
 interface ICase_Comment__c_nested {
     'Created_By_User__r.Id': string;
     'Created_By_User__r.Full_Name__c': string;
     'Created_By_User__r.SSO_Username__c': string;
+    'Created_By_User__r.Email': string;
+    'Created_By_User__r.Phone': string;
+    'Created_By_User__r.Timezone__c': string;
     'Last_Modified_By_User__r.Id': string;
     'Last_Modified_By_User__r.Full_Name__c': string;
     'Last_Modified_By_User__r.SSO_Username__c': string;
+    'Last_Modified_By_User__r.Email': string;
+    'Last_Modified_By_User__r.Phone': string;
+    'Last_Modified_By_User__r.Timezone__c': string;
     'Created_By_Contact__r.Id': string;
     'Created_By_Contact__r.Full_Name__c': string;
     'Created_By_Contact__r.SSO_Username__c': string;
+    'Created_By_Contact__r.Email': string;
+    'Created_By_Contact__r.Phone': string;
+    'Created_By_Contact__r.Timezone__c': string;
     'Last_Modified_By_Contact__r.Id': string;
     'Last_Modified_By_Contact__r.Full_Name__c': string;
     'Last_Modified_By_Contact__r.SSO_Username__c': string;
+    'Last_Modified_By_Contact__r.Email': string;
+    'Last_Modified_By_Contact__r.Phone': string;
+    'Last_Modified_By_Contact__r.Timezone__c': string;
 }
 
 export type ICase_Comment__c_fields = Array<keyof ICase_Comment__c | keyof ICase_Comment__c_nested>;
