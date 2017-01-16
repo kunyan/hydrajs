@@ -2,6 +2,26 @@ import {IContact}               from './contact';
 import {IUser}                  from './user';
 import {IBugzillaComment__c}    from './bugzilla';
 
+// Used for making a new comment or updating a comment
+export interface IApiComment {
+    caseNumber: string;
+    id?: string; // Set when updating a comment
+    text: string;
+    doNotChangeSBT: boolean;
+    isPublic: boolean;
+    hoursWorked?: number;
+
+    createdBy?: string;
+    createdDate?: any;
+    isDraft?: boolean;
+    lastModifiedBy?: string;
+    lastModifiedDate?: any;
+    message?: string;
+    publishedDate?: any;
+    returnCode?: number;
+    warnings?: string;
+}
+
 export interface ICase_Comment__c {
     External_Id__c: string; // Bugzilla Comment External Id
     CaseNumber__c: string;

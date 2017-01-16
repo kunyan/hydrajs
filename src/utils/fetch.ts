@@ -15,7 +15,7 @@ export function fetchUri<T>(uri: Uri) {
     return fetch(uri.toString(), getParams).then(response => response.json() as Promise<T>);
 }
 
-export function postUri(uri: string, body) {
+export function postUri(uri: Uri, body: any) {
     let postParams = {
         method: 'POST',
         credentials: 'include',
@@ -25,5 +25,24 @@ export function postUri(uri: string, body) {
         },
         body: JSON.stringify(body)
     };
+    if (Env.auth) {
+        postParams.headers['Authorization'] = Env.auth;
+    }
     return fetch(uri.toString(), postParams).then(response => response.json() );
+}
+
+export function putUri<T>(uri: Uri, body: any) {
+    let postParams = {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    };
+    if (Env.auth) {
+        postParams.headers['Authorization'] = Env.auth;
+    }
+    return fetch(uri.toString(), postParams).then(response => response.json() as Promise<T> );
 }
