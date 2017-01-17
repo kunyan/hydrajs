@@ -1,13 +1,11 @@
 import {
     getComments,
-    newComment,
-    editComment
+    upsertComment,
 } from './api/case';
 
 export default {
     kase: {
         getComments: getComments,
-        newComment: newComment,
-        editComment: editComment
+        upsertComment: upsertComment,
     }
 };
