@@ -33,17 +33,17 @@ describe('Array', () => {
                 expect(response.id).to.exist;
                 expect(response.isPublic).to.eql(false);
                 expect(response.returnCode).to.eql(200);
-                expect(response.text).to.eql("Test private comment");
+                expect(response.text).to.eql('Test private comment');
 
-                response.text = "Test private comment updated";
+                response.text = 'Test private comment updated';
 
                 return caseApi.editComment(response).then((response: IApiComment) => {
                     expect(response.returnCode).to.eql(200);
-                    expect(response.text).to.eql("Test private comment updated");
+                    expect(response.text).to.eql('Test private comment updated');
                 });
             });
         });
-        it('should create a new public comment on 00023622 and edit it', () => {
+        it('should create a new public comment on 00023622', () => {
             const apiComment: IApiComment = {
                 caseNumber: '00023622',
                 text: 'Test public comment',
@@ -54,7 +54,7 @@ describe('Array', () => {
                 expect(response.id).to.exist;
                 expect(response.isPublic).to.eql(false);
                 expect(response.returnCode).to.eql(200);
-                expect(response.text).to.eql("Test public comment");
+                expect(response.text).to.eql('Test public comment');
             });
         });
     });
