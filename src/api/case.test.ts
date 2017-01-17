@@ -22,25 +22,39 @@ describe('Array', () => {
                 // expect(comments[0].Created_By_User__r.Full_Name__c).to.exist;
             });
         });
-        it('should create a new comment on 00023622', () => {
+        it('should create a new private comment on 00023622 and edit it', () => {
             const apiComment: IApiComment = {
                 caseNumber: '00023622',
-                text: 'Test comment',
-                isPublic: true,
+                text: 'Test private comment',
+                isPublic: false,
                 doNotChangeSBT: false
             };
             return caseApi.newComment(apiComment).then((response: IApiComment) => {
                 expect(response.id).to.exist;
-                expect(response.isPublic).to.eql(true);
+                expect(response.isPublic).to.eql(false);
                 expect(response.returnCode).to.eql(200);
-                expect(response.text).to.eql("Test comment");
+                expect(response.text).to.eql("Test private comment");
 
-                response.text = "Test comment updated";
+                response.text = "Test private comment updated";
 
-                return caseApi.updateComment(response).then((response: IApiComment) => {
+                return caseApi.editComment(response).then((response: IApiComment) => {
                     expect(response.returnCode).to.eql(200);
-                    expect(response.text).to.eql("Test comment updated");
+                    expect(response.text).to.eql("Test private comment updated");
                 });
+            });
+        });
+        it('should create a new public comment on 00023622 and edit it', () => {
+            const apiComment: IApiComment = {
+                caseNumber: '00023622',
+                text: 'Test public comment',
+                isPublic: false,
+                doNotChangeSBT: false
+            };
+            return caseApi.newComment(apiComment).then((response: IApiComment) => {
+                expect(response.id).to.exist;
+                expect(response.isPublic).to.eql(false);
+                expect(response.returnCode).to.eql(200);
+                expect(response.text).to.eql("Test public comment");
             });
         });
     });

@@ -11,13 +11,13 @@ export function getComments(caseNumber: string, fields?: ICase_Comment__c_fields
 }
 
 export function newComment(apiComment: IApiComment): Promise<IApiComment> {
-    if (apiComment.id) throw new Error(`Attempting to create a new comment but an id was specified, you should call updateComment instead.`);
+    if (apiComment.id) throw new Error(`Attempting to create a new comment but an id was specified, you should call editComment instead.`);
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/case/comments`);
     return putUri<IApiComment>(uri, apiComment);
 }
 
-export function updateComment(apiComment: IApiComment): Promise<IApiComment> {
-    if (!apiComment.id) throw new Error(`Attempting to update comment but no comment id given.`);
+export function editComment(apiComment: IApiComment): Promise<IApiComment> {
+    if (!apiComment.id) throw new Error(`Attempting to edit comment but no comment id given.`);
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/case/comments`);
     return putUri<IApiComment>(uri, apiComment);
 }
