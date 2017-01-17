@@ -29,7 +29,7 @@ describe('Array', () => {
                 isPublic: false,
                 doNotChangeSBT: false
             };
-            return caseApi.newComment(apiComment).then((response: IApiComment) => {
+            return caseApi.upsertComment(apiComment).then((response: IApiComment) => {
                 expect(response.id).to.exist;
                 expect(response.isPublic).to.eql(false);
                 expect(response.returnCode).to.eql(200);
@@ -37,7 +37,7 @@ describe('Array', () => {
 
                 response.text = 'Test private comment updated';
 
-                return caseApi.editComment(response).then((response: IApiComment) => {
+                return caseApi.upsertComment(response).then((response: IApiComment) => {
                     expect(response.returnCode).to.eql(200);
                     expect(response.text).to.eql('Test private comment updated');
                 });
@@ -50,7 +50,7 @@ describe('Array', () => {
                 isPublic: false,
                 doNotChangeSBT: false
             };
-            return caseApi.newComment(apiComment).then((response: IApiComment) => {
+            return caseApi.upsertComment(apiComment).then((response: IApiComment) => {
                 expect(response.id).to.exist;
                 expect(response.isPublic).to.eql(false);
                 expect(response.returnCode).to.eql(200);
