@@ -1,7 +1,7 @@
 import {
     getComments,
     upsertComment,
-} from './api/case';
+} from './api/comment';
 
 export default {
     kase: {

@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm run lint && ./node_modules/mocha/bin/_mocha --timeout 10000 --compilers ts:ts-node/register --ui bdd src/**/*.test.ts",
+    "test": "npm run lint && ./node_modules/mocha/bin/_mocha --timeout 20000 --compilers ts:ts-node/register --ui bdd src/**/*.test.ts",
     "lint": "./node_modules/.bin/tslint 'src/**/*.ts'",
     "build": "webpack --config webpack.unminified.config.js --bail --progress --profile && webpack --config webpack.minified.config.js --bail --progress --profile",
     "patch-release": "npm run test && npm run build && npm version patch && npm publish && git push --follow-tags",

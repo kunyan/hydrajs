@@ -2,59 +2,67 @@ import 'mocha';
 import chai = require('chai');
 const expect = chai.expect;
 import * as caseApi from './case';
-import {ICase_Comment__c_fields, IApiComment} from '../models/comment';
+import {ICase_fields} from '../models/case';
 
-describe('Array', () => {
-    describe('/case/{caseNumber}/comments', () => {
+describe('Case Tests', () => {
+    describe('/case/{caseNumber}', () => {
         it('should return specified fields for case 00023622', () => {
-            const fields: ICase_Comment__c_fields = [
+            const fields: ICase_fields = [
                 'Id',
-                'CaseNumber__c',
-                'Is_Public__c',
+                'CaseNumber',
+                'LastModifiedBy.Id',
+                'LastModifiedBy.Full_Name__c',
+                'LastModifiedBy.SSO_Username__c',
+                'LastModifiedBy.Email',
+                'LastModifiedBy.Phone',
+                'LastModifiedBy.TimeZoneSidKey',
+
+                'Entitlement.Id',
+                'Entitlement.Name',
+
                 'Created_By_User__r.Id',
-                'Created_By_User__r.Full_Name__c'
+                'Created_By_User__r.Full_Name__c',
+                'Created_By_User__r.SSO_Username__c',
+                'Created_By_User__r.Email',
+                'Created_By_User__r.Phone',
+                'Created_By_User__r.TimeZoneSidKey',
+
+                'Created_By_Contact__r.Id',
+                'Created_By_Contact__r.Full_Name__c',
+                'Created_By_Contact__r.SSO_Username__c',
+                'Created_By_Contact__r.Email',
+                'Created_By_Contact__r.Phone',
+                'Created_By_Contact__r.Timezone__c',
+
+                'Case_Owner__r.Id',
+                'Case_Owner__r.Full_Name__c',
+                'Case_Owner__r.Full_Name__c',
+                'Case_Owner__r.SSO_Username__c',
+                'Case_Owner__r.Email',
+                'Case_Owner__r.Phone',
+                'Case_Owner__r.TimeZoneSidKey',
+
+                'Bug__r.Id',
+                'Bug__r.Name',
+
+                'ExternalLockBy__r.Id',
+                'ExternalLockBy__r.Full_Name__c',
+                'ExternalLockBy__r.SSO_Username__c',
+                'ExternalLockBy__r.Email',
+                'ExternalLockBy__r.Phone',
+                'ExternalLockBy__r.TimeZoneSidKey',
+
+                'Account.Id',
+                'Account.AccountNumber',
+                'Account.Name',
+                'Account.Super_Region__c',
+                'Account.Is_Active__c',
             ];
-            return caseApi.getComments('00023622', fields).then((comments) => {
-                expect(comments.length).to.be.above(10);
-                expect(comments[0].Id).to.exist;
-                expect(comments[0].Is_Public__c).to.exist;
-                // expect(comments[0].Created_By_User__r.Id).to.exist;
-                // expect(comments[0].Created_By_User__r.Full_Name__c).to.exist;
-            });
-        });
-        it('should create a new private comment on 00023622 and edit it', () => {
-            const apiComment: IApiComment = {
-                caseNumber: '00023622',
-                text: 'Test private comment',
-                isPublic: false,
-                doNotChangeSBT: false
-            };
-            return caseApi.upsertComment(apiComment).then((response: IApiComment) => {
-                expect(response.id).to.exist;
-                expect(response.isPublic).to.eql(false);
-                expect(response.returnCode).to.eql(200);
-                expect(response.text).to.eql('Test private comment');
-
-                response.text = 'Test private comment updated';
-
-                return caseApi.upsertComment(response).then((response: IApiComment) => {
-                    expect(response.returnCode).to.eql(200);
-                    expect(response.text).to.eql('Test private comment updated');
-                });
-            });
-        });
-        it('should create a new public comment on 00023622', () => {
-            const apiComment: IApiComment = {
-                caseNumber: '00023622',
-                text: 'Test public comment',
-                isPublic: false,
-                doNotChangeSBT: false
-            };
-            return caseApi.upsertComment(apiComment).then((response: IApiComment) => {
-                expect(response.id).to.exist;
-                expect(response.isPublic).to.eql(false);
-                expect(response.returnCode).to.eql(200);
-                expect(response.text).to.eql('Test public comment');
+            return caseApi.getCase('00023622', fields).then((kase) => {
+                expect(kase).to.exist;
+                expect(kase.Id).to.exist;
+                expect(kase.CaseNumber).to.eql('00023622');
+                expect(kase.Account.Id).to.eql('001A000000K8A0dIAF');
             });
         });
     });
