@@ -4,19 +4,19 @@
 const fetch    = require('isomorphic-fetch');
 import Env     from '../utils/env';
 
-export function fetchUri<T>(uri: Uri) {
-    let getParams = {
+export function getUri<T>(uri: Uri) {
+    let params = {
         credentials: 'include',
         headers: {}
     };
     if (Env.auth) {
-        getParams.headers['Authorization'] = Env.auth;
+        params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), getParams).then(response => response.json() as Promise<T>);
+    return fetch(uri.toString(), params).then(response => response.json() as Promise<T>);
 }
 
 export function postUri(uri: Uri, body: any) {
-    let postParams = {
+    let params = {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -26,13 +26,13 @@ export function postUri(uri: Uri, body: any) {
         body: JSON.stringify(body)
     };
     if (Env.auth) {
-        postParams.headers['Authorization'] = Env.auth;
+        params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), postParams).then(response => response.json() );
+    return fetch(uri.toString(), params).then(response => response.json() );
 }
 
 export function putUri<T>(uri: Uri, body: any) {
-    let postParams = {
+    let params = {
         method: 'PUT',
         credentials: 'include',
         headers: {
@@ -42,7 +42,7 @@ export function putUri<T>(uri: Uri, body: any) {
         body: JSON.stringify(body)
     };
     if (Env.auth) {
-        postParams.headers['Authorization'] = Env.auth;
+        params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), postParams).then(response => response.json() as Promise<T> );
+    return fetch(uri.toString(), params).then(response => response.json() as Promise<T> );
 }
