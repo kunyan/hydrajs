@@ -14,4 +14,3 @@ export function upsertComment(apiComment: IApiComment): Promise<IApiComment> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/case/comments`);
     return putUri<IApiComment>(uri, apiComment);
 }
-

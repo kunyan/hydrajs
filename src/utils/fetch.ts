@@ -15,7 +15,7 @@ export function fetchUri<T>(uri: Uri) {
     return fetch(uri.toString(), getParams).then(response => response.json() as Promise<T>);
 }
 
-export function postUri(uri: Uri, body: any) {
+export function postUri<T>(uri: Uri, body: any) {
     let postParams = {
         method: 'POST',
         credentials: 'include',
