@@ -1,3 +1,28 @@
+// easy-sfdc
+export interface IAPIContact {
+    accountList: string;
+    canAccessAllAccounts: boolean;
+    canAddAttachments: boolean;
+    canSeeDashboard: boolean;
+    defaultGroupName: string;
+    defaultGroupNumber: string;
+    firstName: string;
+    hasChat: boolean;
+    id: string;
+    isInternal: boolean;
+    isOrgAdmin: boolean;
+    isSecured: boolean;
+    isSecureSupportTech: boolean;
+    lastName: string;
+    message: string;
+    name: string;
+    returnCode: number;
+    sessionId: string;
+    ssoName: string;
+    warnings: string;
+}
+
+// SFDC SObject
 export interface IContact {
     // isInterval?: boolean
 

@@ -3,7 +3,8 @@ import {IUser}                  from './user';
 import {IBugzillaComment__c}    from './bugzilla';
 
 // Used for making a new comment or updating a comment
-export interface IApiComment {
+// easy-sfdc
+export interface IAPIComment {
     caseNumber: string;
     id?: string; // Set when updating a comment
     text: string;
@@ -22,6 +23,7 @@ export interface IApiComment {
     warnings?: string;
 }
 
+// SFDC SObject
 export interface ICase_Comment__c {
     External_Id__c: string; // Bugzilla Comment External Id
     CaseNumber__c: string;
@@ -75,13 +77,13 @@ interface ICase_Comment__c_nested {
     'Created_By_User__r.SSO_Username__c': string;
     'Created_By_User__r.Email': string;
     'Created_By_User__r.Phone': string;
-    'Created_By_User__r.Timezone__c': string;
+    'Created_By_User__r.TimezoneSidKey': string;
     'Last_Modified_By_User__r.Id': string;
     'Last_Modified_By_User__r.Full_Name__c': string;
     'Last_Modified_By_User__r.SSO_Username__c': string;
     'Last_Modified_By_User__r.Email': string;
     'Last_Modified_By_User__r.Phone': string;
-    'Last_Modified_By_User__r.Timezone__c': string;
+    'Last_Modified_By_User__r.TimezoneSidKey': string;
     'Created_By_Contact__r.Id': string;
     'Created_By_Contact__r.Full_Name__c': string;
     'Created_By_Contact__r.SSO_Username__c': string;

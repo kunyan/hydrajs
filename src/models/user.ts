@@ -1,3 +1,11 @@
+// easy-sfdc
+export interface IAPITeamMember {
+    name: string;
+    role: string;
+    ssoName: string;
+}
+
+// SFDC SObject
 export interface IUser {
     AccountId: string;
     AccountNumber__c: string;
@@ -40,4 +48,23 @@ export interface IUser {
     TimeZoneSidKey: string;
     Title: string;
     Username: string;
+}
+
+// SFDC SObject
+export interface IRHAssociate__c {
+    Case__c: string;
+    Country__c: string;
+    CreatedById: string;
+    CreatedDate: string;
+    Id: string;
+    IsDeleted: boolean;
+    LastModifiedById: string;
+    LastModifiedDate: string;
+    Managed_From__c: string;
+    Name: string;
+    Office_Status__c: string;
+    OwnerId: string;
+    RHAT_Location__c: string;
+    Role__c: string;
+    User__c: string;
 }
