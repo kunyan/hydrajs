@@ -11,7 +11,7 @@
     "test": "npm run lint && ./node_modules/mocha/bin/_mocha --timeout 20000 --compilers ts:ts-node/register --ui bdd src/**/*.test.ts",
     "lint": "./node_modules/.bin/tslint 'src/**/*.ts'",
     "build": "webpack --config webpack.unminified.config.js --bail --progress --profile && webpack --config webpack.minified.config.js --bail --progress --profile",
-    "patch-release": "npm run test && npm run build && npm version patch && npm publish && git push --follow-tags",
+    "patch-release": "npm run build && npm version patch && npm publish && git push --follow-tags",
     "pretest": "if [[ -z \"${HYDRA_HOSTNAME}\" || -z \"${RHN_USER}\" || -z \"${RHN_PASS}\" ]]; then echo \"Need set HYDRA_HOSTNAME, RHN_USER, RH_PASS\"; exit 1; fi"
   },
   "repository": {
