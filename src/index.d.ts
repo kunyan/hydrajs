@@ -7,6 +7,10 @@ declare namespace hydrajs {
         export function upsertComment(apiComment: IAPIComment): Promise<IAPIComment>;
         export function getCase(caseId: string, fields?: ICase_fields): Promise<ICase>;
     }
+
+    namespace skedge {
+        export function getAllShiftMetadata(): Promise<Array<IShiftMetadata>>;
+    }
 }
 
 export default hydrajs;
