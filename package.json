@@ -8,11 +8,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm run lint && ./node_modules/mocha/bin/_mocha --timeout 20000 --compilers ts:ts-node/register --ui bdd src/**/*.test.ts",
+    "test": "npm run clean && tsc --outDir dist -t es2015 && ava -v",
+    "clean": "rimraf dist",
     "lint": "./node_modules/.bin/tslint 'src/**/*.ts'",
-    "build": "webpack --config webpack.unminified.config.js --bail --progress --profile && webpack --config webpack.minified.config.js --bail --progress --profile",
+    "build": "npm run clean && webpack --config webpack.unminified.config.js --bail --progress --profile && webpack --config webpack.minified.config.js --bail --progress --profile",
     "patch-release": "npm run build && npm version patch && npm publish && git push --follow-tags",
-    "pretest": "if [[ -z \"${HYDRA_HOSTNAME}\" || -z \"${RHN_USER}\" || -z \"${RHN_PASS}\" ]]; then echo \"Need set HYDRA_HOSTNAME, RHN_USER, RH_PASS\"; exit 1; fi"
+    "pretest": "npm run lint && if [[ -z \"${HYDRA_HOSTNAME}\" || -z \"${RHN_USER}\" || -z \"${RHN_PASS}\" ]]; then echo \"Need set HYDRA_HOSTNAME, RHN_USER, RH_PASS\"; exit 1; fi"
   },
   "repository": {
     "type": "git",
@@ -25,14 +26,11 @@
   },
   "homepage": "https://github.com/redhataccess/hydrajs#readme",
   "devDependencies": {
-    "@types/chai": "^3.4.34",
-    "@types/es6-promise": "0.0.32",
     "@types/isomorphic-fetch": "^0.0.31",
     "@types/jsuri": "^1.3.29",
-    "@types/mocha": "^2.2.35",
     "@types/node": "^6.0.57",
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0",
+    "ava": "^0.18.1",
+    "rimraf": "^2.5.4",
     "ts-loader": "^1.3.3",
     "ts-node": "^2.0.0",
     "tslint": "^4.3.1",
