@@ -1,6 +1,6 @@
 import { ICase_Comment__c, ICase_Comment__c_fields, IAPIComment } from './models/comment';
 import { ICase, ICase_fields } from './models/case';
-import { IShiftsMetadata } from './models/skedge/shiftsMetadata';
+import { IShiftMetadata } from './models/skedge/shiftMetadata';
 
 declare namespace hydrajs {
     namespace kase {
@@ -10,7 +10,7 @@ declare namespace hydrajs {
     }
 
     namespace skedge {
-        export function getAllShiftsMetadata(): Promise<Array<IShiftsMetadata>>;
+        export function getAllShiftMetadatas(): Promise<Array<IShiftMetadata>>;
     }
 }
 

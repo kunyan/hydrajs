@@ -1,4 +1,4 @@
-export interface IShiftsMetadata {
+export interface IShiftMetadata {
     id: number;
     name: string;
     startAt: number;
