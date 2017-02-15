@@ -1,6 +1,6 @@
 import { getComments, upsertComment, } from './api/comment';
 import { getCase } from './api/case';
-import { getAllShiftsMetadata } from './api/shiftsMetadata';
+import { getAllShiftMetadatas } from './api/shiftMetadata';
 
 export default {
     kase: {
@@ -9,6 +9,6 @@ export default {
         getCase: getCase,
     },
     skedge: {
-        getAllShiftsMetadata: getAllShiftsMetadata,
+        getAllShiftMetadatas: getAllShiftMetadatas,
     }
 };
