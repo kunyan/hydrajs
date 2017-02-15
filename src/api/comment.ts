@@ -1,16 +1,16 @@
-import {getUri, putUri} from '../utils/fetch';
 import Env from '../utils/env';
-import {ICase_Comment__c, ICase_Comment__c_fields, IAPIComment} from '../models/comment';
+import { getUri, putUri } from '../utils/fetch';
+import { IHydraCaseCommentFields, IHydraCaseComment } from '../models/comment';
 
-export function getComments(caseNumber: string, fields?: ICase_Comment__c_fields): Promise<Array<ICase_Comment__c>> {
+export function getComments(caseNumber: string, fields?: IHydraCaseCommentFields): Promise<Array<IHydraCaseComment>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/case/${caseNumber}/comments`);
     if (fields && fields.length > 0) {
         uri.addQueryParam('fields', fields.join(','));
     }
-    return getUri<Array<ICase_Comment__c>>(uri);
+    return getUri<Array<IHydraCaseComment>>(uri);
 }
 
-export function upsertComment(apiComment: IAPIComment): Promise<IAPIComment> {
+export function upsertComment(apiComment: IHydraCaseComment): Promise<IHydraCaseComment> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/case/comments`);
-    return putUri<IAPIComment>(uri, apiComment);
+    return putUri<IHydraCaseComment>(uri, apiComment);
 }
