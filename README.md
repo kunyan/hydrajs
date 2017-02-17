@@ -22,6 +22,9 @@ Fork and add to your `.git/config`
 
 ## Release process
 
-For minor patche releases
+Since we are now pushing to gitlab we aren't pushing to NPM.  Follow these instructions to release.
 
-    npm run patch-release
+* Bump the version in package.json, for example 0.0.99
+* Tag the release: `git tag 0.0.99`
+* push to gitlab: `git push gitlab --tags`
+* Now you can install that tagged version in the end user app, ex.: `npm install --save-dev git+ssh://git@gitlab.cee.redhat.com:smendenh/hydrajs#0.0.99`
