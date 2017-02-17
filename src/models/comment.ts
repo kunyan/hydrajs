@@ -1,6 +1,6 @@
 import {IContact}               from './contact';
 import {IUser}                  from './user';
-import {IBugzillaComment__c}    from './bugzilla';
+import {IBugzillaComment}    from './bugzilla';
 
 export interface IAPIComment {
     caseNumber: string;
@@ -22,9 +22,10 @@ export interface IAPIComment {
 }
 
 // Used for making a new comment or updating a comment
-export interface IHydraCaseComment {
-    commentId?: string;
+export interface ICaseComment {
+    id?: string;
     bugzillaCommentId?: string;
+    bugzillaComment?: IBugzillaComment;
     caseCommentCreatedDayOfWeek?: string;
     caseCommentCreatedHourOfDay?: number;
     caseNumber: string;
@@ -38,9 +39,11 @@ export interface IHydraCaseComment {
     createdDate?: any;
     createdByLink?: string;
     createdByContactID?: string;
+    createdByContact?: any;
     createdByText?: string;
     createdByUserID?: string;
-    createdBy?: string;
+    createdByUser?: any;
+    createdBy?: any;
     createdWithBug?: string;
     doNotChangeSBT: boolean;
     externalCaseCommentId?: string;
@@ -55,15 +58,17 @@ export interface IHydraCaseComment {
     isDraft?: boolean;
     isPublic: boolean;
     lastModifiedById?: string;
+    lastModifiedBy?: any;
     lastModifiedDate?: any;
     lastReferencedDate?: any;
     lastViewedDate?: any;
     lastModifiedByContactID?: string;
+    lastModifiedByContact?: any;
     lastModifiedByIdCustom?: string;
     lastModifiedByLink?: string;
     lastModifiedByText?: string;
     lastModifiedByUserID?: string;
-    lastModifiedBy?: string;
+    lastModifiedByUser?: any;
     lastModifiedDateCustom?: any;
     lastVotedOnHelpsResolutionAt?: string;
     managerOfCreatedBy?: string;
@@ -82,4 +87,4 @@ export interface IHydraCaseComment {
     targetDate?: any;
 }
 
-export type IHydraCaseCommentFields = Array<keyof IHydraCaseComment>;
+export type ICaseCommentFields = Array<keyof ICaseComment>;
