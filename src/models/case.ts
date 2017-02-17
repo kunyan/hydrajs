@@ -1,6 +1,5 @@
 import {IContact, IAPIContact}               from './contact';
 import {IUser}                  from './user';
-import {IAPIComment} from './comment';
 import {IAPIAttachment} from './attachment';
 import {IAPIBug} from './bug';
 import {IAPICallLog} from './call';
@@ -32,7 +31,7 @@ export interface IAPICase {
     certVendorProductName?: string;
     certVendorProductPortalId?: string;
     collaborationScore?: number;
-    comments?: Array<IAPIComment>;
+    // comments?: Array<IAPIComment>;
     contactInfo24x7?: string;
     contactName?: string;
     contacts?: Array<IAPIContact>;

@@ -1,12 +1,19 @@
 import test from 'ava';
 import * as caseApi from './comment';
 import { ICaseCommentFields, ICaseComment } from '../models/comment';
-// createdByUser return error for now
-test('should return specified fields for case 00023622', async t => {
+
+test('should return specified fields for case 00023622 with child relationships', async t => {
     const fields: ICaseCommentFields = [
         'id',
         'caseNumber',
-        // 'createdByUser',
+        'createdByUser.id',
+        'createdByUser.fullName',
+        'createdByContact.id',
+        'createdByContact.fullNameCustom',
+        'lastModifiedByUser.id',
+        'lastModifiedByUser.fullName',
+        'lastModifiedByContact.id',
+        'lastModifiedByContact.fullNameCustom',
         'createdByUserID',
         'isPublic',
     ];

@@ -1,25 +1,6 @@
 import {IContact}               from './contact';
 import {IUser}                  from './user';
-import {IBugzillaComment}    from './bugzilla';
-
-export interface IAPIComment {
-    caseNumber: string;
-    id?: string; // Set when updating a comment
-    text: string;
-    doNotChangeSBT: boolean;
-    isPublic: boolean;
-    hoursWorked?: number;
-
-    createdBy?: string;
-    createdDate?: any;
-    isDraft?: boolean;
-    lastModifiedBy?: string;
-    lastModifiedDate?: any;
-    message?: string;
-    publishedDate?: any;
-    returnCode?: number;
-    warnings?: string;
-}
+import {IBugzillaComment}       from './bugzilla';
 
 // Used for making a new comment or updating a comment
 export interface ICaseComment {
@@ -30,20 +11,18 @@ export interface ICaseComment {
     caseCommentCreatedHourOfDay?: number;
     caseNumber: string;
     caseCommentCreatedByLocation?: string;
-    caseCommentId?: string;
+    caseCommentId?: string; // This appears to always return blank, just use id
     caseID?: string;
     commentBody: string;
     connectionReceivedId?: string;
     connectionSentId?: string;
     createdById?: string;
-    createdDate?: any;
+    createdDate?: string;
     createdByLink?: string;
     createdByContactID?: string;
-    createdByContact?: any;
     createdByText?: string;
+    createdByUser?: string;
     createdByUserID?: string;
-    createdByUser?: any;
-    createdBy?: any;
     createdWithBug?: string;
     doNotChangeSBT: boolean;
     externalCaseCommentId?: string;
@@ -58,33 +37,65 @@ export interface ICaseComment {
     isDraft?: boolean;
     isPublic: boolean;
     lastModifiedById?: string;
-    lastModifiedBy?: any;
-    lastModifiedDate?: any;
-    lastReferencedDate?: any;
-    lastViewedDate?: any;
+    lastModifiedDate?: string;
+    lastReferencedDate?: string;
+    lastViewedDate?: string;
     lastModifiedByContactID?: string;
-    lastModifiedByContact?: any;
     lastModifiedByIdCustom?: string;
     lastModifiedByLink?: string;
     lastModifiedByText?: string;
+    lastModifiedByUser?: string;
     lastModifiedByUserID?: string;
-    lastModifiedByUser?: any;
-    lastModifiedDateCustom?: any;
+    lastModifiedDateCustom?: string;
     lastVotedOnHelpsResolutionAt?: string;
     managerOfCreatedBy?: string;
-    milestoneTargetDate?: any;
+    milestoneTargetDate?: string;
     name?: string;
     prsRecordID?: string;
-    publishedDate?: any;
+    publishedDate?: string;
     publishedMs?: number;
     rhLocation?: string;
     representedInOtherSystemsAs?: string;
     roleOfCreatedBy?: string;
     sbt?: number;
     searchHelper?: string;
-    sortDate?: any;
+    sortDate?: string;
     systemModstamp?: string;
-    targetDate?: any;
+    targetDate?: string;
+
+    createdBy?: IUser;
+    lastModifiedBy?: IUser;
+    createdByContact?: IContact;
+    lastModifiedByContact?: IContact;
 }
 
-export type ICaseCommentFields = Array<keyof ICaseComment>;
+// Not sure Typescript can elegantly handle nested keyof references, hard code for now.  While verbose, the primary
+// benefit of defining this is to allow for typed field integrity when performing API calls against Hydra
+interface ICaseCommentNested {
+    'createdByUser.id': string;
+    'createdByUser.fullName': string;
+    'createdByUser.ssoUsername': string;
+    'createdByUser.email': string;
+    'createdByUser.phone': string;
+    // 'createdByUser.TimezoneSidKey': string;
+    'lastModifiedByUser.id': string;
+    'lastModifiedByUser.fullName': string;
+    'lastModifiedByUser.ssoUsername': string;
+    'lastModifiedByUser.email': string;
+    'lastModifiedByUser.phone': string;
+    // 'lastModifiedByUser.TimezoneSidKey': string;
+    'createdByContact.id': string;
+    'createdByContact.fullNameCustom': string;
+    'createdByContact.ssoUsername': string;
+    'createdByContact.email': string;
+    'createdByContact.phone': string;
+    'createdByContact.timezone': string;
+    'lastModifiedByContact.id': string;
+    'lastModifiedByContact.fullNameCustom': string;
+    'lastModifiedByContact.ssoUsername': string;
+    'lastModifiedByContact.email': string;
+    'lastModifiedByContact.phone': string;
+    'lastModifiedByContact.timezone': string;
+}
+
+export type ICaseCommentFields = Array<keyof ICaseComment | keyof ICaseCommentNested>;
