@@ -22,22 +22,55 @@ export interface IAPIContact {
     warnings: string;
 }
 
-// SFDC SObject
+// https://gitlab.cee.redhat.com/Workflow_Integration/cee-integration/blob/master/hydra-model/src/main/resources/contact.xsd
 export interface IContact {
     // isInterval?: boolean
-
-    AccountId: string;
-    AccountNumber__c: string;
-    Email: string;
-    Full_Name__c: string;
-    Id: string;
-    isInternal__c: boolean;
-    Is_Active__c: boolean;
-    Is_Org_Admin__c: boolean;
-    ITARContact__c: boolean;
-    Normalized_TZ__c: string;
-    Phone: string;
-    Region_Geo__c: string;
-    SSO_Username__c: string;
-    Timezone__c: string;
+    id: string;
+    // account: IAccount;
+    accountId: string;
+    canAddAttachments: boolean;
+    contact24x7: boolean;
+    contactNumber: string;
+    defaultCaseGroup: string;
+    // defaultCaseGroupDetails: ICaseFolder;
+    doNotCall: boolean;
+    email: string;
+    firstName: string;
+    firstNameCustom: string;
+    fullNameCustom: string;
+    hasOptedOutOfEmail: boolean;
+    homePhone: string;
+    itarContact: boolean;
+    isEntitled: boolean;
+    isActive: boolean;
+    isOrgAdmin: boolean;
+    lastName: string;
+    lastNameCustom: string;
+    manageSupportCases: boolean;
+    mobilePhone: string;
+    npsEligibility: boolean;
+    name: string;
+    noLongerAtCompany: boolean;
+    normalizedTZ: string;
+    otherPhone: string;
+    phone: string;
+    preferredLanguage: string;
+    preferredMethodOfContact: string;
+    primaryComment: string;
+    primaryScore: number;
+    rhnLoginName: string;
+    regionGeo: string;
+    reportsTo: IContact;
+    reportsToId: string;
+    srmContact: boolean;
+    ssoUsername: string;
+    salutation: string;
+    secureSupportTech: boolean;
+    surveyOptOut: boolean;
+    tamContact: boolean;
+    tamNewsletterSubscription: boolean;
+    timezone: string;
+    title: string;
+    typeOfContact: string;
+    isInternal: boolean;
 }
