@@ -28,7 +28,7 @@ export function postUri<T>(uri: Uri, body: any) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), params).then(response => response.json() );
+    return fetch(uri.toString(), params).then(response => response.json() as Promise<T>);
 }
 
 export function putUri<T>(uri: Uri, body: any) {
