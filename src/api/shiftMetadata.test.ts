@@ -1,6 +1,5 @@
 import test from 'ava';
 import * as shiftMetadataApi from './shiftMetadata';
-import {ICase_Comment__c_fields, IAPIComment} from '../models/comment';
 
 test('should return all shiftMetadatas', async t => {
     const shiftMetadatas = await shiftMetadataApi.getAllShiftMetadatas();
