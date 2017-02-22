@@ -1,7 +1,7 @@
 export interface IUserShiftFilter {
     userIds?: string[];
-    shiftId?: number;
-    roleId?: number;
-    startDate?: number;
-    endDate?: number;
+    shiftIds?: number[];
+    roleIds?: number[];
+    startDate?: number | string;
+    endDate?: number | string;
 }
