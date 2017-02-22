@@ -1,6 +1,9 @@
-import Env from '../utils/env';
+import Env                from '../utils/env';
 import { getUri, putUri } from '../utils/fetch';
-import {ICaseCommentFields, ICaseComment} from '../models/comment';
+import {
+    ICaseCommentFields,
+    ICaseComment
+} from '../models/comment';
 
 export function getComments(caseNumber: string, fields?: ICaseCommentFields, limit?: number): Promise<Array<ICaseComment>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/case/${caseNumber}/comments`);
