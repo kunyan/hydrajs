@@ -21,7 +21,6 @@ export interface ICaseComment {
     createdByLink?: string;
     createdByContactID?: string;
     createdByText?: string;
-    createdByUser?: string;
     createdByUserID?: string;
     createdWithBug?: string;
     doNotChangeSBT: boolean;
@@ -63,7 +62,7 @@ export interface ICaseComment {
     systemModstamp?: string;
     targetDate?: string;
 
-    createdBy?: IUser;
+    createdByUser?: IUser;
     lastModifiedBy?: IUser;
     createdByContact?: IContact;
     lastModifiedByContact?: IContact;
