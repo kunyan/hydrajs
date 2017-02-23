@@ -58,7 +58,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var comment_1 = __webpack_require__(8);
 	var case_1 = __webpack_require__(7);
 	var insights_1 = __webpack_require__(9);
-	var shiftMetadata_1 = __webpack_require__(10);
+	var shiftMetadata_1 = __webpack_require__(11);
+	var roleMetadata_1 = __webpack_require__(10);
+	var userShifts_1 = __webpack_require__(12);
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = {
 	    kase: {
@@ -72,6 +74,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    skedge: {
 	        getAllShiftMetadatas: shiftMetadata_1.getAllShiftMetadatas,
+	        getAllRoleMetadatas: roleMetadata_1.getAllRoleMetadatas,
+	        getAllShiftsForUsers: userShifts_1.getAllShiftsForUsers,
+	        getShiftsForUserFilters: userShifts_1.getShiftsForUserFilters,
+	        postShiftsForUsers: userShifts_1.postShiftsForUsers,
+	        deleteShiftByShiftId: userShifts_1.deleteShiftByShiftId
 	    }
 	};
 
@@ -149,7 +156,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (env_1.default.auth) {
 	        params.headers['Authorization'] = env_1.default.auth;
 	    }
-	    return fetch(uri.toString(), params).then(function (response) { return response.json(); });
+	    return fetch(uri.toString(), params).then(function (response) { return response.status === 204 ? null : response.json(); });
 	}
 	exports.getUri = getUri;
 	function postUri(uri, body) {
@@ -165,7 +172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (env_1.default.auth) {
 	        params.headers['Authorization'] = env_1.default.auth;
 	    }
-	    return fetch(uri.toString(), params).then(function (response) { return response.json(); });
+	    return fetch(uri.toString(), params).then(function (response) { return response.status === 204 ? null : response.json(); });
 	}
 	exports.postUri = postUri;
 	function putUri(uri, body) {
@@ -181,9 +188,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (env_1.default.auth) {
 	        params.headers['Authorization'] = env_1.default.auth;
 	    }
-	    return fetch(uri.toString(), params).then(function (response) { return response.json(); });
+	    return fetch(uri.toString(), params).then(function (response) { return response.status === 204 ? null : response.json(); });
 	}
 	exports.putUri = putUri;
+	function deleteUri(uri) {
+	    var params = {
+	        method: 'DELETE',
+	        credentials: 'include',
+	        headers: {
+	            'Content-Type': 'application/json'
+	        }
+	    };
+	    if (env_1.default.auth) {
+	        params.headers['Authorization'] = env_1.default.auth;
+	    }
+	    return fetch(uri.toString(), params);
+	}
+	exports.deleteUri = deleteUri;
 
 
 /***/ },
@@ -203,7 +224,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(11);
+	__webpack_require__(13);
 	module.exports = self.fetch.bind(self);
 
 
@@ -927,6 +948,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
+	function getAllRoleMetadatas() {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/roleMetadata/");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getAllRoleMetadatas = getAllRoleMetadatas;
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var fetch_1 = __webpack_require__(2);
+	var env_1 = __webpack_require__(1);
 	function getAllShiftMetadatas() {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/shiftsMetadata/");
 	    return fetch_1.getUri(uri);
@@ -935,7 +970,36 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 11 */
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var fetch_1 = __webpack_require__(2);
+	var env_1 = __webpack_require__(1);
+	function getAllShiftsForUsers() {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/shifts/");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getAllShiftsForUsers = getAllShiftsForUsers;
+	function getShiftsForUserFilters(filters) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/shifts/filter");
+	    return fetch_1.postUri(uri, filters);
+	}
+	exports.getShiftsForUserFilters = getShiftsForUserFilters;
+	function postShiftsForUsers(userShifts) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/shifts/bulk");
+	    return fetch_1.postUri(uri, userShifts);
+	}
+	exports.postShiftsForUsers = postShiftsForUsers;
+	function deleteShiftByShiftId(shiftId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/shifts/" + shiftId);
+	    return fetch_1.deleteUri(uri);
+	}
+	exports.deleteShiftByShiftId = deleteShiftByShiftId;
+
+
+/***/ },
+/* 13 */
 /***/ function(module, exports) {
 
 	(function(self) {

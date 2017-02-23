@@ -1,7 +1,10 @@
-import { ICaseCommentFields, ICaseComment } from './models/comment';
-import { ICase, ICase_fields } from './models/case';
+import {ICaseCommentFields, ICaseComment}   from './models/comment';
+import {ICase, ICase_fields}                from './models/case';
+import {IShiftMetadata}                     from './models/skedge/shiftMetadata';
+import {IRoleMetadata}                      from './models/skedge/roleMetadata';
+import {IUserShift}                         from './models/skedge/userShift';
+import {IUserShiftFilter}                   from './models/skedge/userShiftFilter';
 import { InsightsResult, InsightsRule, RuleIds } from './models/insights';
-import { IShiftMetadata } from './models/skedge/shiftMetadata';
 
 declare namespace hydrajs {
     namespace kase {
@@ -15,6 +18,11 @@ declare namespace hydrajs {
     }
     namespace skedge {
         export function getAllShiftMetadatas(): Promise<Array<IShiftMetadata>>;
+        export function getAllRoleMetadatas(): Promise<Array<IRoleMetadata>>;
+        export function getAllShiftsForUsers(): Promise<IUserShift[]>;
+        export function getShiftsForUserFilters(filters: IUserShiftFilter): Promise<IUserShift[]>;
+        export function postShiftsForUsers(userShifts: IUserShift[]): Promise<IUserShift[]>;
+        export function deleteShiftByShiftId(shiftId: number): Promise<any>;
     }
 }
 

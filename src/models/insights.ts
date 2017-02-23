@@ -23,7 +23,7 @@ export interface StackNetwork {
     shared: boolean;
     'provider:network_type': string;
     id: string;
-    'provider:segmentation_id'?: any;
+    'provider:segmentation_id'?: string;
 }
 
 export interface Metadata {
@@ -70,7 +70,7 @@ export interface Report {
 }
 
 export interface Details {
-    hostname_mapping: any;
+    // hostname_mapping: any;
     affected_hosts: string[];
     error_key: string;
     cluster_name: string;

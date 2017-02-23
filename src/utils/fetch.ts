@@ -12,7 +12,7 @@ export function getUri<T>(uri: Uri) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), params).then(response => response.json() as Promise<T>);
+    return fetch(uri.toString(), params).then(response => response.status === 204 ? null : response.json() as Promise<T> );
 }
 
 export function postUri<T>(uri: Uri, body: any) {
@@ -28,7 +28,7 @@ export function postUri<T>(uri: Uri, body: any) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), params).then(response => response.json() as Promise<T>);
+    return fetch(uri.toString(), params).then(response => response.status === 204 ? null : response.json() as Promise<T> );
 }
 
 export function putUri<T>(uri: Uri, body: any) {
@@ -44,5 +44,19 @@ export function putUri<T>(uri: Uri, body: any) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), params).then(response => response.json() as Promise<T> );
+    return fetch(uri.toString(), params).then(response => response.status === 204 ? null : response.json() as Promise<T> );
+}
+
+export function deleteUri<T>(uri: Uri) {
+    let params = {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    if (Env.auth) {
+        params.headers['Authorization'] = Env.auth;
+    }
+    return fetch(uri.toString(), params);
 }

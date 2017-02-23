@@ -1,6 +1,6 @@
 {
   "name": "hydrajs",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Client side JavaScript library to interact with Hydra",
   "main": "dist/hydra.js",
   "types": "src/index.d.ts",
@@ -8,8 +8,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm run clean && tsc --outDir dist -t es2015 && ava -v",
+    "test": "npm run clean && tsc --outDir dist-test -t es2015 && ava -v",
     "clean": "rimraf dist",
+    "clean-test": "rimraf dist-test",
     "lint": "./node_modules/.bin/tslint 'src/**/*.ts'",
     "build": "npm run clean && webpack --config webpack.unminified.config.js --bail --progress --profile",
     "patch-release": "npm run build && npm version patch && npm publish && git push --follow-tags",
