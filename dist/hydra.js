@@ -119,7 +119,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        hydraHostName = new Uri('https://fuseadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
 	    }
 	    else if (window.location.hostname === 'access.stage.redhat.com' || window.location.hostname === 'stage.foo.redhat.com' || window.location.hostname === 'foostage.redhat.com' || window.location.hostname === 'skedge.stage.redhat.com') {
-	        hydraHostName = new Uri('https://hydraadmin.corp.stage.redhat.com/hydra/rest/');
+	        hydraHostName = new Uri('https://hydraadmin-corp-stage-redhat-com.vserver.stage.ext.phx2.redhat.com/hydra/rest/');
 	    }
 	}
 	else {

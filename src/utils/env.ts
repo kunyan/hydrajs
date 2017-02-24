@@ -27,7 +27,7 @@ if (process && process.env && process.env.HYDRA_HOSTNAME) {
         // TODO -- determine CI
         hydraHostName = new Uri('https://fuseadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
     } else if (window.location.hostname === 'access.stage.redhat.com' || window.location.hostname === 'stage.foo.redhat.com' || window.location.hostname === 'foostage.redhat.com' || window.location.hostname === 'skedge.stage.redhat.com') {
-        hydraHostName = new Uri('https://hydraadmin.corp.stage.redhat.com/hydra/rest/');
+        hydraHostName = new Uri('https://hydraadmin-corp-stage-redhat-com.vserver.stage.ext.phx2.redhat.com/hydra/rest/');
     }
 } else {
     throw new Error('Could not determine hostname, if you are running in Node make sure to set the HYDRA_HOSTNAME, RHN_USER, and RHN_PASS env variables.');
