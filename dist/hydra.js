@@ -57,15 +57,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var comment_1 = __webpack_require__(8);
 	var case_1 = __webpack_require__(7);
-	var shiftMetadata_1 = __webpack_require__(10);
-	var roleMetadata_1 = __webpack_require__(9);
-	var userShifts_1 = __webpack_require__(11);
+	var insights_1 = __webpack_require__(9);
+	var shiftMetadata_1 = __webpack_require__(11);
+	var roleMetadata_1 = __webpack_require__(10);
+	var userShifts_1 = __webpack_require__(12);
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = {
 	    kase: {
 	        getComments: comment_1.getComments,
 	        upsertComment: comment_1.upsertComment,
 	        getCase: case_1.getCase,
+	    },
+	    insights: {
+	        runInsights: insights_1.runInsights,
+	        getInsightsRules: insights_1.getInsightsRules
 	    },
 	    skedge: {
 	        getAllShiftMetadatas: shiftMetadata_1.getAllShiftMetadatas,
@@ -219,7 +224,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(12);
+	__webpack_require__(13);
 	module.exports = self.fetch.bind(self);
 
 
@@ -924,6 +929,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
+	function runInsights(caseNumber, attachmentId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseNumber + "/attachments/" + attachmentId + "/insights");
+	    return fetch_1.getUri(uri);
+	}
+	exports.runInsights = runInsights;
+	function getInsightsRules(ruleIds) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/insights/rules");
+	    return fetch_1.postUri(uri, ruleIds);
+	}
+	exports.getInsightsRules = getInsightsRules;
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var fetch_1 = __webpack_require__(2);
+	var env_1 = __webpack_require__(1);
 	function getAllRoleMetadatas() {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/roleMetadata/");
 	    return fetch_1.getUri(uri);
@@ -932,7 +956,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -946,7 +970,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -975,7 +999,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	(function(self) {
