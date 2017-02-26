@@ -5,6 +5,7 @@ import {IRoleMetadata}                      from './models/skedge/roleMetadata';
 import {IUserShift}                         from './models/skedge/userShift';
 import {IUserShiftFilter}                   from './models/skedge/userShiftFilter';
 import { InsightsResult, InsightsRule, RuleIds } from './models/insights';
+import { IGroupMetadata } from './models/skedge/groupMetadata';
 
 declare namespace hydrajs {
     namespace kase {
@@ -17,12 +18,16 @@ declare namespace hydrajs {
         export function getInsightsRules(ruleIds?: RuleIds): Promise<Array<InsightsRule>>;
     }
     namespace skedge {
-        export function getAllShiftMetadatas(): Promise<Array<IShiftMetadata>>;
-        export function getAllRoleMetadatas(): Promise<Array<IRoleMetadata>>;
+        export function getAllShiftMetadatas(): Promise<IShiftMetadata[]>;
+        export function getAllRoleMetadatas(): Promise<IRoleMetadata[]>;
         export function getAllShiftsForUsers(): Promise<IUserShift[]>;
         export function getShiftsForUserFilters(filters: IUserShiftFilter): Promise<IUserShift[]>;
         export function postShiftsForUsers(userShifts: IUserShift[]): Promise<IUserShift[]>;
         export function deleteShiftByShiftId(shiftId: number): Promise<any>;
+        export function getAllGroupMetadatas(): Promise<IGroupMetadata[]>;
+        export function getGroupsForOwner(filters: IGroupMetadata): Promise<IGroupMetadata[]>;
+        export function postGroupDetails(groups: IGroupMetadata[]): Promise<IGroupMetadata[]>;
+        export function deleteGroupByGroupId(groupId: number): Promise<any>;
     }
 }
 
