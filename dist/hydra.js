@@ -83,6 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getAllGroupMetadatas: groupMetadata_1.getAllGroupMetadatas,
 	        getGroupsForOwner: groupMetadata_1.getGroupsForOwner,
 	        postGroupDetails: groupMetadata_1.postGroupDetails,
+	        updateGroupDetails: groupMetadata_1.updateGroupDetails,
 	        deleteGroupByGroupId: groupMetadata_1.deleteGroupByGroupId
 	    }
 	};
@@ -949,6 +950,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.postUri(uri, groups);
 	}
 	exports.postGroupDetails = postGroupDetails;
+	function updateGroupDetails(groups, groupId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/" + groupId + "/");
+	    return fetch_1.putUri(uri, groupId);
+	}
+	exports.updateGroupDetails = updateGroupDetails;
 	function deleteGroupByGroupId(groupId) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/" + groupId + "/");
 	    return fetch_1.deleteUri(uri);
