@@ -7,7 +7,13 @@ import {
     getShiftsForUserFilters, getAllShiftsForUsers, postShiftsForUsers,
     deleteShiftByShiftId
 } from './api/userShifts';
-import { getAllGroupMetadatas, getGroupsForOwner, postGroupDetails, updateGroupDetails, deleteGroupByGroupId} from './api/groupMetadata';
+import {
+    getAllGroupMetadatas,
+    getGroupsForOwner,
+    postGroupDetails,
+    updateGroupDetails,
+    deleteGroupByGroupId
+} from './api/groupMetadata';
 
 export default {
     kase: {

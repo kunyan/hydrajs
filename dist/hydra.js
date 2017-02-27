@@ -952,7 +952,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.postGroupDetails = postGroupDetails;
 	function updateGroupDetails(groups, groupId) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/" + groupId + "/");
-	    return fetch_1.putUri(uri, groupId);
+	    return fetch_1.putUri(uri, groups);
 	}
 	exports.updateGroupDetails = updateGroupDetails;
 	function deleteGroupByGroupId(groupId) {
