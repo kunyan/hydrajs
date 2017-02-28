@@ -57,10 +57,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var comment_1 = __webpack_require__(8);
 	var case_1 = __webpack_require__(7);
-	var insights_1 = __webpack_require__(9);
-	var shiftMetadata_1 = __webpack_require__(11);
-	var roleMetadata_1 = __webpack_require__(10);
-	var userShifts_1 = __webpack_require__(12);
+	var insights_1 = __webpack_require__(10);
+	var shiftMetadata_1 = __webpack_require__(12);
+	var roleMetadata_1 = __webpack_require__(11);
+	var userShifts_1 = __webpack_require__(13);
+	var groupMetadata_1 = __webpack_require__(9);
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = {
 	    kase: {
@@ -78,7 +79,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getAllShiftsForUsers: userShifts_1.getAllShiftsForUsers,
 	        getShiftsForUserFilters: userShifts_1.getShiftsForUserFilters,
 	        postShiftsForUsers: userShifts_1.postShiftsForUsers,
-	        deleteShiftByShiftId: userShifts_1.deleteShiftByShiftId
+	        deleteShiftByShiftId: userShifts_1.deleteShiftByShiftId,
+	        getAllGroupMetadatas: groupMetadata_1.getAllGroupMetadatas,
+	        getGroupsForOwner: groupMetadata_1.getGroupsForOwner,
+	        postGroupDetails: groupMetadata_1.postGroupDetails,
+	        updateGroupDetails: groupMetadata_1.updateGroupDetails,
+	        deleteGroupByGroupId: groupMetadata_1.deleteGroupByGroupId
 	    }
 	};
 
@@ -224,7 +230,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(13);
+	__webpack_require__(14);
 	module.exports = self.fetch.bind(self);
 
 
@@ -929,6 +935,40 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
+	function getAllGroupMetadatas() {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getAllGroupMetadatas = getAllGroupMetadatas;
+	function getGroupsForOwner(filters) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/filter");
+	    return fetch_1.postUri(uri, filters);
+	}
+	exports.getGroupsForOwner = getGroupsForOwner;
+	function postGroupDetails(groups) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/");
+	    return fetch_1.postUri(uri, groups);
+	}
+	exports.postGroupDetails = postGroupDetails;
+	function updateGroupDetails(groups, groupId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/" + groupId + "/");
+	    return fetch_1.putUri(uri, groups);
+	}
+	exports.updateGroupDetails = updateGroupDetails;
+	function deleteGroupByGroupId(groupId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/" + groupId + "/");
+	    return fetch_1.deleteUri(uri);
+	}
+	exports.deleteGroupByGroupId = deleteGroupByGroupId;
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var fetch_1 = __webpack_require__(2);
+	var env_1 = __webpack_require__(1);
 	function runInsights(caseNumber, attachmentId) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseNumber + "/attachments/" + attachmentId + "/insights");
 	    return fetch_1.getUri(uri);
@@ -942,7 +982,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -956,7 +996,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -970,7 +1010,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -999,7 +1039,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	(function(self) {
