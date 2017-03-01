@@ -58,10 +58,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var comment_1 = __webpack_require__(9);
 	var case_1 = __webpack_require__(8);
-	var insights_1 = __webpack_require__(10);
-	var shiftMetadata_1 = __webpack_require__(12);
-	var roleMetadata_1 = __webpack_require__(11);
-	var userShifts_1 = __webpack_require__(13);
+	var insights_1 = __webpack_require__(11);
+	var shiftMetadata_1 = __webpack_require__(13);
+	var roleMetadata_1 = __webpack_require__(12);
+	var userShifts_1 = __webpack_require__(14);
+	var groupMetadata_1 = __webpack_require__(10);
 	exports.default = {
 	    kase: {
 	        getComments: comment_1.getComments,
@@ -78,7 +79,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getAllShiftsForUsers: userShifts_1.getAllShiftsForUsers,
 	        getShiftsForUserFilters: userShifts_1.getShiftsForUserFilters,
 	        postShiftsForUsers: userShifts_1.postShiftsForUsers,
-	        deleteShiftByShiftId: userShifts_1.deleteShiftByShiftId
+	        deleteShiftByShiftId: userShifts_1.deleteShiftByShiftId,
+	        getAllGroupMetadatas: groupMetadata_1.getAllGroupMetadatas,
+	        getGroupsForOwner: groupMetadata_1.getGroupsForOwner,
+	        postGroupDetails: groupMetadata_1.postGroupDetails,
+	        updateGroupDetails: groupMetadata_1.updateGroupDetails,
+	        deleteGroupByGroupId: groupMetadata_1.deleteGroupByGroupId
 	    }
 	};
 
@@ -107,7 +113,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	else if (typeof window !== 'undefined' && window) {
 	    if (window.location.hostname === 'access.redhat.com' || window.location.hostname === 'prod.foo.redhat.com' || window.location.hostname === 'fooprod.redhat.com' || window.location.hostname === 'skedge.redhat.com') {
-	        hydraHostName = new Uri('https://hydraadmin.corp.redhat.com/hydra/rest/');
+	        hydraHostName = new Uri('https://hydraadmin-corp-redhat-com.vserver.prod.ext.phx2.redhat.com/hydra/rest/');
 	    }
 	    else if (window.location.hostname === 'access.qa.redhat.com' || window.location.hostname === 'qa.foo.redhat.com' || window.location.hostname === 'fooqa.redhat.com' || window.location.hostname === 'skedge.qa.redhat.com') {
 	        hydraHostName = new Uri('https://hydraadmin-corp-qa-redhat-com.vserver.qa.ext.phx1.redhat.com/hydra/rest/');
@@ -225,7 +231,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(15);
+	__webpack_require__(16);
 	module.exports = self.fetch.bind(self);
 
 
@@ -17784,7 +17790,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(14)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(15)(module)))
 
 /***/ },
 /* 7 */
@@ -18024,6 +18030,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
+	function getAllGroupMetadatas() {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getAllGroupMetadatas = getAllGroupMetadatas;
+	function getGroupsForOwner(filters) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/filter");
+	    return fetch_1.postUri(uri, filters);
+	}
+	exports.getGroupsForOwner = getGroupsForOwner;
+	function postGroupDetails(groups) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/");
+	    return fetch_1.postUri(uri, groups);
+	}
+	exports.postGroupDetails = postGroupDetails;
+	function updateGroupDetails(groups, groupId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/" + groupId + "/");
+	    return fetch_1.putUri(uri, groups);
+	}
+	exports.updateGroupDetails = updateGroupDetails;
+	function deleteGroupByGroupId(groupId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/groups/" + groupId + "/");
+	    return fetch_1.deleteUri(uri);
+	}
+	exports.deleteGroupByGroupId = deleteGroupByGroupId;
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var fetch_1 = __webpack_require__(2);
+	var env_1 = __webpack_require__(1);
 	var lodash_1 = __webpack_require__(6);
 	function runInsights(caseNumber, attachmentId) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseNumber + "/attachments/" + attachmentId + "/insights");
@@ -18038,7 +18079,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18053,7 +18094,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18068,7 +18109,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18098,7 +18139,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -18114,7 +18155,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	(function(self) {
