@@ -1,13 +1,14 @@
 import {getUri, postUri} from '../utils/fetch';
 import Env from '../utils/env';
 import {InsightsRule, InsightsResult, RuleIds} from '../models/insights';
+import _ from 'lodash';
 
 export function runInsights(caseNumber: string, attachmentId: string): Promise<InsightsResult> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseNumber}/attachments/${attachmentId}/insights`);
-    return getUri(uri);
+    return getUri<InsightsResult>(uri);
 }
 
 export function getInsightsRules(ruleIds?: RuleIds): Promise<Array<InsightsRule>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/insights/rules`);
-    return postUri<Array<InsightsRule>>(uri, ruleIds);
+    return _.isEmpty(ruleIds) ? getUri<Array<InsightsRule>>(uri) : postUri<Array<InsightsRule>>(uri, ruleIds);
 }
