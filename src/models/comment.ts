@@ -42,6 +42,7 @@ export interface ICaseComment {
     lastModifiedByContactID?: string;
     lastModifiedByIdCustom?: string;
     lastModifiedByLink?: string;
+    bzNumber?:number
     lastModifiedByText?: string;
     lastModifiedByUser?: string;
     lastModifiedByUserID?: string;
