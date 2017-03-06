@@ -3,6 +3,7 @@ import { getCase } from './api/case';
 import { runInsights, getInsightsRules } from './api/insights';
 import { getAllShiftMetadatas } from './api/shiftMetadata';
 import {getAllRoleMetadatas} from './api/roleMetadata';
+import {getAllTemplateMetadatas} from './api/templateMetadata';
 import {
     getShiftsForUserFilters, getAllShiftsForUsers, postShiftsForUsers,
     deleteShiftByShiftId
@@ -28,6 +29,7 @@ export default {
     skedge: {
         getAllShiftMetadatas: getAllShiftMetadatas,
         getAllRoleMetadatas: getAllRoleMetadatas,
+        getAllTemplateMetadatas: getAllTemplateMetadatas,
         getAllShiftsForUsers: getAllShiftsForUsers,
         getShiftsForUserFilters: getShiftsForUserFilters,
         postShiftsForUsers: postShiftsForUsers,

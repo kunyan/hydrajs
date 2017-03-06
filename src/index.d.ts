@@ -6,6 +6,7 @@ import {IUserShift}                         from './models/skedge/userShift';
 import {IUserShiftFilter}                   from './models/skedge/userShiftFilter';
 import { InsightsResult, InsightsRule, RuleIds } from './models/insights';
 import { IGroupMetadata } from './models/skedge/groupMetadata';
+import {ITemplateMetadata} from './models/skedge/templateMetadata';
 
 declare namespace hydrajs {
     namespace kase {
@@ -20,6 +21,7 @@ declare namespace hydrajs {
     namespace skedge {
         export function getAllShiftMetadatas(): Promise<IShiftMetadata[]>;
         export function getAllRoleMetadatas(): Promise<IRoleMetadata[]>;
+        export function getAllTemplateMetadatas(): Promise<ITemplateMetadata[]>;
         export function getAllShiftsForUsers(): Promise<IUserShift[]>;
         export function getShiftsForUserFilters(filters: IUserShiftFilter): Promise<IUserShift[]>;
         export function postShiftsForUsers(userShifts: IUserShift[]): Promise<IUserShift[]>;
