@@ -27,7 +27,7 @@ declare namespace hydrajs {
         export function getAllGroupMetadatas(): Promise<IGroupMetadata[]>;
         export function getGroupsForOwner(filters: IGroupMetadata): Promise<IGroupMetadata[]>;
         export function postGroupDetails(groups: IGroupMetadata): Promise<IGroupMetadata>;
-        export function updateGroupDetails(groups:IGroupMetadata, groupId: number): Promise<IGroupMetadata>;
+        export function updateGroupDetails(groups: IGroupMetadata, groupId: number): Promise<IGroupMetadata>;
         export function deleteGroupByGroupId(groupId: number): Promise<any>;
     }
 }
