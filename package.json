@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm run clean && tsc --outDir dist-test -t es2015 && ava -v",
+    "test": "npm run clean && npm run clean-test && tsc --outDir dist-test -t es2015 && ava -v",
     "clean": "rimraf dist",
     "clean-test": "rimraf dist-test",
     "lint": "./node_modules/.bin/tslint 'src/**/*.ts'",
