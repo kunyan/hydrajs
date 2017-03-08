@@ -4,7 +4,7 @@ import {IShiftMetadata}                     from './models/skedge/shiftMetadata'
 import {IRoleMetadata}                      from './models/skedge/roleMetadata';
 import {IUserShift}                         from './models/skedge/userShift';
 import {IUserShiftFilter}                   from './models/skedge/userShiftFilter';
-import { InsightsResult, InsightsRule, RuleIds } from './models/insights';
+import { InsightsResult, InsightsRule } from './models/insights';
 import { IGroupMetadata } from './models/skedge/groupMetadata';
 import {ITemplateMetadata} from './models/skedge/templateMetadata';
 
@@ -16,7 +16,7 @@ declare namespace hydrajs {
     }
     namespace insights {
         export function runInsights(caseNumber: string, attachmentId: string): Promise<InsightsResult>;
-        export function getInsightsRules(ruleIds?: RuleIds): Promise<Array<InsightsRule>>;
+        export function getInsightsRules(ruleIds?: string[]): Promise<Array<InsightsRule>>;
     }
     namespace skedge {
         export function getAllShiftMetadatas(): Promise<IShiftMetadata[]>;
