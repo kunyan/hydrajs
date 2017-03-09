@@ -6,7 +6,7 @@ import {getAllRoleMetadatas} from './api/roleMetadata';
 import {getAllTemplateMetadatas} from './api/templateMetadata';
 import {
     getShiftsForUserFilters, getAllShiftsForUsers, postShiftsForUsers,
-    deleteShiftByShiftId
+    deleteShiftByShiftId, deleteShiftForUsers
 } from './api/userShifts';
 import {
     getAllGroupMetadatas,
@@ -34,6 +34,7 @@ export default {
         getShiftsForUserFilters: getShiftsForUserFilters,
         postShiftsForUsers: postShiftsForUsers,
         deleteShiftByShiftId: deleteShiftByShiftId,
+        deleteShiftForUsers: deleteShiftForUsers,
         getAllGroupMetadatas: getAllGroupMetadatas,
         getGroupsForOwner: getGroupsForOwner,
         postGroupDetails: postGroupDetails,

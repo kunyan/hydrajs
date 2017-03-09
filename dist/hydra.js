@@ -82,6 +82,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getShiftsForUserFilters: userShifts_1.getShiftsForUserFilters,
 	        postShiftsForUsers: userShifts_1.postShiftsForUsers,
 	        deleteShiftByShiftId: userShifts_1.deleteShiftByShiftId,
+	        deleteShiftForUsers: userShifts_1.deleteShiftForUsers,
 	        getAllGroupMetadatas: groupMetadata_1.getAllGroupMetadatas,
 	        getGroupsForOwner: groupMetadata_1.getGroupsForOwner,
 	        postGroupDetails: groupMetadata_1.postGroupDetails,
@@ -1061,6 +1062,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.deleteUri(uri);
 	}
 	exports.deleteShiftByShiftId = deleteShiftByShiftId;
+	function deleteShiftForUsers(userShifts) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/shifts/bulk");
+	    return fetch_1.deleteUri(uri);
+	}
+	exports.deleteShiftForUsers = deleteShiftForUsers;
 
 
 /***/ },

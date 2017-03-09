@@ -22,7 +22,7 @@ export function updateGroupDetails(groups: IGroupMetadata, groupId: number): Pro
     return putUri<IGroupMetadata>(uri, groups);
 }
 
-export function deleteGroupByGroupId(groupId: number): Promise<any> {
+export function deleteGroupByGroupId(groupId: number): Promise<IGroupMetadata> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/skedge/groups/${groupId}/`);
-    return deleteUri<any>(uri);
+    return deleteUri<IGroupMetadata>(uri);
 }
