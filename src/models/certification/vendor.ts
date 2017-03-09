@@ -1,7 +1,7 @@
 import { IAccount } from '../account';
 
 export interface IVendor extends IAccount {
-    id: any;
+    id?: string | number;
     name: string;
     portalId: number;
 }

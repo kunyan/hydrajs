@@ -1,4 +1,3 @@
-import isEmpty                           from 'lodash/isEmpty';
 import Env                               from '../utils/env';
 import { getUri, postUri }               from '../utils/fetch';
 import { InsightsRule, InsightsResult }  from '../models/insights';

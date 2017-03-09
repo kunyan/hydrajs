@@ -3,8 +3,8 @@ import { ICertification } from './certification';
 
 export interface IVendorProduct {
     // common
-    id: any;
-    portalId: number;
+    id: string | number;
+    portalId: string | number;
     program: string;
     name: string;
     vendor: IVendor;
@@ -29,11 +29,11 @@ export interface ISpecification {
 }
 
 export interface IMake {
-    id: string;
+    id: string | number;
     name: string;
 }
 
 export interface ICategory {
-    id: string;
+    id: string | number;
     name: string;
 }

@@ -2,8 +2,8 @@ import { ICase } from '../case';
 import { IVendorProduct } from './vendorProduct';
 
 export interface ICertification {
-    case: ICase;
-    portalId: number;
+    case?: ICase;
+    portalId?: string | number;
     summaryStatus: string;
     detailStatus: string;
     public: boolean;
