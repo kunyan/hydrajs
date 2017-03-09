@@ -1,12 +1,12 @@
 import { ICaseCommentFields, ICaseComment }         from './models/comment';
-import {  ICase, ICase_fields }                     from './models/case';
+import { ICase, ICase_fields }                      from './models/case';
 import { IShiftMetadata }                           from './models/skedge/shiftMetadata';
 import { IRoleMetadata }                            from './models/skedge/roleMetadata';
 import { IUserShift }                               from './models/skedge/userShift';
 import { IUserShiftFilter }                         from './models/skedge/userShiftFilter';
 import { ICertification }                           from './models/certification/certification';
 import { IVendorProduct }                           from './models/certification/vendorProduct';
-import { InsightsResult, InsightsRule }    from './models/insights';
+import { InsightsResult, InsightsRule }             from './models/insights';
 import { IGroupMetadata }                           from './models/skedge/groupMetadata';
 import { ITemplateMetadata }                        from './models/skedge/templateMetadata';
 

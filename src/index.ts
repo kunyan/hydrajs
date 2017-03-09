@@ -1,12 +1,17 @@
-import { getComments, upsertComment, } from './api/comment';
-import { getCase } from './api/case';
-import { runInsights, getInsightsRules } from './api/insights';
-import { getAllShiftMetadatas } from './api/shiftMetadata';
-import {getAllRoleMetadatas} from './api/roleMetadata';
-import {getAllTemplateMetadatas} from './api/templateMetadata';
+import { getComments, upsertComment, }          from './api/comment';
+import { getCase }                              from './api/case';
+import { runInsights, getInsightsRules }        from './api/insights';
+import { getAllShiftMetadatas }                 from './api/shiftMetadata';
+import { getAllRoleMetadatas }                  from './api/roleMetadata';
+import { getAllTemplateMetadatas }              from './api/templateMetadata';
+import { getCertification }                     from './api/certification';
+import { getVendorProduct, getCertifications }  from './api/vendorProduct';
 import {
-    getShiftsForUserFilters, getAllShiftsForUsers, postShiftsForUsers,
-    deleteShiftByShiftId, deleteShiftForUsers
+    getShiftsForUserFilters,
+    getAllShiftsForUsers,
+    postShiftsForUsers,
+    deleteShiftByShiftId,
+    deleteShiftForUsers
 } from './api/userShifts';
 import {
     getAllGroupMetadatas,
@@ -18,27 +23,32 @@ import {
 
 export default {
     kase: {
-        getComments: getComments,
-        upsertComment: upsertComment,
-        getCase: getCase,
+        getComments,
+        upsertComment,
+        getCase,
     },
     insights: {
-        runInsights: runInsights,
-        getInsightsRules: getInsightsRules
+        runInsights,
+        getInsightsRules,
     },
     skedge: {
-        getAllShiftMetadatas: getAllShiftMetadatas,
-        getAllRoleMetadatas: getAllRoleMetadatas,
-        getAllTemplateMetadatas: getAllTemplateMetadatas,
-        getAllShiftsForUsers: getAllShiftsForUsers,
-        getShiftsForUserFilters: getShiftsForUserFilters,
-        postShiftsForUsers: postShiftsForUsers,
-        deleteShiftByShiftId: deleteShiftByShiftId,
-        deleteShiftForUsers: deleteShiftForUsers,
-        getAllGroupMetadatas: getAllGroupMetadatas,
-        getGroupsForOwner: getGroupsForOwner,
-        postGroupDetails: postGroupDetails,
-        updateGroupDetails: updateGroupDetails,
-        deleteGroupByGroupId: deleteGroupByGroupId
+        getAllShiftMetadatas,
+        getAllRoleMetadatas,
+        getAllTemplateMetadatas,
+        getAllShiftsForUsers,
+        getShiftsForUserFilters,
+        postShiftsForUsers,
+        deleteShiftByShiftId,
+        deleteShiftForUsers,
+        getAllGroupMetadatas,
+        getGroupsForOwner,
+        postGroupDetails,
+        updateGroupDetails,
+        deleteGroupByGroupId,
+    },
+    certification: {
+        getCertification,
+        getCertifications,
+        getVendorProduct,
     }
 };
