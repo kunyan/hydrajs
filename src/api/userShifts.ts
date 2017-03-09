@@ -23,3 +23,8 @@ export function deleteShiftByShiftId(shiftId: number): Promise<any> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/skedge/shifts/${shiftId}`);
     return deleteUri<any>(uri);
 }
+
+export function deleteShiftForUsers(userShifts: IUserShift[]): Promise<any> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/skedge/shifts/bulk`);
+    return deleteUri<any>(uri);
+}
