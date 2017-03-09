@@ -33,9 +33,9 @@
   dependencies:
     ansi-styles "^2.2.1"
 
-"@types/isomorphic-fetch@^0.0.31":
-  version "0.0.31"
-  resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.31.tgz#ec120166ce22f0b134e8770f40c97cd076068fae"
+"@types/isomorphic-fetch@^0.0.33":
+  version "0.0.33"
+  resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.33.tgz#3ea1b86f8b73e6a7430d01d4dbd5b1f63fd72718"
 
 "@types/jsuri@^1.3.29":
   version "1.3.29"

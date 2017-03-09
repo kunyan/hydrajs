@@ -1,12 +1,14 @@
-import {ICaseCommentFields, ICaseComment}   from './models/comment';
-import {ICase, ICase_fields}                from './models/case';
-import {IShiftMetadata}                     from './models/skedge/shiftMetadata';
-import {IRoleMetadata}                      from './models/skedge/roleMetadata';
-import {IUserShift}                         from './models/skedge/userShift';
-import {IUserShiftFilter}                   from './models/skedge/userShiftFilter';
-import { InsightsResult, InsightsRule } from './models/insights';
-import { IGroupMetadata } from './models/skedge/groupMetadata';
-import {ITemplateMetadata} from './models/skedge/templateMetadata';
+import { ICaseCommentFields, ICaseComment }         from './models/comment';
+import { ICase, ICase_fields }                      from './models/case';
+import { IShiftMetadata }                           from './models/skedge/shiftMetadata';
+import { IRoleMetadata }                            from './models/skedge/roleMetadata';
+import { IUserShift }                               from './models/skedge/userShift';
+import { IUserShiftFilter }                         from './models/skedge/userShiftFilter';
+import { ICertification }                           from './models/certification/certification';
+import { IVendorProduct }                           from './models/certification/vendorProduct';
+import { InsightsResult, InsightsRule }             from './models/insights';
+import { IGroupMetadata }                           from './models/skedge/groupMetadata';
+import { ITemplateMetadata }                        from './models/skedge/templateMetadata';
 
 declare namespace hydrajs {
     namespace kase {
@@ -32,6 +34,11 @@ declare namespace hydrajs {
         export function postGroupDetails(groups: IGroupMetadata): Promise<IGroupMetadata>;
         export function updateGroupDetails(groups: IGroupMetadata, groupId: number): Promise<IGroupMetadata>;
         export function deleteGroupByGroupId(groupId: number): Promise<IGroupMetadata>;
+    }
+    namespace certification {
+        export function getCertification(caseId: string): Promise<ICertification>;
+        export function getCertifications(vendorProductPortalId: string | number): Promise<ICertification[]>;
+        export function getVendorProduct(vendorProductPortalId: string | number): Promise<IVendorProduct>;
     }
 }
 
