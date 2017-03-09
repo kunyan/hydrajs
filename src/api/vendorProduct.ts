@@ -1,7 +1,7 @@
-import {getUri} from '../utils/fetch';
-import Env from '../utils/env';
-import { IVendorProduct } from '../models/certification/vendorProduct';
-import { ICertification } from '../models/certification/certification';
+import Env                  from '../utils/env';
+import { getUri }           from '../utils/fetch';
+import { IVendorProduct }   from '../models/certification/vendorProduct';
+import { ICertification }   from '../models/certification/certification';
 
 export function getVendorProduct(vendorProductPortalId: string): Promise<IVendorProduct> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/vendorproducts/${vendorProductPortalId}`);

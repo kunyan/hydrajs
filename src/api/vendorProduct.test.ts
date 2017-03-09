@@ -1,5 +1,5 @@
-import test from 'ava';
-import * as vendorProductApi from './vendorProduct';
+import test                     from 'ava';
+import * as vendorProductApi    from './vendorProduct';
 
 test('should return vendor product for portal id 2909043', async t => {
     const vendorProductPortalId = '2909043';

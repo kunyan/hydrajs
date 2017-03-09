@@ -970,8 +970,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
+	var fetch_1 = __webpack_require__(2);
 	function runInsights(caseNumber, attachmentId) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseNumber + "/attachments/" + attachmentId + "/insights");
 	    return fetch_1.getUri(uri);
