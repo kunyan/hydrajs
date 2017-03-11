@@ -221,6 +221,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch(uri.toString(), params);
 	}
 	exports.deleteUri = deleteUri;
+	function deleteUriWithBody(uri, body) {
+	    var params = {
+	        method: 'DELETE',
+	        credentials: 'include',
+	        headers: {
+	            'Accept': 'application/json',
+	            'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify(body)
+	    };
+	    if (env_1.default.auth) {
+	        params.headers['Authorization'] = env_1.default.auth;
+	    }
+	    return fetch(uri.toString(), params);
+	}
+	exports.deleteUriWithBody = deleteUriWithBody;
 
 
 /***/ },
@@ -1075,8 +1091,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	exports.deleteShiftByShiftId = deleteShiftByShiftId;
 	function deleteShiftForUsers(userShifts) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/shifts/bulk");
-	    return fetch_1.deleteUri(uri);
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/shifts/remove");
+	    return fetch_1.deleteUriWithBody(uri, userShifts);
 	}
 	exports.deleteShiftForUsers = deleteShiftForUsers;
 

@@ -60,3 +60,19 @@ export function deleteUri<T>(uri: Uri) {
     }
     return fetch(uri.toString(), params);
 }
+
+export function deleteUriWithBody<T>(uri: Uri, body: any) {
+    let params = {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    };
+    if (Env.auth) {
+        params.headers['Authorization'] = Env.auth;
+    }
+    return fetch(uri.toString(), params);
+}
