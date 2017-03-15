@@ -1,8 +1,8 @@
-import { ICase } from '../case';
+import { IAPICase } from '../case';
 import { IVendorProduct } from './vendorProduct';
 
 export interface ICertification {
-    case?: ICase;
+    case?: IAPICase;
     portalId?: string | number;
     summaryStatus: string;
     detailStatus: string;
@@ -15,11 +15,12 @@ export interface ICertification {
 export interface IRedHatProduct {
     name: string;
     minorVersion: string;
+    platform: string;
 }
 
 export interface ICertificationType {
-    status: boolean;
-    url?: string;
+    id: string | number;
+    name: string;
 }
 
 export interface IPolicyGuide {

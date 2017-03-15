@@ -37,6 +37,7 @@ declare namespace hydrajs {
     }
     namespace certification {
         export function getCertification(caseId: string): Promise<ICertification>;
+        export function updateCertification(certification: ICertification): Promise<ICertification>;
         export function getCertifications(vendorProductPortalId: string | number): Promise<ICertification[]>;
         export function getVendorProduct(vendorProductPortalId: string | number): Promise<IVendorProduct>;
     }
