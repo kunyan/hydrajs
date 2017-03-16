@@ -4,8 +4,11 @@ import { runInsights, getInsightsRules }        from './api/insights';
 import { getAllShiftMetadatas }                 from './api/shiftMetadata';
 import { getAllRoleMetadatas }                  from './api/roleMetadata';
 import { getAllTemplateMetadatas }              from './api/templateMetadata';
-import { getCertification }                     from './api/certification';
 import { getVendorProduct, getCertifications }  from './api/vendorProduct';
+import {
+    getCertification,
+    updateCertification
+} from './api/certification';
 import {
     getShiftsForUserFilters,
     getAllShiftsForUsers,
@@ -48,6 +51,7 @@ export default {
     },
     certification: {
         getCertification,
+        updateCertification,
         getCertifications,
         getVendorProduct,
     }
