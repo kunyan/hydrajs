@@ -3,7 +3,7 @@ import { getCase }                              from './api/case';
 import { runInsights, getInsightsRules }        from './api/insights';
 import { getAllShiftMetadatas }                 from './api/shiftMetadata';
 import { getAllRoleMetadatas }                  from './api/roleMetadata';
-import { getAllTemplateMetadatas }              from './api/templateMetadata';
+import { getAllTemplateMetadatas, getTemplateMetadatasForUser, postCustomTemplateForUser }              from './api/templateMetadata';
 import { getVendorProduct, getCertifications }  from './api/vendorProduct';
 import {
     getCertification,
@@ -38,6 +38,8 @@ export default {
         getAllShiftMetadatas,
         getAllRoleMetadatas,
         getAllTemplateMetadatas,
+        getTemplateMetadatasForUser,
+        postCustomTemplateForUser,
         getAllShiftsForUsers,
         getShiftsForUserFilters,
         postShiftsForUsers,
