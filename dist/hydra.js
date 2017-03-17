@@ -85,6 +85,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getAllShiftsForUsers: userShifts_1.getAllShiftsForUsers,
 	        getShiftsForUserFilters: userShifts_1.getShiftsForUserFilters,
 	        postShiftsForUsers: userShifts_1.postShiftsForUsers,
+	        editShiftForUser: userShifts_1.editShiftForUser,
 	        deleteShiftByShiftId: userShifts_1.deleteShiftByShiftId,
 	        deleteShiftForUsers: userShifts_1.deleteShiftForUsers,
 	        getAllGroupMetadatas: groupMetadata_1.getAllGroupMetadatas,
@@ -1392,6 +1393,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.postUri(uri, userShifts);
 	}
 	exports.postShiftsForUsers = postShiftsForUsers;
+	function editShiftForUser(shiftRecordId, updatedShiftDetails) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/shifts/" + shiftRecordId);
+	    return fetch_1.putUri(uri, updatedShiftDetails);
+	}
+	exports.editShiftForUser = editShiftForUser;
 	function deleteShiftByShiftId(shiftId) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/skedge/shifts/" + shiftId);
 	    return fetch_1.deleteUri(uri);

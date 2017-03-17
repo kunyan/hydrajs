@@ -14,7 +14,8 @@ import {
     getAllShiftsForUsers,
     postShiftsForUsers,
     deleteShiftByShiftId,
-    deleteShiftForUsers
+    deleteShiftForUsers,
+    editShiftForUser
 } from './api/userShifts';
 import {
     getAllGroupMetadatas,
@@ -43,6 +44,7 @@ export default {
         getAllShiftsForUsers,
         getShiftsForUserFilters,
         postShiftsForUsers,
+        editShiftForUser,
         deleteShiftByShiftId,
         deleteShiftForUsers,
         getAllGroupMetadatas,
