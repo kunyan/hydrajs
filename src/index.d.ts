@@ -29,6 +29,7 @@ declare namespace hydrajs {
         export function getAllShiftsForUsers(): Promise<IUserShift[]>;
         export function getShiftsForUserFilters(filters: IUserShiftFilter): Promise<IUserShift[]>;
         export function postShiftsForUsers(userShifts: IUserShift[]): Promise<IUserShift[]>;
+        export function editShiftForUser(shiftRecordId:number,updatedShiftDetails: IUserShift): Promise<IUserShift>;
         export function deleteShiftByShiftId(shiftId: number): Promise<any>;
         export function deleteShiftForUsers(userShifts: IUserShift[]): Promise<any>;
         export function getAllGroupMetadatas(): Promise<IGroupMetadata[]>;
