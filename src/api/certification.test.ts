@@ -9,7 +9,7 @@ test('should return certification for case number 2909043', async t => {
     t.is(certification.portalId, 2909053);
 });
 
-test.only('should get certification for case number 2909043, and update it', async t => {
+test('should get certification for case number 2909043, and update it', async t => {
     // Get a certification
     const caseNumber = '01902863';
     const certification = await certificationApi.getCertification(caseNumber);

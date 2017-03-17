@@ -4,6 +4,22 @@
 const fetch    = require('isomorphic-fetch');
 import Env     from '../utils/env';
 
+function errorHandler(response) {
+    return response.text().then(body => new Error(body));
+}
+
+function responseHandler<T>(response) {
+    if (response.status === 500) {
+        return errorHandler(response);
+    } else {
+        return response.status === 204 ? null : response.clone().json().catch((e) => {
+            // The only possible error here is either response is null or parsing json fails.  Both of which
+            // we just want to return the response, which would either be null or the actual api error
+            return errorHandler(response);
+        });
+    }
+}
+
 export function getUri<T>(uri: Uri) {
     let params = {
         credentials: 'include',
@@ -12,7 +28,7 @@ export function getUri<T>(uri: Uri) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), params).then(response => response.status === 204 ? null : response.json() as Promise<T> );
+    return fetch(uri.toString(), params).then(responseHandler);
 }
 
 export function postUri<T>(uri: Uri, body: any) {
@@ -28,7 +44,7 @@ export function postUri<T>(uri: Uri, body: any) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), params).then(response => response.status === 204 ? null : response.json() as Promise<T> );
+    return fetch(uri.toString(), params).then(responseHandler);
 }
 
 export function putUri<T>(uri: Uri, body: any) {
@@ -44,7 +60,7 @@ export function putUri<T>(uri: Uri, body: any) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), params).then(response => response.status === 204 ? null : response.json() as Promise<T> );
+    return fetch(uri.toString(), params).then(responseHandler);
 }
 
 export function deleteUri<T>(uri: Uri) {

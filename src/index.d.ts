@@ -24,12 +24,12 @@ declare namespace hydrajs {
         export function getAllShiftMetadatas(): Promise<IShiftMetadata[]>;
         export function getAllRoleMetadatas(): Promise<IRoleMetadata[]>;
         export function getAllTemplateMetadatas(): Promise<ITemplateMetadata[]>;
-        export function getTemplateMetadatasForUser(userId:string): Promise<ITemplateMetadata[]>;
-        export function postCustomTemplateForUser(template:ITemplateMetadata): Promise<ITemplateMetadata>;
+        export function getTemplateMetadatasForUser(userId: string): Promise<ITemplateMetadata[]>;
+        export function postCustomTemplateForUser(template: ITemplateMetadata): Promise<ITemplateMetadata>;
         export function getAllShiftsForUsers(): Promise<IUserShift[]>;
         export function getShiftsForUserFilters(filters: IUserShiftFilter): Promise<IUserShift[]>;
         export function postShiftsForUsers(userShifts: IUserShift[]): Promise<IUserShift[]>;
-        export function editShiftForUser(shiftRecordId:number,updatedShiftDetails: IUserShift): Promise<IUserShift>;
+        export function editShiftForUser(shiftRecordId: number, updatedShiftDetails: IUserShift): Promise<IUserShift>;
         export function deleteShiftByShiftId(shiftId: number): Promise<any>;
         export function deleteShiftForUsers(userShifts: IUserShift[]): Promise<any>;
         export function getAllGroupMetadatas(): Promise<IGroupMetadata[]>;
