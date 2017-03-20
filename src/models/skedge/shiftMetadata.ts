@@ -3,6 +3,7 @@ export interface IShiftMetadata {
     name: string;
     startAt: number;
     endAt: number;
+    shiftType: string;
     createdBy: string;
     createdAt: number;
     updateBy: string;

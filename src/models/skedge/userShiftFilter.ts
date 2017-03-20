@@ -4,4 +4,6 @@ export interface IUserShiftFilter {
     roleIds?: number[];
     startDate?: number | string;
     endDate?: number | string;
+    removedUsers?: string[];
+    exemptedShifts?: number[];
 }
