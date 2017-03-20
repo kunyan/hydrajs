@@ -1,6 +1,6 @@
 {
   "name": "hydrajs",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "Client side JavaScript library to interact with Hydra",
   "main": "dist/hydra.js",
   "types": "src/index.d.ts",
@@ -12,7 +12,7 @@
     "clean": "rimraf dist",
     "clean-test": "rimraf dist-test",
     "lint": "./node_modules/.bin/tslint 'src/**/*.ts'",
-    "build": "npm run clean && webpack --config webpack.unminified.config.js --bail --progress --profile",
+    "build": "npm run clean && npm run clean-test && webpack --config webpack.unminified.config.js --bail --progress --profile",
     "patch-release": "npm run build && npm version patch && npm publish && git push --follow-tags",
     "pretest": "npm run lint && if [[ -z \"${HYDRA_HOSTNAME}\" || -z \"${RHN_USER}\" || -z \"${RHN_PASS}\" ]]; then echo \"Need set HYDRA_HOSTNAME, RHN_USER, RH_PASS\"; exit 1; fi"
   },

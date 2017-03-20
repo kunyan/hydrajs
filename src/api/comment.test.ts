@@ -1,9 +1,9 @@
-import test from 'ava';
-import * as caseApi from './comment';
-import { ICaseCommentFields, ICaseComment } from '../models/comment';
+import test             from 'ava';
+import * as caseApi     from './comment';
+import {ICaseComment}   from '../models/comment';
 
 test('should return specified fields for case 00023622 with child relationships', async t => {
-    const fields: ICaseCommentFields = [
+    const fields = [
         'id',
         'caseNumber',
         'createdByUser.id',
@@ -16,6 +16,7 @@ test('should return specified fields for case 00023622 with child relationships'
         'lastModifiedByContact.fullNameCustom',
         'createdByUserID',
         'isPublic',
+        'bugzillaComment.id'
     ];
     const comments = await caseApi.getComments('00023622', fields);
     t.truthy(comments);
@@ -25,7 +26,7 @@ test('should return specified fields for case 00023622 with child relationships'
 });
 
 test('should return only 1 comment for case 00023622', async t => {
-    const fields: ICaseCommentFields = [
+    const fields = [
         'id',
         'caseNumber',
         'createdByUserID',

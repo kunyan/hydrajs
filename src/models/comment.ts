@@ -6,7 +6,6 @@ import {IBugzillaComment}       from './bugzilla';
 export interface ICaseComment {
     id?: string;
     bugzillaCommentId?: string;
-    bugzillaComment?: IBugzillaComment;
     caseCommentCreatedDayOfWeek?: string;
     caseCommentCreatedHourOfDay?: number;
     caseNumber: string;
@@ -63,39 +62,9 @@ export interface ICaseComment {
     systemModstamp?: string;
     targetDate?: string;
 
+    bugzillaComment?: IBugzillaComment;
     createdByUser?: IUser;
     lastModifiedBy?: IUser;
     createdByContact?: IContact;
     lastModifiedByContact?: IContact;
 }
-
-// Not sure Typescript can elegantly handle nested keyof references, hard code for now.  While verbose, the primary
-// benefit of defining this is to allow for typed field integrity when performing API calls against Hydra
-interface ICaseCommentNested {
-    'createdByUser.id': string;
-    'createdByUser.fullName': string;
-    'createdByUser.ssoUsername': string;
-    'createdByUser.email': string;
-    'createdByUser.phone': string;
-    // 'createdByUser.TimezoneSidKey': string;
-    'lastModifiedByUser.id': string;
-    'lastModifiedByUser.fullName': string;
-    'lastModifiedByUser.ssoUsername': string;
-    'lastModifiedByUser.email': string;
-    'lastModifiedByUser.phone': string;
-    // 'lastModifiedByUser.TimezoneSidKey': string;
-    'createdByContact.id': string;
-    'createdByContact.fullNameCustom': string;
-    'createdByContact.ssoUsername': string;
-    'createdByContact.email': string;
-    'createdByContact.phone': string;
-    'createdByContact.timezone': string;
-    'lastModifiedByContact.id': string;
-    'lastModifiedByContact.fullNameCustom': string;
-    'lastModifiedByContact.ssoUsername': string;
-    'lastModifiedByContact.email': string;
-    'lastModifiedByContact.phone': string;
-    'lastModifiedByContact.timezone': string;
-}
-
-export type ICaseCommentFields = Array<keyof ICaseComment | keyof ICaseCommentNested>;
