@@ -1,3 +1,5 @@
+import {IUser} from './user';
+
 export interface IBugzillaBug {
     assignedTo: string;
     blocks2: string;
@@ -37,11 +39,11 @@ export interface IBugzillaComment {
     bugzillaBug: IBugzillaBug;
     bugzillaId: string;
     caseCommentId: string;
-    createdBy: any;
+    createdBy: IUser;
     createdById: string;
     createdDate: any;
     isPrivate: boolean;
-    lastModifiedBy: any;
+    lastModifiedBy: IUser;
     lastModifiedById: string;
     lastModifiedDate: any;
 }

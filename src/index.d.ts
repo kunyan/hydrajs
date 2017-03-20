@@ -1,4 +1,4 @@
-import { ICaseCommentFields, ICaseComment }         from './models/comment';
+import { ICaseComment }                             from './models/comment';
 import { ICase, ICase_fields }                      from './models/case';
 import { IShiftMetadata }                           from './models/skedge/shiftMetadata';
 import { IRoleMetadata }                            from './models/skedge/roleMetadata';
@@ -12,7 +12,7 @@ import { ITemplateMetadata }                        from './models/skedge/templa
 
 declare namespace hydrajs {
     namespace kase {
-        export function getComments(caseNumber: string, fields?: ICaseCommentFields, limit?: number): Promise<Array<ICaseComment>>;
+        export function getComments(caseNumber: string, fields?: Array<string>, limit?: number): Promise<Array<ICaseComment>>;
         export function upsertComment(apiComment: ICaseComment): Promise<ICaseComment>;
         export function getCase(caseId: string, fields?: ICase_fields): Promise<ICase>;
     }
