@@ -55,6 +55,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var comment_1 = __webpack_require__(9);
 	var case_1 = __webpack_require__(7);
 	var insights_1 = __webpack_require__(11);
@@ -65,7 +66,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var certification_1 = __webpack_require__(8);
 	var userShifts_1 = __webpack_require__(15);
 	var groupMetadata_1 = __webpack_require__(10);
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = {
 	    kase: {
 	        getComments: comment_1.getComments,
@@ -108,6 +108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	// Since we aren't transpiling to babel can't use ES6 imports here
 	var Uri = __webpack_require__(5);
 	var btoa = __webpack_require__(3);
@@ -153,7 +154,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	Env.hydraHostName = hydraHostName;
 	Env.pathPrefix = pathPrefix;
 	Env.auth = auth;
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = Env;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
@@ -163,6 +163,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	// Since we aren't transpiling to babel can't use ES6 imports here.  Also we can't specify the Response and Request
 	// types for fetch since A) They happen automatically with import which we can't use and B) the reference paths would
 	// be different in downstream apps
@@ -936,6 +937,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
 	function getCase(caseId, fields) {
@@ -953,6 +955,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var env_1 = __webpack_require__(1);
 	var fetch_1 = __webpack_require__(2);
 	function getCertification(caseId) {
@@ -973,6 +976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var env_1 = __webpack_require__(1);
 	var fetch_1 = __webpack_require__(2);
 	function getComments(caseNumber, fields, limit) {
@@ -998,6 +1002,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
 	function getAllGroupMetadatas() {
@@ -1032,6 +1037,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var env_1 = __webpack_require__(1);
 	var fetch_1 = __webpack_require__(2);
 	function runInsights(caseNumber, attachmentId) {
@@ -1051,6 +1057,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
 	function getAllRoleMetadatas() {
@@ -1065,6 +1072,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
 	function getAllShiftMetadatas() {
@@ -1079,6 +1087,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
 	function getAllTemplateMetadatas() {
@@ -1103,6 +1112,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
 	function getAllShiftsForUsers() {
@@ -1142,6 +1152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var env_1 = __webpack_require__(1);
 	var fetch_1 = __webpack_require__(2);
 	function getVendorProduct(vendorProductPortalId) {
@@ -1246,7 +1257,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      headers.forEach(function(value, name) {
 	        this.append(name, value)
 	      }, this)
-
+	    } else if (Array.isArray(headers)) {
+	      headers.forEach(function(header) {
+	        this.append(header[0], header[1])
+	      }, this)
 	    } else if (headers) {
 	      Object.getOwnPropertyNames(headers).forEach(function(name) {
 	        this.append(name, headers[name])
@@ -1465,9 +1479,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    options = options || {}
 	    var body = options.body
 
-	    if (typeof input === 'string') {
-	      this.url = input
-	    } else {
+	    if (input instanceof Request) {
 	      if (input.bodyUsed) {
 	        throw new TypeError('Already read')
 	      }
@@ -1482,6 +1494,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        body = input._bodyInit
 	        input.bodyUsed = true
 	      }
+	    } else {
+	      this.url = String(input)
 	    }
 
 	    this.credentials = options.credentials || this.credentials || 'omit'
@@ -1517,7 +1531,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  function parseHeaders(rawHeaders) {
 	    var headers = new Headers()
-	    rawHeaders.split('\r\n').forEach(function(line) {
+	    rawHeaders.split(/\r?\n/).forEach(function(line) {
 	      var parts = line.split(':')
 	      var key = parts.shift().trim()
 	      if (key) {

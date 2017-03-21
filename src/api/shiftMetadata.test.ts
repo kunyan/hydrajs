@@ -10,4 +10,5 @@ test('should return all shiftMetadatas', async t => {
     t.truthy(shiftMetadatas[0].name);
     t.truthy(shiftMetadatas[0].startAt);
     t.truthy(shiftMetadatas[0].endAt);
+    t.truthy(shiftMetadatas[0].shiftType);
 });
