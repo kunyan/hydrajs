@@ -10,6 +10,7 @@ export interface ICertification {
     type: ICertificationType;
     vendorProduct: IVendorProduct;
     rhProduct: IRedHatProduct;
+    policyGuide: IPolicyGuide;
 }
 
 export interface IRedHatProduct {

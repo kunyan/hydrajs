@@ -136,8 +136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        hydraHostName = new Uri('https://hydraadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
 	    }
 	    else if (window.location.hostname === 'access.devgssci.devlab.phx1.redhat.com' || window.location.hostname === 'ci.foo.redhat.com' || window.location.hostname === 'fooci.redhat.com' || window.location.hostname === 'skedge.ci.redhat.com') {
-	        // TODO -- determine CI
-	        hydraHostName = new Uri('https://fuseadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
+	        hydraHostName = new Uri('https://hydraadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
 	    }
 	    else if (window.location.hostname === 'access.stage.redhat.com' || window.location.hostname === 'stage.foo.redhat.com' || window.location.hostname === 'foostage.redhat.com' || window.location.hostname === 'skedge.stage.redhat.com') {
 	        hydraHostName = new Uri('https://hydraadmin-corp-stage-redhat-com.vserver.stage.ext.phx2.redhat.com/hydra/rest/');
@@ -959,7 +958,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var env_1 = __webpack_require__(1);
 	var fetch_1 = __webpack_require__(2);
 	function getCertification(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/cases/" + caseId + "/certifications");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/cases/" + caseId + "/certification");
 	    return fetch_1.getUri(uri);
 	}
 	exports.getCertification = getCertification;
