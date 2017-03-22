@@ -1,9 +1,18 @@
 import { getComments, upsertComment, }          from './api/comment';
 import { getCase }                              from './api/case';
 import { runInsights, getInsightsRules }        from './api/insights';
-import { getAllShiftMetadatas }                 from './api/shiftMetadata';
+import {
+    getAllShiftMetadatas,
+    updateShiftMetadata,
+    createShiftMetadata,
+    deleteShiftMetadata
+}                                               from './api/shiftMetadata';
 import { getAllRoleMetadatas }                  from './api/roleMetadata';
-import { getAllTemplateMetadatas, getTemplateMetadatasForUser, postCustomTemplateForUser }              from './api/templateMetadata';
+import {
+    getAllTemplateMetadatas,
+    getTemplateMetadatasForUser,
+    postCustomTemplateForUser
+}                                               from './api/templateMetadata';
 import { getVendorProduct, getCertifications }  from './api/vendorProduct';
 import {
     getCertification,
@@ -37,6 +46,9 @@ export default {
     },
     skedge: {
         getAllShiftMetadatas,
+        createShiftMetadata,
+        updateShiftMetadata,
+        deleteShiftMetadata,
         getAllRoleMetadatas,
         getAllTemplateMetadatas,
         getTemplateMetadatasForUser,

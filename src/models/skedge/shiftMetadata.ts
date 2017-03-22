@@ -9,3 +9,10 @@ export interface IShiftMetadata {
     updateBy: string;
     updateAt: number;
 }
+
+export interface ICreateShiftMetadata {
+    name: string;
+    startAt: string;
+    endAt: string;
+    shiftType: string;
+}

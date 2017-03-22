@@ -1,6 +1,6 @@
 import { ICaseComment }                             from './models/comment';
 import { ICase, ICase_fields }                      from './models/case';
-import { IShiftMetadata }                           from './models/skedge/shiftMetadata';
+import {IShiftMetadata, ICreateShiftMetadata}                           from './models/skedge/shiftMetadata';
 import { IRoleMetadata }                            from './models/skedge/roleMetadata';
 import { IUserShift }                               from './models/skedge/userShift';
 import { IUserShiftFilter }                         from './models/skedge/userShiftFilter';
@@ -22,6 +22,9 @@ declare namespace hydrajs {
     }
     namespace skedge {
         export function getAllShiftMetadatas(): Promise<IShiftMetadata[]>;
+        export function createShiftMetadata(shiftMetadata:ICreateShiftMetadata): Promise<IShiftMetadata>;
+        export function updateShiftMetadata(shiftId:string,shiftMetadata: ICreateShiftMetadata): Promise<IShiftMetadata>;
+        export function deleteShiftMetadata(shiftId: string): Promise<any>;
         export function getAllRoleMetadatas(): Promise<IRoleMetadata[]>;
         export function getAllTemplateMetadatas(): Promise<ITemplateMetadata[]>;
         export function getTemplateMetadatasForUser(userId: string): Promise<ITemplateMetadata[]>;
