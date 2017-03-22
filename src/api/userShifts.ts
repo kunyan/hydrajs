@@ -29,7 +29,7 @@ export function deleteShiftByShiftId(shiftId: number): Promise<any> {
     return deleteUri<any>(uri);
 }
 
-export function deleteShiftForUsers(userShifts: IUserShift[]): Promise<IUserShift> {
+export function deleteShiftForUsers(userShifts: IUserShiftFilter): Promise<IUserShift> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/skedge/shifts/remove`);
     return deleteUriWithBody<IUserShift>(uri, userShifts);
 }
