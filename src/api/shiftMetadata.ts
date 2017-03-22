@@ -1,8 +1,23 @@
-import {getUri} from '../utils/fetch';
+import {getUri, postUri, putUri, deleteUri} from '../utils/fetch';
 import Env from '../utils/env';
-import {IShiftMetadata} from '../models/skedge/shiftMetadata';
+import {IShiftMetadata, ICreateShiftMetadata} from '../models/skedge/shiftMetadata';
 
 export function getAllShiftMetadatas(): Promise<IShiftMetadata[]> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/skedge/shiftsMetadata/`);
     return getUri<IShiftMetadata[]>(uri);
+}
+
+export function createShiftMetadata(shiftMetadata: ICreateShiftMetadata): Promise<IShiftMetadata> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/skedge/shiftsMetadata/`);
+    return postUri<IShiftMetadata>(uri, shiftMetadata);
+}
+
+export function updateShiftMetadata(shiftId: string, shiftMetadata: ICreateShiftMetadata): Promise<IShiftMetadata> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/skedge/shiftsMetadata/${shiftId}`);
+    return putUri<IShiftMetadata>(uri, shiftMetadata);
+}
+
+export function deleteShiftMetadata(shiftId: string): Promise<any> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/skedge/shiftsMetadata/${shiftId}`);
+    return deleteUri<any>(uri);
 }
