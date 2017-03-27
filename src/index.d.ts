@@ -22,8 +22,8 @@ declare namespace hydrajs {
     }
     namespace skedge {
         export function getAllShiftMetadatas(): Promise<IShiftMetadata[]>;
-        export function createShiftMetadata(shiftMetadata:ICreateShiftMetadata): Promise<IShiftMetadata>;
-        export function updateShiftMetadata(shiftId:string,shiftMetadata: ICreateShiftMetadata): Promise<IShiftMetadata>;
+        export function createShiftMetadata(shiftMetadata: ICreateShiftMetadata): Promise<IShiftMetadata>;
+        export function updateShiftMetadata(shiftId: string, shiftMetadata: ICreateShiftMetadata): Promise<IShiftMetadata>;
         export function deleteShiftMetadata(shiftId: string): Promise<any>;
         export function getAllRoleMetadatas(): Promise<IRoleMetadata[]>;
         export function getAllTemplateMetadatas(): Promise<ITemplateMetadata[]>;
