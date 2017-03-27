@@ -5,7 +5,9 @@ const fetch    = require('isomorphic-fetch');
 import Env     from '../utils/env';
 
 function errorHandler(response) {
-    return response.text().then(body => new Error(body));
+    return response.text().then(body => {
+        throw new Error(body);
+    });
 }
 
 function responseHandler<T>(response) {
