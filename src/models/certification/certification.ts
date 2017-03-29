@@ -2,7 +2,7 @@ import { IAPICase } from '../case';
 import { IVendorProduct } from './vendorProduct';
 
 export interface ICertification {
-    case?: IAPICase;
+    kase?: IAPICase;
     portalId?: string | number;
     summaryStatus: string;
     detailStatus: string;

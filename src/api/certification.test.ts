@@ -25,7 +25,7 @@ test('should get certification for case number 2909043, and update it', async t 
     certification.rhProduct = newRedHatProduct;
     const updated = await certificationApi.updateCertification(certification);
     t.truthy(updated);
-    t.is(updated.case.caseNumber, caseNumber);
+    t.is(updated.kase.caseNumber, caseNumber);
 
     // Verify
     const updatedCertification = await certificationApi.getCertification(caseNumber);

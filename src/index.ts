@@ -13,10 +13,16 @@ import {
     getTemplateMetadatasForUser,
     postCustomTemplateForUser
 }                                               from './api/templateMetadata';
-import { getVendorProduct, getCertifications }  from './api/vendorProduct';
+import {
+    getVendorProduct,
+    getCertifications,
+    createVendorProduct,
+    updateVendorProduct,
+}  from './api/vendorProduct';
 import {
     getCertification,
-    updateCertification
+    updateCertification,
+    createCertification
 } from './api/certification';
 import {
     getShiftsForUserFilters,
@@ -67,8 +73,11 @@ export default {
     },
     certification: {
         getCertification,
+        createCertification,
         updateCertification,
         getCertifications,
         getVendorProduct,
+        createVendorProduct,
+        updateVendorProduct,
     }
 };
