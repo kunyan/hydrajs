@@ -42,10 +42,13 @@ declare namespace hydrajs {
         export function deleteGroupByGroupId(groupId: number): Promise<IGroupMetadata>;
     }
     namespace certification {
-        export function getCertification(caseId: string): Promise<ICertification>;
+        export function getCertification(caseNumber: string | number): Promise<ICertification>;
+        export function createCertification(certification: ICertification): Promise<ICertification>;
         export function updateCertification(certification: ICertification): Promise<ICertification>;
         export function getCertifications(vendorProductPortalId: string | number): Promise<ICertification[]>;
         export function getVendorProduct(vendorProductPortalId: string | number): Promise<IVendorProduct>;
+        export function updateVendorProduct(vendorProduct: IVendorProduct): Promise<IVendorProduct>;
+        export function createVendorProduct(vendorProduct: IVendorProduct): Promise<IVendorProduct>;
     }
 }
 
