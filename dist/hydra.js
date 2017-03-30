@@ -245,7 +245,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (env_1.default.auth) {
 	        params.headers['Authorization'] = env_1.default.auth;
 	    }
-	    return fetch(uri.toString(), params);
+	    return fetch(uri.toString(), params).then(responseHandler);
 	}
 	exports.deleteUri = deleteUri;
 	function deleteUriWithBody(uri, body) {
@@ -261,7 +261,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (env_1.default.auth) {
 	        params.headers['Authorization'] = env_1.default.auth;
 	    }
-	    return fetch(uri.toString(), params);
+	    return fetch(uri.toString(), params).then(responseHandler);
 	}
 	exports.deleteUriWithBody = deleteUriWithBody;
 
