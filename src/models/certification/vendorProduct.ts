@@ -3,20 +3,21 @@ import { ICertification } from './certification';
 
 export interface IVendorProduct {
     // common
-    id: string | number;
-    portalId: string | number;
-    program: string;
-    name: string;
-    vendor: IVendor;
+    id?: string | number;
+    portalId?: string | number;
+    program?: string;
+    name?: string;
+    vendor?: IVendor;
     productUrl?: string;
-    status: boolean;
+    status?: boolean;
     certifications?: ICertification[];
 
     // Hardware Product
     make?: IMake;
-    category?: ICategory;
+    category?: string;
     supportUrl?: string;
     specification?: ISpecification;
+    isPortalVisiable?: boolean;
 
     // OpenStack Product
     component?: string;
@@ -24,16 +25,11 @@ export interface IVendorProduct {
 }
 
 export interface ISpecification {
-    status: boolean;
+    isDraft?: boolean;
     url?: string;
 }
 
 export interface IMake {
-    id: string | number;
-    name: string;
-}
-
-export interface ICategory {
-    id: string | number;
-    name: string;
+    id?: string | number;
+    name?: string;
 }
