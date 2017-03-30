@@ -76,7 +76,7 @@ export function deleteUri<T>(uri: Uri) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), params);
+    return fetch(uri.toString(), params).then(responseHandler);
 }
 
 export function deleteUriWithBody<T>(uri: Uri, body: any) {
@@ -92,5 +92,5 @@ export function deleteUriWithBody<T>(uri: Uri, body: any) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
-    return fetch(uri.toString(), params);
+    return fetch(uri.toString(), params).then(responseHandler);
 }
