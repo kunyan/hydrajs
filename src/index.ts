@@ -25,6 +25,9 @@ import {
     createCertification
 } from './api/certification';
 import {
+    getTestClasses
+} from './api/testClass';
+import {
     getShiftsForUserFilters,
     getAllShiftsForUsers,
     postShiftsForUsers,
@@ -79,5 +82,6 @@ export default {
         getVendorProduct,
         createVendorProduct,
         updateVendorProduct,
+        getTestClasses,
     }
 };

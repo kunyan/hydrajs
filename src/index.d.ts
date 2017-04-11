@@ -6,6 +6,7 @@ import { IUserShift }                               from './models/skedge/userSh
 import { IUserShiftFilter }                         from './models/skedge/userShiftFilter';
 import { ICertification }                           from './models/certification/certification';
 import { IVendorProduct }                           from './models/certification/vendorProduct';
+import { ITestClass }                               from './models/certification/testClass';
 import { InsightsResult, InsightsRule }             from './models/insights';
 import { IGroupMetadata }                           from './models/skedge/groupMetadata';
 import { ITemplateMetadata }                        from './models/skedge/templateMetadata';
@@ -49,6 +50,7 @@ declare namespace hydrajs {
         export function getVendorProduct(vendorProductPortalId: string | number): Promise<IVendorProduct>;
         export function updateVendorProduct(vendorProduct: IVendorProduct): Promise<IVendorProduct>;
         export function createVendorProduct(vendorProduct: IVendorProduct): Promise<IVendorProduct>;
+        export function getTestClasses(productType: string): Promise<ITestClass[]>;
     }
 }
 
