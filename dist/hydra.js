@@ -63,6 +63,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var templateMetadata_1 = __webpack_require__(14);
 	var vendorProduct_1 = __webpack_require__(16);
 	var certification_1 = __webpack_require__(8);
+	var testclass_1 = __webpack_require__(17);
+	var component_1 = __webpack_require__(18);
 	var userShifts_1 = __webpack_require__(15);
 	var groupMetadata_1 = __webpack_require__(10);
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -105,6 +107,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getVendorProduct: vendorProduct_1.getVendorProduct,
 	        createVendorProduct: vendorProduct_1.createVendorProduct,
 	        updateVendorProduct: vendorProduct_1.updateVendorProduct,
+			getTestClasses: testclass_1.getTestClasses,
+			getComponents: component_1.getComponents,
+	        createComponents: component_1.createComponents,
+	        updateComponents: component_1.updateComponents,
 	    }
 	};
 
@@ -288,7 +294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(17);
+	__webpack_require__(19);
 	module.exports = self.fetch.bind(self);
 
 
@@ -1203,6 +1209,44 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var env_1 = __webpack_require__(1);
+	var fetch_1 = __webpack_require__(2);
+	function getTestClasses(productType) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/testclasses?productType=" + productType + "&isSupport=true");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getTestClasses = getTestClasses;
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var env_1 = __webpack_require__(1);
+	var fetch_1 = __webpack_require__(2);
+	function getComponents(vendorProductPortalId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/vendorproducts/" + vendorProductPortalId + "/components");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getComponents = getComponents;
+	function createComponents(vendorProductPortalId, components) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/vendorproducts/" + vendorProductPortalId + "/components");
+	    return fetch_1.postUri(uri, components);
+	}
+	exports.createComponents = createComponents;
+	function updateComponents(vendorProductPortalId, components) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/vendorproducts/" + vendorProductPortalId + "/components");
+	    return fetch_1.putUri(uri, components);
+	}
+	exports.updateComponents = updateComponents;
+
+
+/***/ },
+/* 19 */
 /***/ function(module, exports) {
 
 	(function(self) {
