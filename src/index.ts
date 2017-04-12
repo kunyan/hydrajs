@@ -28,6 +28,11 @@ import {
     getTestClasses
 } from './api/testClass';
 import {
+    getComponents,
+    createComponents,
+    updateComponents,
+} from './api/component';
+import {
     getShiftsForUserFilters,
     getAllShiftsForUsers,
     postShiftsForUsers,
@@ -83,5 +88,8 @@ export default {
         createVendorProduct,
         updateVendorProduct,
         getTestClasses,
+        getComponents,
+        createComponents,
+        updateComponents,
     }
 };
