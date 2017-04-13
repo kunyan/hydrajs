@@ -53,8 +53,7 @@ declare namespace hydrajs {
         export function createVendorProduct(vendorProduct: IVendorProduct): Promise<IVendorProduct>;
         export function getTestClasses(productType: string): Promise<Array<ITestClass>>;
         export function getComponents(vendorProductPortalId: string | number): Promise<Array<IComponent>>;
-        export function createComponents(vendorProductPortalId: string | number, components: Array<IComponent>): Promise<Array<IComponent>>;
-        export function updateComponents(vendorProductPortalId: string | number, components: Array<IComponent>): Promise<Array<IComponent>>;
+        export function upsertComponents(vendorProductPortalId: string | number, components: Array<IComponent>): Promise<Array<IComponent>>;
     }
 }
 
