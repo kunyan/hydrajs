@@ -64,6 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var templateMetadata_1 = __webpack_require__(14);
 	var vendorProduct_1 = __webpack_require__(16);
 	var certification_1 = __webpack_require__(8);
+	var testclass_1 = __webpack_require__(17);
 	var userShifts_1 = __webpack_require__(15);
 	var groupMetadata_1 = __webpack_require__(10);
 	exports.default = {
@@ -105,6 +106,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getVendorProduct: vendorProduct_1.getVendorProduct,
 	        createVendorProduct: vendorProduct_1.createVendorProduct,
 	        updateVendorProduct: vendorProduct_1.updateVendorProduct,
+			getTestClasses: testclass_1.getTestClasses,
+			getComponents: vendorProduct_1.getComponents,
+	        upsertComponents: vendorProduct_1.upsertComponents,
 	    }
 	};
 
@@ -289,7 +293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(17);
+	__webpack_require__(18);
 	module.exports = self.fetch.bind(self);
 
 
@@ -1210,10 +1214,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.putUri(uri, vendorProduct);
 	}
 	exports.updateVendorProduct = updateVendorProduct;
+	function getComponents(vendorProductPortalId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/vendorproducts/" + vendorProductPortalId + "/components");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getComponents = getComponents;
+	function upsertComponents(vendorProductPortalId, components) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/vendorproducts/" + vendorProductPortalId + "/components");
+	    return fetch_1.putUri(uri, components);
+	}
+	exports.upsertComponents = upsertComponents;
 
 
 /***/ },
 /* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var env_1 = __webpack_require__(1);
+	var fetch_1 = __webpack_require__(2);
+	function getTestClasses(productType) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/testclasses?productType=" + productType + "&isSupport=true");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getTestClasses = getTestClasses;
+
+
+/***/ },
+/* 18 */
 /***/ function(module, exports) {
 
 	(function(self) {

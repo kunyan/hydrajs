@@ -18,12 +18,17 @@ import {
     getCertifications,
     createVendorProduct,
     updateVendorProduct,
+    getComponents,
+    upsertComponents,
 }  from './api/vendorProduct';
 import {
     getCertification,
     updateCertification,
     createCertification
 } from './api/certification';
+import {
+    getTestClasses
+} from './api/testClass';
 import {
     getShiftsForUserFilters,
     getAllShiftsForUsers,
@@ -79,5 +84,8 @@ export default {
         getVendorProduct,
         createVendorProduct,
         updateVendorProduct,
+        getTestClasses,
+        getComponents,
+        upsertComponents,
     }
 };
