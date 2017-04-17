@@ -1,18 +1,22 @@
-import { getComments, upsertComment, }          from './api/comment';
-import { getCase }                              from './api/case';
-import { runInsights, getInsightsRules }        from './api/insights';
+import {getComments, upsertComment}             from './api/comment';
+import {getCase}                                from './api/case';
+import {runInsights, getInsightsRules}          from './api/insights';
+import {getAllRoleMetadatas}                    from './api/roleMetadata';
+import {getTestClasses}                         from './api/testClass';
+
 import {
     getAllShiftMetadatas,
     updateShiftMetadata,
     createShiftMetadata,
     deleteShiftMetadata
-}                                               from './api/shiftMetadata';
-import { getAllRoleMetadatas }                  from './api/roleMetadata';
+} from './api/shiftMetadata';
+
 import {
     getAllTemplateMetadatas,
     getTemplateMetadatasForUser,
     postCustomTemplateForUser
-}                                               from './api/templateMetadata';
+} from './api/templateMetadata';
+
 import {
     getVendorProduct,
     getCertifications,
@@ -20,15 +24,14 @@ import {
     updateVendorProduct,
     getComponents,
     upsertComponents,
-}  from './api/vendorProduct';
+} from './api/vendorProduct';
+
 import {
     getCertification,
     updateCertification,
     createCertification
 } from './api/certification';
-import {
-    getTestClasses
-} from './api/testClass';
+
 import {
     getShiftsForUserFilters,
     getAllShiftsForUsers,
@@ -37,6 +40,7 @@ import {
     deleteShiftForUsers,
     editShiftForUser
 } from './api/userShifts';
+
 import {
     getAllGroupMetadatas,
     getGroupsForOwner,
@@ -45,11 +49,40 @@ import {
     deleteGroupByGroupId
 } from './api/groupMetadata';
 
+import {
+    articlesLinked,
+    bomgarSessions,
+    bugzillas,
+    caseHistory,
+    chatTranscripts,
+    comments,
+    escalationsClosed,
+    escalationsOpen,
+    fileAttachments,
+    jiras,
+    solutionsLinked,
+    teamMembers
+} from './api/counts';
+
 export default {
     kase: {
         getComments,
         upsertComment,
         getCase,
+        counts: {
+            articlesLinked,
+            bomgarSessions,
+            bugzillas,
+            caseHistory,
+            chatTranscripts,
+            comments,
+            escalationsClosed,
+            escalationsOpen,
+            fileAttachments,
+            jiras,
+            solutionsLinked,
+            teamMembers,
+        }
     },
     insights: {
         runInsights,
