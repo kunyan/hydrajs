@@ -15,7 +15,7 @@ test('should return all certifications of vendor product for portal id 2909043',
     t.true(certifications.length >= 1);
 });
 
-test.only('should return all components of vendor product for portal id 2909043', async t => {
+test('should return all components of vendor product for portal id 2909043', async t => {
     const vendorProductPortalId = '2909043';
     const components = await vendorProductApi.getComponents(vendorProductPortalId);
     t.truthy(components);
