@@ -22,7 +22,7 @@ test('should get certification for case number 2909043, and update it', async t 
         minorVersion: '7.0',
         platform: 'x86_64',
     };
-    certification.rhProduct = newRedHatProduct;
+    certification.redhatProduct = newRedHatProduct;
     const updated = await certificationApi.updateCertification(certification);
     t.truthy(updated);
     t.is(updated.kase.caseNumber, caseNumber);
@@ -30,6 +30,6 @@ test('should get certification for case number 2909043, and update it', async t 
     // Verify
     const updatedCertification = await certificationApi.getCertification(caseNumber);
     t.truthy(updatedCertification);
-    t.is(certification.rhProduct, newRedHatProduct);
+    t.is(certification.redhatProduct, newRedHatProduct);
 
 });
