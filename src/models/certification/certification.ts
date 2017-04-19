@@ -7,16 +7,16 @@ export interface ICertification {
     summaryStatus?: string;
     detailStatus?: string;
     public?: boolean;
-    type?: string;
+    certType?: string;
     classification?: string;
     vendorProduct?: IVendorProduct;
-    rhProduct?: IRedHatProduct;
+    redhatProduct?: IRedHatProduct;
     policyGuide?: IPolicyGuide;
 }
 
 export interface IRedHatProduct {
     name?: string;
-    minorVersion?: string;
+    version?: string;
     platform?: string;
 }
 
