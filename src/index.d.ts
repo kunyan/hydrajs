@@ -11,12 +11,15 @@ import {IComponent}                                 from './models/certification
 import {InsightsResult, InsightsRule}               from './models/insights';
 import {IGroupMetadata}                             from './models/skedge/groupMetadata';
 import {ITemplateMetadata}                          from './models/skedge/templateMetadata';
+import {Fields} from "./models/general";
+import {ICaseJiraLink} from "./models/resource";
 
 declare namespace hydrajs {
     namespace kase {
         export function getComments(caseNumber: string, fields?: Array<string>, limit?: number): Promise<Array<ICaseComment>>;
         export function upsertComment(apiComment: ICaseComment): Promise<ICaseComment>;
         export function getCase(caseId: string, fields?: ICase_fields): Promise<ICase>;
+        export function getLinkedJiras(caseId: string, fields?: Fields<ICaseJiraLink>): Promise<Array<ICaseJiraLink>>;
         namespace counts {
             export function articlesLinked(caseId: string): Promise<number>;
             export function bomgarSessions(caseId: string): Promise<number>;

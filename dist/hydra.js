@@ -73,6 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getComments: comment_1.getComments,
 	        upsertComment: comment_1.upsertComment,
 	        getCase: case_1.getCase,
+	        getLinkedJiras: case_1.getLinkedJiras,
 	        counts: {
 	            articlesLinked: counts_1.articlesLinked,
 	            bomgarSessions: counts_1.bomgarSessions,
@@ -978,6 +979,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.getUri(uri);
 	}
 	exports.getCase = getCase;
+	function getLinkedJiras(caseId, fields) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/jiras");
+	    if (fields && fields.length > 0) {
+	        uri.addQueryParam('fields', fields.join(','));
+	    }
+	    return fetch_1.getUri(uri);
+	}
+	exports.getLinkedJiras = getLinkedJiras;
 
 
 /***/ },

@@ -42,3 +42,32 @@ export interface IAPICaseResourceLink {
     tracebackUrl: string;
     warnings: string;
 }
+
+export type JiraInstance = 'JIRA-JBOSS'
+
+export interface ICaseJiraLink {
+    id: string;
+    caseId: string;
+    createdById: string;
+    createdDate: string;
+    createdAt: string;
+    establishedBy: string;
+    hasBeenPushedSuccessfully: boolean;
+    hasBeenPushed: boolean;
+    identifier: string;
+    lastModifiedById: string;
+    lastModifiedDate: string;
+    name: string;
+    overrideEntitlementCheck: boolean;
+    rejectedAt: string;
+    rejectedMessage: string;
+    rejected: boolean;
+    resourceKey: string;
+    resourceURL?: string;
+    systemInstance: JiraInstance;
+    system: 'Jira';
+    status?: string;
+    title?: string;
+    ticketReference?: string;
+    visibilityLevel?: string;
+}

@@ -1,5 +1,5 @@
 import {getComments, upsertComment}             from './api/comment';
-import {getCase}                                from './api/case';
+import {getCase, getLinkedJiras}                                from './api/case';
 import {runInsights, getInsightsRules}          from './api/insights';
 import {getAllRoleMetadatas}                    from './api/roleMetadata';
 import {getTestClasses}                         from './api/testClass';
@@ -69,6 +69,7 @@ export default {
         getComments,
         upsertComment,
         getCase,
+        getLinkedJiras,
         counts: {
             articlesLinked,
             bomgarSessions,
