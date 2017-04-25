@@ -19,7 +19,7 @@ test('should get certification for case number 2909043, and update it', async t 
     // Update it
     const newRedHatProduct: IRedHatProduct = {
         name: 'Red Hat Enterprise Linux',
-        minorVersion: '7.0',
+        version: '7.0',
         platform: 'x86_64',
     };
     certification.redhatProduct = newRedHatProduct;
