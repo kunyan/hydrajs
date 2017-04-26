@@ -3,7 +3,7 @@ import {getUri, putUri}     from '../utils/fetch';
 import {ICaseComment}       from '../models/comment';
 
 export function getComments(caseNumber: string, fields?: Array<string>, limit?: number): Promise<Array<ICaseComment>> {
-    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/case/${caseNumber}/comments`);
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseNumber}/comments`);
     if (fields && fields.length > 0) {
         uri.addQueryParam('fields', fields.join(','));
     }
@@ -14,6 +14,6 @@ export function getComments(caseNumber: string, fields?: Array<string>, limit?: 
 }
 
 export function upsertComment(comment: ICaseComment): Promise<ICaseComment> {
-    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/case/comments`);
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/comments`);
     return putUri<ICaseComment>(uri, comment);
 }
