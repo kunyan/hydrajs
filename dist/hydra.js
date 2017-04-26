@@ -972,7 +972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
 	function getCase(caseId, fields) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId);
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId);
 	    if (fields && fields.length > 0) {
 	        uri.addQueryParam('fields', fields.join(','));
 	    }
@@ -980,7 +980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	exports.getCase = getCase;
 	function getLinkedJiras(caseId, fields) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/jiras");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/jiras");
 	    if (fields && fields.length > 0) {
 	        uri.addQueryParam('fields', fields.join(','));
 	    }
@@ -1023,7 +1023,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var env_1 = __webpack_require__(1);
 	var fetch_1 = __webpack_require__(2);
 	function getComments(caseNumber, fields, limit) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseNumber + "/comments");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseNumber + "/comments");
 	    if (fields && fields.length > 0) {
 	        uri.addQueryParam('fields', fields.join(','));
 	    }
@@ -1034,7 +1034,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	exports.getComments = getComments;
 	function upsertComment(comment) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/comments");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/comments");
 	    return fetch_1.putUri(uri, comment);
 	}
 	exports.upsertComment = upsertComment;
@@ -1048,62 +1048,62 @@ return /******/ (function(modules) { // webpackBootstrap
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
 	function articlesLinked(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/articles/linked");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/articles/linked");
 	    return fetch_1.getUri(uri);
 	}
 	exports.articlesLinked = articlesLinked;
 	function bomgarSessions(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/bomgarsessions");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/bomgarsessions");
 	    return fetch_1.getUri(uri);
 	}
 	exports.bomgarSessions = bomgarSessions;
 	function bugzillas(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/bugzillas");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/bugzillas");
 	    return fetch_1.getUri(uri);
 	}
 	exports.bugzillas = bugzillas;
 	function caseHistory(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/casehistory");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/casehistory");
 	    return fetch_1.getUri(uri);
 	}
 	exports.caseHistory = caseHistory;
 	function chatTranscripts(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/chattranscripts");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/chattranscripts");
 	    return fetch_1.getUri(uri);
 	}
 	exports.chatTranscripts = chatTranscripts;
 	function comments(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/comments");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/comments");
 	    return fetch_1.getUri(uri);
 	}
 	exports.comments = comments;
 	function escalationsClosed(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/escalations/closed");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/escalations/closed");
 	    return fetch_1.getUri(uri);
 	}
 	exports.escalationsClosed = escalationsClosed;
 	function escalationsOpen(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/escalations/open");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/escalations/open");
 	    return fetch_1.getUri(uri);
 	}
 	exports.escalationsOpen = escalationsOpen;
 	function fileAttachments(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/fileattachments");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/fileattachments");
 	    return fetch_1.getUri(uri);
 	}
 	exports.fileAttachments = fileAttachments;
 	function jiras(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/jiras");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/jiras");
 	    return fetch_1.getUri(uri);
 	}
 	exports.jiras = jiras;
 	function solutionsLinked(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/solutions/linked");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/solutions/linked");
 	    return fetch_1.getUri(uri);
 	}
 	exports.solutionsLinked = solutionsLinked;
 	function teamMembers(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/case/" + caseId + "/count/teammembers");
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/count/teammembers");
 	    return fetch_1.getUri(uri);
 	}
 	exports.teamMembers = teamMembers;
