@@ -74,6 +74,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        upsertComment: comment_1.upsertComment,
 	        getCase: case_1.getCase,
 	        getLinkedJiras: case_1.getLinkedJiras,
+	        linkJiraToCase: case_1.linkJiraToCase,
+	        deleteJiraLinkFromCase: case_1.deleteJiraLinkFromCase,
 	        counts: {
 	            articlesLinked: counts_1.articlesLinked,
 	            bomgarSessions: counts_1.bomgarSessions,
@@ -206,10 +208,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return null;
 	    }
 	    else if (response.status === 200 || response.status === 201) {
-	        return response.clone().json().catch(function (e) {
-	            // The only possible error here is either response is null or parsing json fails.  Both of which
-	            // we just want to return the response, which would either be null or the actual api error
-	            return errorHandler(response);
+	        return response.clone().text().then(function (body) {
+	            if (body == null || body === '')
+	                return null;
+	            return response.clone().json().catch(function (e) {
+	                // The only possible error here is either response is null or parsing json fails.  Both of which
+	                // we just want to return the response, which would either be null or the actual api error
+	                return errorHandler(response);
+	            });
 	        });
 	    }
 	    else {
@@ -987,6 +993,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.getUri(uri);
 	}
 	exports.getLinkedJiras = getLinkedJiras;
+	function linkJiraToCase(caseId, newLink) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/jira");
+	    return fetch_1.postUri(uri, newLink);
+	}
+	exports.linkJiraToCase = linkJiraToCase;
+	function deleteJiraLinkFromCase(caseId, issueKey) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/jira/" + issueKey);
+	    return fetch_1.deleteUri(uri);
+	}
+	exports.deleteJiraLinkFromCase = deleteJiraLinkFromCase;
 
 
 /***/ },

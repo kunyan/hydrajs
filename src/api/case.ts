@@ -1,7 +1,7 @@
-import {getUri} from '../utils/fetch';
+import { getUri, postUri, deleteUri } from '../utils/fetch';
 import Env from '../utils/env';
 import {ICase, ICase_fields} from '../models/case';
-import {ICaseJiraLink} from '../models/resource';
+import { ICaseJiraLink, IApiNewJiraLink } from '../models/resource';
 import {Fields} from '../models/general';
 
 export function getCase(caseId: string, fields?: ICase_fields): Promise<ICase> {
@@ -18,5 +18,15 @@ export function getLinkedJiras(caseId: string, fields?: Fields<ICaseJiraLink>): 
         uri.addQueryParam('fields', fields.join(','));
     }
     return getUri<Array<ICaseJiraLink>>(uri);
+}
+
+export function linkJiraToCase(caseId: string, newLink: IApiNewJiraLink) {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}/jira`);
+    return postUri(uri, newLink);
+}
+
+export function deleteJiraLinkFromCase(caseId: string, issueKey: string) {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}/jira/${issueKey}`);
+    return deleteUri(uri);
 }
 

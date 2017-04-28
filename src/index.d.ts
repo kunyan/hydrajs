@@ -1,18 +1,18 @@
-import {ICaseComment}                               from './models/comment';
-import {ICase, ICase_fields}                        from './models/case';
-import {IShiftMetadata, ICreateShiftMetadata}       from './models/skedge/shiftMetadata';
-import {IRoleMetadata }                             from './models/skedge/roleMetadata';
-import {IUserShift}                                 from './models/skedge/userShift';
-import {IUserShiftFilter}                           from './models/skedge/userShiftFilter';
-import {ICertification}                             from './models/certification/certification';
-import {IVendorProduct}                             from './models/certification/vendorProduct';
-import {ITestClass}                                 from './models/certification/testClass';
-import {IComponent}                                 from './models/certification/component';
-import {InsightsResult, InsightsRule}               from './models/insights';
-import {IGroupMetadata}                             from './models/skedge/groupMetadata';
-import {ITemplateMetadata}                          from './models/skedge/templateMetadata';
-import {Fields} from "./models/general";
-import {ICaseJiraLink} from "./models/resource";
+import {ICaseComment}                         from './models/comment';
+import {ICase, ICase_fields}                  from './models/case';
+import {IShiftMetadata, ICreateShiftMetadata} from './models/skedge/shiftMetadata';
+import {IRoleMetadata }                       from './models/skedge/roleMetadata';
+import {IUserShift}                           from './models/skedge/userShift';
+import {IUserShiftFilter}                     from './models/skedge/userShiftFilter';
+import {ICertification}                       from './models/certification/certification';
+import {IVendorProduct}                       from './models/certification/vendorProduct';
+import {ITestClass}                           from './models/certification/testClass';
+import {IComponent}                           from './models/certification/component';
+import {InsightsResult, InsightsRule}         from './models/insights';
+import {IGroupMetadata}                       from './models/skedge/groupMetadata';
+import {ITemplateMetadata}                    from './models/skedge/templateMetadata';
+import {Fields}                               from "./models/general";
+import { ICaseJiraLink, IApiNewJiraLink }     from './models/resource';
 
 declare namespace hydrajs {
     namespace kase {
@@ -20,6 +20,8 @@ declare namespace hydrajs {
         export function upsertComment(apiComment: ICaseComment): Promise<ICaseComment>;
         export function getCase(caseId: string, fields?: ICase_fields): Promise<ICase>;
         export function getLinkedJiras(caseId: string, fields?: Fields<ICaseJiraLink>): Promise<Array<ICaseJiraLink>>;
+        export function linkJiraToCase(caseId: string, newLink: IApiNewJiraLink): void;
+        export function deleteJiraLinkFromCase(caseId: string, issueKey: string): void;
         namespace counts {
             export function articlesLinked(caseId: string): Promise<number>;
             export function bomgarSessions(caseId: string): Promise<number>;

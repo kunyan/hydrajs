@@ -71,3 +71,9 @@ export interface ICaseJiraLink {
     ticketReference?: string;
     visibilityLevel?: string;
 }
+
+export interface IApiNewJiraLink {
+    linkParameter: {
+        jiraIdentifier: string
+    }
+}
