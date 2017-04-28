@@ -16,11 +16,16 @@ function responseHandler<T>(response) {
     } else if (response.status === 204) {
         return null;
     } else if (response.status === 200 || response.status === 201) {
-        return response.clone().json().catch((e) => {
-            // The only possible error here is either response is null or parsing json fails.  Both of which
-            // we just want to return the response, which would either be null or the actual api error
-            return errorHandler(response);
-        });
+        
+        return response.clone().text().then((body) => {
+            if(body == null || body === '') return null;
+            
+            return response.clone().json().catch((e) => {
+                // The only possible error here is either response is null or parsing json fails.  Both of which
+                // we just want to return the response, which would either be null or the actual api error
+                return errorHandler(response);
+            });
+        })
     } else {
         return errorHandler(response);
     }
