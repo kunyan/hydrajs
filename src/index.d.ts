@@ -11,8 +11,9 @@ import {IComponent}                           from './models/certification/compo
 import {InsightsResult, InsightsRule}         from './models/insights';
 import {IGroupMetadata}                       from './models/skedge/groupMetadata';
 import {ITemplateMetadata}                    from './models/skedge/templateMetadata';
-import {Fields}                               from "./models/general";
+import {Fields}                               from './models/general';
 import { ICaseJiraLink, IApiNewJiraLink }     from './models/resource';
+import {ICaseEscalation}                      from './models/escalation';
 
 declare namespace hydrajs {
     namespace kase {
@@ -22,6 +23,7 @@ declare namespace hydrajs {
         export function getLinkedJiras(caseId: string, fields?: Fields<ICaseJiraLink>): Promise<Array<ICaseJiraLink>>;
         export function linkJiraToCase(caseId: string, newLink: IApiNewJiraLink): void;
         export function deleteJiraLinkFromCase(caseId: string, issueKey: string): void;
+        export function getEscalations(caseId: string): Promise<Array<ICaseEscalation>>;
         namespace counts {
             export function articlesLinked(caseId: string): Promise<number>;
             export function bomgarSessions(caseId: string): Promise<number>;
