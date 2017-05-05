@@ -62,7 +62,7 @@ test('should return specified fields for case 00023622', async t => {
     t.is(kase.Account.Id, '001A000000K8A0dIAF');
 });
 
-test.only('should return escalations for case 01828054', async t => {
+test('should return escalations for case 01828054', async t => {
     const caseNumber = '01828054';
 
     const escalations = await caseApi.getEscalations(caseNumber);
