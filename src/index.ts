@@ -1,8 +1,15 @@
 import {getComments, upsertComment}             from './api/comment';
-import { getCase, getLinkedJiras, linkJiraToCase, deleteJiraLinkFromCase } from './api/case';
 import {runInsights, getInsightsRules}          from './api/insights';
 import {getAllRoleMetadatas}                    from './api/roleMetadata';
 import {getTestClasses}                         from './api/testClass';
+
+import {
+    getCase,
+    getLinkedJiras,
+    linkJiraToCase,
+    deleteJiraLinkFromCase,
+    getEscalations
+} from './api/case';
 
 import {
     getAllShiftMetadatas,
@@ -72,6 +79,7 @@ export default {
         getLinkedJiras,
         linkJiraToCase,
         deleteJiraLinkFromCase,
+        getEscalations,
         counts: {
             articlesLinked,
             bomgarSessions,

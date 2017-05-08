@@ -3,6 +3,7 @@ import Env from '../utils/env';
 import {ICase, ICase_fields} from '../models/case';
 import { ICaseJiraLink, IApiNewJiraLink } from '../models/resource';
 import {Fields} from '../models/general';
+import {ICaseEscalation} from '../models/escalation';
 
 export function getCase(caseId: string, fields?: ICase_fields): Promise<ICase> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}`);
@@ -30,3 +31,7 @@ export function deleteJiraLinkFromCase(caseId: string, issueKey: string) {
     return deleteUri(uri);
 }
 
+export function getEscalations(caseId: string): Promise<Array<ICaseEscalation>> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/escalations?caseNumber=${caseId}`);
+    return getUri<Array<ICaseEscalation>>(uri);
+}

@@ -43,7 +43,7 @@ export interface IAPICaseResourceLink {
     warnings: string;
 }
 
-export type JiraInstance = 'JIRA-JBOSS'
+export type JiraInstance = 'JIRA-JBOSS';
 
 export interface ICaseJiraLink {
     id: string;
@@ -75,5 +75,5 @@ export interface ICaseJiraLink {
 export interface IApiNewJiraLink {
     linkParameter: {
         jiraIdentifier: string
-    }
+    };
 }

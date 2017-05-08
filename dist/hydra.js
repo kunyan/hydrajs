@@ -76,6 +76,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getLinkedJiras: case_1.getLinkedJiras,
 	        linkJiraToCase: case_1.linkJiraToCase,
 	        deleteJiraLinkFromCase: case_1.deleteJiraLinkFromCase,
+	        getEscalations: case_1.getEscalations,
 	        counts: {
 	            articlesLinked: counts_1.articlesLinked,
 	            bomgarSessions: counts_1.bomgarSessions,
@@ -1003,6 +1004,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.deleteUri(uri);
 	}
 	exports.deleteJiraLinkFromCase = deleteJiraLinkFromCase;
+	function getEscalations(caseId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/escalations?caseNumber=" + caseId);
+	    return fetch_1.getUri(uri);
+	}
+	exports.getEscalations = getEscalations;
 
 
 /***/ },
