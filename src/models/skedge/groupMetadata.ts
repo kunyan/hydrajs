@@ -1,5 +1,3 @@
-import {IUser} from '../user';
-
 export interface IGroupMembers {
     groupId?: number;
     userId?: string;
