@@ -14,7 +14,6 @@ export function updateCertification(certification: ICertification): Promise<ICer
 }
 
 export function createCertification(certification: ICertification): Promise<ICertification> {
-    const caseNumber = certification.kase.caseNumber;
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/certifications`);
     return postUri<ICertification>(uri, certification);
 }
