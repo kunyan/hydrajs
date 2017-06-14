@@ -2,6 +2,8 @@ import {getComments, upsertComment}             from './api/comment';
 import {runInsights, getInsightsRules}          from './api/insights';
 import {getAllRoleMetadatas}                    from './api/roleMetadata';
 import {getTestClasses}                         from './api/testClass';
+import { health, hostname }                     from './api/general';
+
 
 import {
     getCase,
@@ -72,6 +74,10 @@ import {
 } from './api/counts';
 
 export default {
+    general: {
+        health,
+        hostname
+    },
     kase: {
         getComments,
         upsertComment,
