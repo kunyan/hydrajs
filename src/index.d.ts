@@ -16,6 +16,10 @@ import { ICaseJiraLink, IApiNewJiraLink }     from './models/resource';
 import {ICaseEscalation}                      from './models/escalation';
 
 declare namespace hydrajs {
+    namespace general {
+        export function health(): Promise<string>;
+        export function hostname(): string;
+    }
     namespace kase {
         export function getComments(caseNumber: string, fields?: Array<string>, limit?: number): Promise<Array<ICaseComment>>;
         export function upsertComment(apiComment: ICaseComment): Promise<ICaseComment>;
