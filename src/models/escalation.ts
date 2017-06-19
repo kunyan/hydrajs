@@ -15,4 +15,7 @@ export interface ICaseEscalation {
     status: string;
     subject: string;
     description: string;
+    requestor: string;
+    requestorEmail: string;
+    requestorPhone: string;
 }
