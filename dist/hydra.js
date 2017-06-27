@@ -204,7 +204,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var env_1 = __webpack_require__(1);
 	function errorHandler(response) {
 	    return response.text().then(function (body) {
-	        if (body == null && body === '')
+	        if (body == null || body === '')
 	            throw new Error(body);
 	        var parsedError;
 	        try {
