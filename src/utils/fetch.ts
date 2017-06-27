@@ -16,7 +16,6 @@ function responseHandler<T>(response) {
     } else if (response.status === 204) {
         return null;
     } else if (response.status === 200 || response.status === 201) {
-
         return response.clone().text().then((body) => {
             if (body == null || body === '') return null;
             // Safari must implement the fetch API differently than Chrome/FF as Safari doesn't like the response to
