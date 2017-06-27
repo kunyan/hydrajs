@@ -204,7 +204,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	var env_1 = __webpack_require__(1);
 	function errorHandler(response) {
 	    return response.text().then(function (body) {
-	        throw new Error(body);
+	        if (body == null && body === '')
+	            throw new Error(body);
+	        var parsedError;
+	        try {
+	            parsedError = JSON.parse(body).message;
+	        }
+	        catch (e) { }
+	        if (parsedError != null) {
+	            throw new Error(parsedError);
+	        }
+	        else {
+	            throw new Error(body);
+	        }
 	    });
 	}
 	function responseHandler(response) {
