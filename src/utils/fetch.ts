@@ -11,11 +11,7 @@ function errorHandler(response) {
         try {
             parsedError = JSON.parse(body).message;
         } catch (e) {}
-        if (parsedError != null) {
-            throw new Error(parsedError);
-        } else {
-            throw new Error(body);
-        }
+        throw new Error(parsedError || body);
     });
 }
 

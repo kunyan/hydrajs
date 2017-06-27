@@ -211,12 +211,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            parsedError = JSON.parse(body).message;
 	        }
 	        catch (e) { }
-	        if (parsedError != null) {
-	            throw new Error(parsedError);
-	        }
-	        else {
-	            throw new Error(body);
-	        }
+	        throw new Error(parsedError || body);
 	    });
 	}
 	function responseHandler(response) {
