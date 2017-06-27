@@ -6,7 +6,12 @@ import Env     from '../utils/env';
 
 function errorHandler(response) {
     return response.text().then(body => {
-        throw new Error(body);
+        if (body == null || body === '') throw new Error(body);
+        let parsedError;
+        try {
+            parsedError = JSON.parse(body).message;
+        } catch (e) {}
+        throw new Error(parsedError || body);
     });
 }
 
