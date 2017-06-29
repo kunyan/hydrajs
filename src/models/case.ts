@@ -63,6 +63,7 @@ export interface IAPICase {
     internalstatus?: string;
     isCertification?: boolean;
     isClosed?: boolean;
+    isFTSHandoverReady?: boolean;
     isPoc?: boolean;
     isStrategicAccount?: boolean;
     issue?: string;
