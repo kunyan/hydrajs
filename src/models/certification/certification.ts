@@ -1,8 +1,8 @@
-import { IAPICase }         from '../case';
+import { ICase }            from '../case';
 import { IVendorProduct }   from './vendorProduct';
 
 export interface ICertification {
-    kase?: IAPICase;
+    kase?: ICase;
     portalId?: string | number;
     summaryStatus?: string;
     detailStatus?: string;
