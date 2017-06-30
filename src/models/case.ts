@@ -1,7 +1,7 @@
-import {IContact, IAPIContact}      from './contact';
-import {IUser}                      from './user';
-import {IBug}                       from './bug';
-import {IAccount}                   from './account';
+import {IContact}      from './contact';
+import {IUser}         from './user';
+import {IBug}          from './bug';
+import {IAccount}      from './account';
 
 // Used for making a new comment or updating a comment
 // https://gitlab.cee.redhat.com/Workflow_Integration/cee-integration/blob/master/hydra-model/src/main/resources/case.xsd
