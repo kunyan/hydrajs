@@ -15,6 +15,17 @@ function errorHandler(response) {
     });
 }
 
+function getJwtToken() {
+    if ((window as any).sessionjs && (window as any).sessionjs._state.keycloak.token) {
+        if ((window as any).sessionjs.isAuthenticated()) {
+            return  `Bearer ${(window as any).sessionjs._state.keycloak.token}`;
+        } else {
+            (window as any).sessionjs.login();
+        }
+    }
+    return '';
+}
+
 function responseHandler<T>(response) {
     if (response.status === 500) {
         return errorHandler(response);
@@ -52,6 +63,9 @@ export function getUri<T>(uri: Uri) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
+    if (getJwtToken() !== '') {
+        params.headers['Authorization'] = getJwtToken();
+    }
     return fetch(uri.toString(), params).then(responseHandler);
 }
 
@@ -67,6 +81,9 @@ export function postUri<T>(uri: Uri, body: any) {
     };
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
+    }
+    if (getJwtToken() !== '') {
+        params.headers['Authorization'] = getJwtToken();
     }
     return fetch(uri.toString(), params).then(responseHandler);
 }
@@ -84,6 +101,9 @@ export function putUri<T>(uri: Uri, body: any) {
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
     }
+    if (getJwtToken() !== '') {
+        params.headers['Authorization'] = getJwtToken();
+    }
     return fetch(uri.toString(), params).then(responseHandler);
 }
 
@@ -97,6 +117,9 @@ export function deleteUri<T>(uri: Uri) {
     };
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
+    }
+    if (getJwtToken() !== '') {
+        params.headers['Authorization'] = getJwtToken();
     }
     return fetch(uri.toString(), params).then(responseHandler);
 }
@@ -113,6 +136,9 @@ export function deleteUriWithBody<T>(uri: Uri, body: any) {
     };
     if (Env.auth) {
         params.headers['Authorization'] = Env.auth;
+    }
+    if (getJwtToken() !== '') {
+        params.headers['Authorization'] = getJwtToken();
     }
     return fetch(uri.toString(), params).then(responseHandler);
 }
