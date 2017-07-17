@@ -74,6 +74,13 @@ import {
     teamMembers
 } from './api/counts';
 
+import {
+    getQuestions,
+    getKtQuestions,
+    getReviews,
+    createReview
+} from './api/review';
+
 export default {
     general: {
         health,
@@ -138,6 +145,12 @@ export default {
         getTestClasses,
         getComponents,
         upsertComponents,
+    },
+    review: {
+        getQuestions,
+        getKtQuestions,
+        getReviews,
+        createReview
     },
     kyce: {
         runKyce

@@ -16,6 +16,15 @@ import { ICaseJiraLink, IApiNewJiraLink }     from './models/resource';
 import {ICaseEscalation}                      from './models/escalation';
 import { KyceResult }                         from './models/kyce';
 
+import {
+    TQualityIndexType,
+    IReviewOptions,
+    IReview,
+    IReviewPayload,
+    IReviewQuestionsContainer,
+    IReviewResponse
+} from './models/review';
+
 declare namespace hydrajs {
     namespace general {
         export function health(): Promise<string>;
@@ -83,6 +92,12 @@ declare namespace hydrajs {
         export function getTestClasses(productType: string): Promise<Array<ITestClass>>;
         export function getComponents(vendorProductPortalId: string | number): Promise<Array<IComponent>>;
         export function upsertComponents(vendorProductPortalId: string | number, components: Array<IComponent>): Promise<Array<IComponent>>;
+    }
+    namespace review {
+        export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse>;
+        export function getKtQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse>;
+        export function getReviews(options: IReviewOptions): Promise<IReview>;
+        export function createReview(qualityIndexType: TQualityIndexType, review: IReviewPayload): Promise<IReviewQuestionsContainer[]>;
     }
 }
 
