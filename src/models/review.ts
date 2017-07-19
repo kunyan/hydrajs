@@ -10,19 +10,28 @@ export interface IReviewOptions {
 
 // Returned when getting existing reviews from a case or solution
 export interface IReview {
-    id: number;
-    createdBy: string;
-    createdAt: string;
+    id?: number;
+    createdBy?: string; // sfdc id
+    createdAt?: number; // ex. unix timestamp: 1500462978000
     contentId: string; // ex. caseNumber
-    questionSets: IReviewQuestionsContainer[];
+    questionSets: IReviewQuestionSet[];
 }
 
 // The below pertains to questions
 export interface IReviewResponse {
-    items: IReviewQuestionsContainer[];
+    items: IReviewQuestionSet[];
 }
 
-export interface IReviewQuestionsContainer {
+export interface IReviewQuestionDependencyResponse {
+    items: IReviewQuestionDependency[];
+}
+
+export interface IReviewQuestionDependency {
+    answerId: number;
+    questionId: number;
+}
+
+export interface IReviewQuestionSet {
     id: number;
     name: string; // FY15
     active: boolean;
@@ -41,18 +50,7 @@ export interface IReviewQuestion {
 
 export interface IReviewAnswer {
     id: number;
-    text: string;
+    text?: string;
     pointValue?: number;
     comment?: string;
-}
-
-// The below pertains to making a new review
-export interface IReviewPayloadAnswer {
-    id: number;
-    comment: string;
-}
-
-export interface IReviewPayload {
-    contentId: string; // caseNumber
-    questionSets: IReviewQuestionsContainer[];
 }

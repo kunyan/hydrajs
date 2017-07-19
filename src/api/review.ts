@@ -7,11 +7,11 @@ import {ICaseEscalation} from '../models/escalation';
 
 import {
     IReview,
-    IReviewQuestionsContainer,
-    IReviewPayload,
+    IReviewQuestionSet,
     IReviewResponse,
     TQualityIndexType,
-    IReviewOptions
+    IReviewOptions,
+    IReviewQuestionDependencyResponse
 } from '../models/review';
 
 export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse> {
@@ -19,12 +19,12 @@ export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IRevi
     return getUri<IReviewResponse>(uri);
 }
 
-export function getKtQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse> {
+export function getKtQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewQuestionDependencyResponse> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/${qualityIndexType}/reviews/ktquestions`);
     return getUri<IReviewResponse>(uri);
 }
 
-export function getReviews(options: IReviewOptions): Promise<IReview> {
+export function getReviews(options: IReviewOptions): Promise<IReviewResponse> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/${options.qualityIndexType}/reviews`);
     if (options.userId) {
         uri.addQueryParam('userId', options.userId);
@@ -41,7 +41,7 @@ export function getReviews(options: IReviewOptions): Promise<IReview> {
     return getUri<ICase>(uri);
 }
 
-export function createReview(qualityIndexType: TQualityIndexType, review: IReviewPayload): Promise<IReviewQuestionsContainer[]> {
+export function createReview(qualityIndexType: TQualityIndexType, review: IReview): Promise<IReview> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/${qualityIndexType}/reviews`);
     return postUri(uri, review);
 }

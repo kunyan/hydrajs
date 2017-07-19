@@ -3,6 +3,7 @@ import {runInsights, getInsightsRules}          from './api/insights';
 import {getAllRoleMetadatas}                    from './api/roleMetadata';
 import {getTestClasses}                         from './api/testClass';
 import { health, hostname }                     from './api/general';
+import { getUser }                              from './api/user';
 import {runKyce}                                from './api/kyce';
 
 
@@ -151,6 +152,9 @@ export default {
         getKtQuestions,
         getReviews,
         createReview
+    },
+    users: {
+        getUser
     },
     kyce: {
         runKyce

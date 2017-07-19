@@ -1,7 +1,7 @@
 import test from 'ava';
 import * as reviewApi from './review';
 
-test.only('should return cqi questions', async t => {
+test('should return cqi questions', async t => {
     const questions = await reviewApi.getQuestions('cqi');
     t.truthy(questions);
 });

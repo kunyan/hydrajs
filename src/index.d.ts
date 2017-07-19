@@ -14,15 +14,16 @@ import {ITemplateMetadata}                    from './models/skedge/templateMeta
 import {Fields}                               from './models/general';
 import { ICaseJiraLink, IApiNewJiraLink }     from './models/resource';
 import {ICaseEscalation}                      from './models/escalation';
+import { IUser }                              from './models/user';
 import { KyceResult }                         from './models/kyce';
 
 import {
     TQualityIndexType,
     IReviewOptions,
     IReview,
-    IReviewPayload,
-    IReviewQuestionsContainer,
-    IReviewResponse
+    IReviewQuestionSet,
+    IReviewResponse,
+    IReviewQuestionDependencyResponse
 } from './models/review';
 
 declare namespace hydrajs {
@@ -95,9 +96,12 @@ declare namespace hydrajs {
     }
     namespace review {
         export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse>;
-        export function getKtQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse>;
-        export function getReviews(options: IReviewOptions): Promise<IReview>;
-        export function createReview(qualityIndexType: TQualityIndexType, review: IReviewPayload): Promise<IReviewQuestionsContainer[]>;
+        export function getKtQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewQuestionDependencyResponse>;
+        export function getReviews(options: IReviewOptions): Promise<IReviewResponse>;
+        export function createReview(qualityIndexType: TQualityIndexType, review: IReview): Promise<IReview>;
+    }
+    namespace users {
+        export function getUser(id: string): Promise<IUser>;
     }
 }
 

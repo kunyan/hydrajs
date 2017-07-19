@@ -62,6 +62,7 @@ export interface IUser {
     title: string;
     userName: string;
     bomgarUsername: string;
+    canWorkNightShift: boolean;
 }
 
 // SFDC SObject
