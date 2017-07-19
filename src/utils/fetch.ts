@@ -3,6 +3,7 @@
 // be different in downstream apps
 const fetch    = require('isomorphic-fetch');
 import Env     from '../utils/env';
+import { IHeaderParamOption } from './../models/general';
 
 function errorHandler(response) {
     return response.text().then(body => {
@@ -55,7 +56,7 @@ function responseHandler<T>(response) {
     }
 }
 
-export function getUri<T>(uri: Uri) {
+export function getUri<T>(uri: Uri, headerParam?: IHeaderParamOption[]) {
     let params = {
         credentials: 'include',
         headers: {}
@@ -65,6 +66,11 @@ export function getUri<T>(uri: Uri) {
     }
     if (getJwtToken() !== '') {
         params.headers['Authorization'] = getJwtToken();
+    }
+    if (headerParam !== undefined) {
+        headerParam.forEach((element) => {
+            params.headers[element.key] = element.value;
+        });
     }
     return fetch(uri.toString(), params).then(responseHandler);
 }

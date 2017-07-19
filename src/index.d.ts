@@ -14,6 +14,7 @@ import {ITemplateMetadata}                    from './models/skedge/templateMeta
 import {Fields}                               from './models/general';
 import { ICaseJiraLink, IApiNewJiraLink }     from './models/resource';
 import {ICaseEscalation}                      from './models/escalation';
+import { KyceResult }                         from './models/kyce';
 
 declare namespace hydrajs {
     namespace general {
@@ -46,6 +47,9 @@ declare namespace hydrajs {
     namespace insights {
         export function runInsights(caseNumber: string, attachmentId: string): Promise<InsightsResult>;
         export function getInsightsRules(ruleIds?: string[]): Promise<Array<InsightsRule>>;
+    }
+    namespace kyce {
+        export function runKyce(attachmentId: string): Promise<KyceResult>;
     }
     namespace skedge {
         export function getAllShiftMetadatas(): Promise<IShiftMetadata[]>;

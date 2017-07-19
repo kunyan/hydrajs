@@ -3,6 +3,7 @@ import {runInsights, getInsightsRules}          from './api/insights';
 import {getAllRoleMetadatas}                    from './api/roleMetadata';
 import {getTestClasses}                         from './api/testClass';
 import { health, hostname }                     from './api/general';
+import {runKyce}                                from './api/kyce';
 
 
 import {
@@ -137,5 +138,8 @@ export default {
         getTestClasses,
         getComponents,
         upsertComponents,
+    },
+    kyce: {
+        runKyce
     }
 };
