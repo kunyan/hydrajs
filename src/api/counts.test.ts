@@ -60,3 +60,11 @@ test('should return team member count for 00315520', async t => {
     const count = await countsApi.teamMembers('00315520');
     t.is(typeof count === 'number', true);
 });
+
+test('should return review count for 00315520', async t => {
+    const cqiCount = await countsApi.reviews({qualityIndexType: 'cqi', contentId: '00315520'});
+    const sqiCount = await countsApi.reviews({qualityIndexType: 'sqi', contentId: '00315520'});
+    t.is(typeof cqiCount === 'number', true);
+    t.is(typeof sqiCount === 'number', true);
+});
+

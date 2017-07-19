@@ -98,6 +98,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            jiras: counts_1.jiras,
 	            solutionsLinked: counts_1.solutionsLinked,
 	            teamMembers: counts_1.teamMembers,
+	            reviews: counts_1.reviews
 	        }
 	    },
 	    insights: {
@@ -1202,6 +1203,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.getUri(uri);
 	}
 	exports.teamMembers = teamMembers;
+	function reviews(options) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/" + options.qualityIndexType + "/count");
+	    if (options.userId) {
+	        uri.addQueryParam('userId', options.userId);
+	    }
+	    if (options.createdFrom) {
+	        uri.addQueryParam('createdFrom', options.createdFrom);
+	    }
+	    if (options.createdTo) {
+	        uri.addQueryParam('createdTo', options.createdTo);
+	    }
+	    if (options.contentId) {
+	        uri.addQueryParam('contentId', options.contentId);
+	    }
+	    return fetch_1.getUri(uri);
+	}
+	exports.reviews = reviews;
 
 
 /***/ },

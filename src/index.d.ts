@@ -16,6 +16,7 @@ import { ICaseJiraLink, IApiNewJiraLink }     from './models/resource';
 import {ICaseEscalation}                      from './models/escalation';
 import { IUser }                              from './models/user';
 import { KyceResult }                         from './models/kyce';
+import { ICountOptions }                      from './models/count';
 
 import {
     TQualityIndexType,
@@ -52,6 +53,7 @@ declare namespace hydrajs {
             export function jiras(caseId: string): Promise<number>;
             export function solutionsLinked(caseId: string): Promise<number>;
             export function teamMembers(caseId: string): Promise<number>;
+            export function reviews(options: ICountOptions): Promise<number>;
         }
     }
     namespace insights {
