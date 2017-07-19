@@ -1,9 +1,9 @@
 // Since we aren't transpiling to babel can't use ES6 imports here.  Also we can't specify the Response and Request
 // types for fetch since A) They happen automatically with import which we can't use and B) the reference paths would
 // be different in downstream apps
-const fetch    = require('isomorphic-fetch');
-import Env     from '../utils/env';
-import { IHeaderParamOption } from './../models/general';
+const fetch                     = require('isomorphic-fetch');
+import Env                      from '../utils/env';
+import { IHeaderParamOption }   from './../models/general';
 
 function errorHandler(response) {
     return response.text().then(body => {
@@ -56,7 +56,7 @@ function responseHandler<T>(response) {
     }
 }
 
-export function getUri<T>(uri: Uri, headerParam?: IHeaderParamOption[]) {
+export function getUri<T>(uri: Uri, headerParams?: IHeaderParamOption[]) {
     let params = {
         credentials: 'include',
         headers: {}
@@ -67,8 +67,8 @@ export function getUri<T>(uri: Uri, headerParam?: IHeaderParamOption[]) {
     if (getJwtToken() !== '') {
         params.headers['Authorization'] = getJwtToken();
     }
-    if (headerParam !== undefined) {
-        headerParam.forEach((element) => {
+    if (headerParams !== undefined) {
+        headerParams.forEach((element) => {
             params.headers[element.key] = element.value;
         });
     }
