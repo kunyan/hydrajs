@@ -72,7 +72,8 @@ import {
     fileAttachments,
     jiras,
     solutionsLinked,
-    teamMembers
+    teamMembers,
+    reviews
 } from './api/counts';
 
 import {
@@ -108,6 +109,7 @@ export default {
             jiras,
             solutionsLinked,
             teamMembers,
+            reviews
         }
     },
     insights: {
