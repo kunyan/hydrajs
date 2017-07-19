@@ -274,7 +274,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        params.headers['Authorization'] = getJwtToken();
 	    }
 	    if (headerParam !== undefined) {
-	        params.headers[headerParam.key] = headerParam.value;
+	        headerParam.forEach(function (element) {
+	            params.headers[element.key] = element.value;
+	        });
 	    }
 	    return fetch(uri.toString(), params).then(responseHandler);
 	}
@@ -1279,10 +1281,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var fetch_1 = __webpack_require__(2);
 	function runKyce(attachmentId) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/hardgrok/attachments/" + attachmentId + "/inspect");
-	    var headerParam = {
+	    var headerParam = [];
+	    headerParam.push({
 	        key: 'Accept',
 	        value: 'application/vnd.api.v1+json'
-	    };
+	    });
 	    return fetch_1.getUri(uri, headerParam);
 	}
 	exports.runKyce = runKyce;

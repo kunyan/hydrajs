@@ -56,7 +56,7 @@ function responseHandler<T>(response) {
     }
 }
 
-export function getUri<T>(uri: Uri, headerParam?: IHeaderParamOption) {
+export function getUri<T>(uri: Uri, headerParam?: IHeaderParamOption[]) {
     let params = {
         credentials: 'include',
         headers: {}
@@ -68,7 +68,9 @@ export function getUri<T>(uri: Uri, headerParam?: IHeaderParamOption) {
         params.headers['Authorization'] = getJwtToken();
     }
     if (headerParam !== undefined) {
-        params.headers[headerParam.key] = headerParam.value;
+        headerParam.forEach((element) => {
+            params.headers[element.key] = element.value;
+        });
     }
     return fetch(uri.toString(), params).then(responseHandler);
 }

@@ -5,9 +5,10 @@ import { IHeaderParamOption }            from './../models/general';
 
 export function runKyce(attachmentId: string): Promise<KyceResult> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/hardgrok/attachments/${attachmentId}/inspect`);
-    const headerParam: IHeaderParamOption = {
+    let headerParam: IHeaderParamOption[] = [];
+    headerParam.push({
         key: 'Accept',
         value: 'application/vnd.api.v1+json'
-    };
+    });
     return getUri<KyceResult>(uri, headerParam);
 }
