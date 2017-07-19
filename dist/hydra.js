@@ -52,24 +52,26 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var comment_1 = __webpack_require__(9);
 	var insights_1 = __webpack_require__(13);
-	var roleMetadata_1 = __webpack_require__(15);
-	var testClass_1 = __webpack_require__(18);
+	var roleMetadata_1 = __webpack_require__(16);
+	var testClass_1 = __webpack_require__(19);
 	var general_1 = __webpack_require__(11);
+	var user_1 = __webpack_require__(20);
 	var kyce_1 = __webpack_require__(14);
 	var case_1 = __webpack_require__(7);
-	var shiftMetadata_1 = __webpack_require__(16);
-	var templateMetadata_1 = __webpack_require__(17);
-	var vendorProduct_1 = __webpack_require__(20);
+	var shiftMetadata_1 = __webpack_require__(17);
+	var templateMetadata_1 = __webpack_require__(18);
+	var vendorProduct_1 = __webpack_require__(22);
 	var certification_1 = __webpack_require__(8);
-	var userShifts_1 = __webpack_require__(19);
+	var userShifts_1 = __webpack_require__(21);
 	var groupMetadata_1 = __webpack_require__(12);
 	var counts_1 = __webpack_require__(10);
+	var review_1 = __webpack_require__(15);
 	exports.default = {
 	    general: {
 	        health: general_1.health,
@@ -135,15 +137,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getComponents: vendorProduct_1.getComponents,
 	        upsertComponents: vendorProduct_1.upsertComponents,
 	    },
+	    review: {
+	        getQuestions: review_1.getQuestions,
+	        getKtQuestions: review_1.getKtQuestions,
+	        getReviews: review_1.getReviews,
+	        createReview: review_1.createReview
+	    },
+	    users: {
+	        getUser: user_1.getUser
+	    },
 	    kyce: {
 	        runKyce: kyce_1.runKyce
 	    }
 	};
 
 
-/***/ }),
+/***/ },
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -186,18 +197,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Env = (function () {
 	    function Env() {
 	    }
-	    Env.hydraHostName = hydraHostName;
-	    Env.pathPrefix = pathPrefix;
-	    Env.auth = auth;
 	    return Env;
 	}());
+	Env.hydraHostName = hydraHostName;
+	Env.pathPrefix = pathPrefix;
+	Env.auth = auth;
 	exports.default = Env;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
-/***/ }),
+/***/ },
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -262,7 +273,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return errorHandler(response);
 	    }
 	}
-	function getUri(uri, headerParam) {
+	function getUri(uri, headerParams) {
 	    var params = {
 	        credentials: 'include',
 	        headers: {}
@@ -273,8 +284,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (getJwtToken() !== '') {
 	        params.headers['Authorization'] = getJwtToken();
 	    }
-	    if (headerParam !== undefined) {
-	        headerParam.forEach(function (element) {
+	    if (headerParams !== undefined) {
+	        headerParams.forEach(function (element) {
 	            params.headers[element.key] = element.value;
 	        });
 	    }
@@ -357,30 +368,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.deleteUriWithBody = deleteUriWithBody;
 
 
-/***/ }),
+/***/ },
 /* 3 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	module.exports = function _btoa(str) {
 	  return btoa(str)
 	}
 
 
-/***/ }),
+/***/ },
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	// the whatwg-fetch polyfill installs the fetch() function
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(21);
+	__webpack_require__(23);
 	module.exports = self.fetch.bind(self);
 
 
-/***/ }),
+/***/ },
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	 * jsUri
@@ -844,9 +855,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(this));
 
 
-/***/ }),
+/***/ },
 /* 6 */
-/***/ (function(module, exports) {
+/***/ function(module, exports) {
 
 	// shim for using process in browser
 	var process = module.exports = {};
@@ -1018,10 +1029,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	process.removeListener = noop;
 	process.removeAllListeners = noop;
 	process.emit = noop;
-	process.prependListener = noop;
-	process.prependOnceListener = noop;
-
-	process.listeners = function (name) { return [] }
 
 	process.binding = function (name) {
 	    throw new Error('process.binding is not supported');
@@ -1034,9 +1041,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	process.umask = function() { return 0; };
 
 
-/***/ }),
+/***/ },
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1075,9 +1082,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getEscalations = getEscalations;
 
 
-/***/ }),
+/***/ },
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1101,9 +1108,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.createCertification = createCertification;
 
 
-/***/ }),
+/***/ },
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1127,9 +1134,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.upsertComment = upsertComment;
 
 
-/***/ }),
+/***/ },
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1197,9 +1204,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.teamMembers = teamMembers;
 
 
-/***/ }),
+/***/ },
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1216,9 +1223,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.hostname = hostname;
 
 
-/***/ }),
+/***/ },
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1251,9 +1258,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.deleteGroupByGroupId = deleteGroupByGroupId;
 
 
-/***/ }),
+/***/ },
 /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1271,9 +1278,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getInsightsRules = getInsightsRules;
 
 
-/***/ }),
+/***/ },
 /* 14 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1291,9 +1298,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.runKyce = runKyce;
 
 
-/***/ }),
+/***/ },
 /* 15 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var fetch_1 = __webpack_require__(2);
+	var env_1 = __webpack_require__(1);
+	function getQuestions(qualityIndexType) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/" + qualityIndexType + "/reviews/questions");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getQuestions = getQuestions;
+	function getKtQuestions(qualityIndexType) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/" + qualityIndexType + "/reviews/ktquestions");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getKtQuestions = getKtQuestions;
+	function getReviews(options) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/" + options.qualityIndexType + "/reviews");
+	    if (options.userId) {
+	        uri.addQueryParam('userId', options.userId);
+	    }
+	    if (options.createdFrom) {
+	        uri.addQueryParam('createdFrom', options.createdFrom);
+	    }
+	    if (options.createdTo) {
+	        uri.addQueryParam('createdTo', options.createdTo);
+	    }
+	    if (options.contentId) {
+	        uri.addQueryParam('contentId', options.contentId);
+	    }
+	    return fetch_1.getUri(uri);
+	}
+	exports.getReviews = getReviews;
+	function createReview(qualityIndexType, review) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/" + qualityIndexType + "/reviews");
+	    return fetch_1.postUri(uri, review);
+	}
+	exports.createReview = createReview;
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1306,9 +1355,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getAllRoleMetadatas = getAllRoleMetadatas;
 
 
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1336,9 +1385,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.deleteShiftMetadata = deleteShiftMetadata;
 
 
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1361,9 +1410,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.postCustomTemplateForUser = postCustomTemplateForUser;
 
 
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1376,9 +1425,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getTestClasses = getTestClasses;
 
 
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var fetch_1 = __webpack_require__(2);
+	var env_1 = __webpack_require__(1);
+	function getUser(id) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/users/" + id);
+	    return fetch_1.getUri(uri);
+	}
+	exports.getUser = getUser;
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1416,9 +1480,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.deleteShiftForUsers = deleteShiftForUsers;
 
 
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1457,9 +1521,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.upsertComponents = upsertComponents;
 
 
-/***/ }),
-/* 21 */
-/***/ (function(module, exports) {
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
 
 	(function(self) {
 	  'use strict';
@@ -1547,10 +1611,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      headers.forEach(function(value, name) {
 	        this.append(name, value)
 	      }, this)
-	    } else if (Array.isArray(headers)) {
-	      headers.forEach(function(header) {
-	        this.append(header[0], header[1])
-	      }, this)
+
 	    } else if (headers) {
 	      Object.getOwnPropertyNames(headers).forEach(function(name) {
 	        this.append(name, headers[name])
@@ -1769,7 +1830,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    options = options || {}
 	    var body = options.body
 
-	    if (input instanceof Request) {
+	    if (typeof input === 'string') {
+	      this.url = input
+	    } else {
 	      if (input.bodyUsed) {
 	        throw new TypeError('Already read')
 	      }
@@ -1784,8 +1847,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        body = input._bodyInit
 	        input.bodyUsed = true
 	      }
-	    } else {
-	      this.url = String(input)
 	    }
 
 	    this.credentials = options.credentials || this.credentials || 'omit'
@@ -1821,7 +1882,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  function parseHeaders(rawHeaders) {
 	    var headers = new Headers()
-	    rawHeaders.split(/\r?\n/).forEach(function(line) {
+	    rawHeaders.split('\r\n').forEach(function(line) {
 	      var parts = line.split(':')
 	      var key = parts.shift().trim()
 	      if (key) {
@@ -1924,7 +1985,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(typeof self !== 'undefined' ? self : this);
 
 
-/***/ })
+/***/ }
 /******/ ])
 });
 ;
