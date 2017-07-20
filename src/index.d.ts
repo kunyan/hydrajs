@@ -11,12 +11,14 @@ import {IComponent}                           from './models/certification/compo
 import {InsightsResult, InsightsRule}         from './models/insights';
 import {IGroupMetadata}                       from './models/skedge/groupMetadata';
 import {ITemplateMetadata}                    from './models/skedge/templateMetadata';
-import {Fields}                               from './models/general';
+import { Fields, IArrayResponse }             from './models/general';
 import { ICaseJiraLink, IApiNewJiraLink }     from './models/resource';
 import {ICaseEscalation}                      from './models/escalation';
 import { IUser }                              from './models/user';
 import { KyceResult }                         from './models/kyce';
 import { ICountOptions }                      from './models/count';
+import { IProduct }                           from './models/product';
+import { ISbr }                               from './models/sbr';
 
 import {
     TQualityIndexType,
@@ -26,6 +28,7 @@ import {
     IReviewResponse,
     IReviewQuestionDependencyResponse
 } from './models/review';
+
 
 declare namespace hydrajs {
     namespace general {
@@ -55,6 +58,10 @@ declare namespace hydrajs {
             export function teamMembers(caseId: string): Promise<number>;
             export function reviews(options: ICountOptions): Promise<number>;
         }
+        export function getLanguages(): Promise<IArrayResponse<string[]>>;
+        export function getSeverities(): Promise<IArrayResponse<string[]>>;
+        export function getStatuses(): Promise<IArrayResponse<string[]>>;
+        export function getTypes(): Promise<IArrayResponse<string[]>>;
     }
     namespace insights {
         export function runInsights(caseNumber: string, attachmentId: string): Promise<InsightsResult>;
@@ -104,6 +111,14 @@ declare namespace hydrajs {
     }
     namespace users {
         export function getUser(id: string): Promise<IUser>;
+    }
+    namespace products {
+        export function getProducts(sso: string): Promise<IProduct[]>;
+        export function getProductVersions(productName: string): Promise<IArrayResponse<string[]>>;
+    }
+    namespace sbrs {
+        export function getSbrs(): Promise<IArrayResponse<ISbr[]>>;
+        export function getSbr(sbrId: string): Promise<ISbr[]>;
     }
 }
 

@@ -4,3 +4,7 @@ export interface IHeaderParamOption {
     key: string;
     value: string;
 }
+
+export interface IArrayResponse<T> {
+    items: T;
+}
