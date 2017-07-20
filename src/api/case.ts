@@ -1,9 +1,22 @@
-import { getUri, postUri, deleteUri } from '../utils/fetch';
-import Env from '../utils/env';
-import {ICase, ICase_fields} from '../models/case';
-import { ICaseJiraLink, IApiNewJiraLink } from '../models/resource';
-import {Fields} from '../models/general';
-import {ICaseEscalation} from '../models/escalation';
+import Env                      from '../utils/env';
+import {ICase, ICase_fields}    from '../models/case';
+import {ICaseEscalation}        from '../models/escalation';
+
+import {
+    getUri,
+    postUri,
+    deleteUri
+} from '../utils/fetch';
+
+import {
+    Fields,
+    IArrayResponse
+} from '../models/general';
+
+import {
+    ICaseJiraLink,
+    IApiNewJiraLink
+} from '../models/resource';
 
 export function getCase(caseId: string, fields?: ICase_fields): Promise<ICase> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}`);
@@ -34,4 +47,24 @@ export function deleteJiraLinkFromCase(caseId: string, issueKey: string) {
 export function getEscalations(caseId: string): Promise<Array<ICaseEscalation>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/escalations?caseNumber=${caseId}`);
     return getUri<Array<ICaseEscalation>>(uri);
+}
+
+export function getLanguages(): Promise<IArrayResponse<string[]>> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/languages`);
+    return getUri<IArrayResponse<string[]>>(uri);
+}
+
+export function getSeverities(): Promise<IArrayResponse<string[]>> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/severities`);
+    return getUri<IArrayResponse<string[]>>(uri);
+}
+
+export function getStatuses(): Promise<IArrayResponse<string[]>> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/statuses`);
+    return getUri<IArrayResponse<string[]>>(uri);
+}
+
+export function getTypes(): Promise<IArrayResponse<string[]>> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/types`);
+    return getUri<IArrayResponse<string[]>>(uri);
 }

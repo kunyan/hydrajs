@@ -58,20 +58,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var comment_1 = __webpack_require__(9);
 	var insights_1 = __webpack_require__(13);
-	var roleMetadata_1 = __webpack_require__(16);
-	var testClass_1 = __webpack_require__(19);
+	var roleMetadata_1 = __webpack_require__(17);
+	var testClass_1 = __webpack_require__(21);
 	var general_1 = __webpack_require__(11);
-	var user_1 = __webpack_require__(20);
+	var user_1 = __webpack_require__(22);
 	var kyce_1 = __webpack_require__(14);
 	var case_1 = __webpack_require__(7);
-	var shiftMetadata_1 = __webpack_require__(17);
-	var templateMetadata_1 = __webpack_require__(18);
-	var vendorProduct_1 = __webpack_require__(22);
+	var shiftMetadata_1 = __webpack_require__(19);
+	var templateMetadata_1 = __webpack_require__(20);
+	var vendorProduct_1 = __webpack_require__(24);
 	var certification_1 = __webpack_require__(8);
-	var userShifts_1 = __webpack_require__(21);
+	var userShifts_1 = __webpack_require__(23);
 	var groupMetadata_1 = __webpack_require__(12);
 	var counts_1 = __webpack_require__(10);
-	var review_1 = __webpack_require__(15);
+	var review_1 = __webpack_require__(16);
+	var products_1 = __webpack_require__(15);
+	var sbrs_1 = __webpack_require__(18);
 	exports.default = {
 	    general: {
 	        health: general_1.health,
@@ -99,7 +101,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            solutionsLinked: counts_1.solutionsLinked,
 	            teamMembers: counts_1.teamMembers,
 	            reviews: counts_1.reviews
-	        }
+	        },
+	        getLanguages: case_1.getLanguages,
+	        getSeverities: case_1.getSeverities,
+	        getStatuses: case_1.getStatuses,
+	        getTypes: case_1.getTypes
 	    },
 	    insights: {
 	        runInsights: insights_1.runInsights,
@@ -149,6 +155,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    kyce: {
 	        runKyce: kyce_1.runKyce
+	    },
+	    products: {
+	        getProducts: products_1.getProducts,
+	        getProductVersions: products_1.getProductVersions
+	    },
+	    sbrs: {
+	        getSbr: sbrs_1.getSbr,
+	        getSbrs: sbrs_1.getSbrs
 	    }
 	};
 
@@ -386,7 +400,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(23);
+	__webpack_require__(25);
 	module.exports = self.fetch.bind(self);
 
 
@@ -1048,8 +1062,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
-	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
+	var fetch_1 = __webpack_require__(2);
 	function getCase(caseId, fields) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId);
 	    if (fields && fields.length > 0) {
@@ -1081,6 +1095,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.getUri(uri);
 	}
 	exports.getEscalations = getEscalations;
+	function getLanguages() {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/languages");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getLanguages = getLanguages;
+	function getSeverities() {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/severities");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getSeverities = getSeverities;
+	function getStatuses() {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/statuses");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getStatuses = getStatuses;
+	function getTypes() {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/types");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getTypes = getTypes;
 
 
 /***/ },
@@ -1324,6 +1358,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
+	function getProducts(sso) {
+	    if (sso) {
+	        var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/products/contact/" + sso);
+	        return fetch_1.getUri(uri);
+	    }
+	    else {
+	        var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/products");
+	        return fetch_1.getUri(uri);
+	    }
+	}
+	exports.getProducts = getProducts;
+	function getProductVersions(productName) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/products/" + productName + "/versions");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getProductVersions = getProductVersions;
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var fetch_1 = __webpack_require__(2);
+	var env_1 = __webpack_require__(1);
 	function getQuestions(qualityIndexType) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/" + qualityIndexType + "/reviews/questions");
 	    return fetch_1.getUri(uri);
@@ -1359,7 +1419,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1374,7 +1434,28 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 17 */
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var fetch_1 = __webpack_require__(2);
+	var env_1 = __webpack_require__(1);
+	//  This is not (programatically) linked to the list of SBRs in salesforce
+	function getSbr(sbrId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/sbrs/" + sbrId);
+	    return fetch_1.getUri(uri);
+	}
+	exports.getSbr = getSbr;
+	function getSbrs() {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/sbrs");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getSbrs = getSbrs;
+
+
+/***/ },
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1404,7 +1485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 18 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1429,7 +1510,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 19 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1444,7 +1525,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 20 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1459,7 +1540,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 21 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1499,7 +1580,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 22 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1540,7 +1621,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 23 */
+/* 25 */
 /***/ function(module, exports) {
 
 	(function(self) {
