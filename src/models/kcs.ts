@@ -26,11 +26,11 @@ export interface IAPIKcsLink {
 export interface IKcsLinkedResources {
     caseNumber: string;
     resourceId: string;
-	resourceType: string;
-	linked: boolean;
-	resourceURI: string;
-	resourceViewURI: string;
-	title: string;
+    resourceType: string;
+    linked: boolean;
+    resourceURI: string;
+    resourceViewURI: string;
+    title: string;
 }
 
 export interface IKcsResourceResult {

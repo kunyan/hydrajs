@@ -158,7 +158,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        runKyce: kyce_1.runKyce
 	    },
 	    kcs: {
-	        kycLinkResources: kcs_1.kycLinkResources
+	        kcsLinkResources: kcs_1.kcsLinkResources
 	    },
 	    products: {
 	        getProducts: products_1.getProducts,
@@ -1346,11 +1346,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var env_1 = __webpack_require__(1);
 	var fetch_1 = __webpack_require__(2);
-	function kycLinkResources(kcsLinkedResources) {
+	function kcsLinkResources(kcsLinkedResources) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/resource");
 	    return fetch_1.postUri(uri, kcsLinkedResources);
 	}
-	exports.kycLinkResources = kycLinkResources;
+	exports.kcsLinkResources = kcsLinkResources;
 
 
 /***/ }),
