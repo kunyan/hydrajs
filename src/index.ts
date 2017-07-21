@@ -13,7 +13,11 @@ import {
     getLinkedJiras,
     linkJiraToCase,
     deleteJiraLinkFromCase,
-    getEscalations
+    getEscalations,
+    getLanguages,
+    getSeverities,
+    getStatuses,
+    getTypes
 } from './api/case';
 
 import {
@@ -84,6 +88,16 @@ import {
     createReview
 } from './api/review';
 
+import {
+    getProducts,
+    getProductVersions
+} from './api/products';
+
+import {
+    getSbr,
+    getSbrs
+} from './api/sbrs';
+
 export default {
     general: {
         health,
@@ -111,7 +125,11 @@ export default {
             solutionsLinked,
             teamMembers,
             reviews
-        }
+        },
+        getLanguages,
+        getSeverities,
+        getStatuses,
+        getTypes
     },
     insights: {
         runInsights,
@@ -164,5 +182,13 @@ export default {
     },
     kcs: {
         kycLinkResources
+	},
+    products: {
+        getProducts,
+        getProductVersions
+    },
+    sbrs: {
+        getSbr,
+        getSbrs
     }
 };
