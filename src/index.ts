@@ -182,7 +182,7 @@ export default {
     },
     kcs: {
         kycLinkResources
-	},
+    },
     products: {
         getProducts,
         getProductVersions
