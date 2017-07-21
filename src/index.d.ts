@@ -74,7 +74,7 @@ declare namespace hydrajs {
     namespace kyce {
         export function runKyce(attachmentId: string): Promise<KyceResult>;
     }
-	namespace kcs {
+    namespace kcs {
         export function kcsLinkResources(kcsLinkedResources: IKcsLinkedResources): Promise<IKcsResourceResult>;
     }
     namespace skedge {
