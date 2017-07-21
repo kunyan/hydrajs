@@ -1,6 +1,5 @@
 import Env                               from '../utils/env';
-import { getUri, postUri }               from '../utils/fetch';
-import { IHeaderParamOption }            from './../models/general';
+import { postUri }               from '../utils/fetch';
 import {
     IKcsLinkedResources,
     IKcsResourceResult
