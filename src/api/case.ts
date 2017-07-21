@@ -18,6 +18,12 @@ import {
     IApiNewJiraLink
 } from '../models/resource';
 
+import {
+    IExternalTrackerUpdate,
+    IExternalTracker
+} from '../models/externalTracker';
+
+// caseId can be id or case number
 export function getCase(caseId: string, fields?: ICase_fields): Promise<ICase> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}`);
     if (fields && fields.length > 0) {
@@ -67,4 +73,14 @@ export function getStatuses(): Promise<IArrayResponse<string[]>> {
 export function getTypes(): Promise<IArrayResponse<string[]>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/types`);
     return getUri<IArrayResponse<string[]>>(uri);
+}
+
+export function getCaseExternalTrackers(caseId: string): Promise<IExternalTracker[]> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}/externaltrackers`);
+    return getUri<IExternalTracker[]>(uri);
+}
+
+export function getCaseExternalTrackerUpdates(caseId: string): Promise<IExternalTrackerUpdate[]> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}/externaltrackerupdates`);
+    return getUri<IExternalTrackerUpdate[]>(uri);
 }

@@ -1,13 +1,8 @@
-import { getUri, postUri, deleteUri } from '../utils/fetch';
-import Env from '../utils/env';
-import {ICase, ICase_fields} from '../models/case';
-import { ICaseJiraLink, IApiNewJiraLink } from '../models/resource';
-import {Fields} from '../models/general';
-import {ICaseEscalation} from '../models/escalation';
+import { getUri, postUri }  from '../utils/fetch';
+import Env                  from '../utils/env';
 
 import {
     IReview,
-    IReviewQuestionSet,
     IReviewResponse,
     TQualityIndexType,
     IReviewOptions,
@@ -38,7 +33,7 @@ export function getReviews(options: IReviewOptions): Promise<IReviewResponse> {
     if (options.contentId) {
         uri.addQueryParam('contentId', options.contentId);
     }
-    return getUri<ICase>(uri);
+    return getUri<IReviewResponse>(uri);
 }
 
 export function createReview(qualityIndexType: TQualityIndexType, review: IReview): Promise<IReview> {

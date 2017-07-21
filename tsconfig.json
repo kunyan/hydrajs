@@ -10,7 +10,8 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "allowJs": true
+    "allowJs": true,
+    "noUnusedLocals": true
   },
   "exclude": [
     "node_modules"
