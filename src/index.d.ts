@@ -17,6 +17,10 @@ import {ICaseEscalation}                      from './models/escalation';
 import { IUser }                              from './models/user';
 import { KyceResult }                         from './models/kyce';
 import { ICountOptions }                      from './models/count';
+import { 
+	IKcsLinkedResources,
+	IKcsResourceResult 
+}  from './models/kcs';
 
 import {
     TQualityIndexType,
@@ -62,6 +66,9 @@ declare namespace hydrajs {
     }
     namespace kyce {
         export function runKyce(attachmentId: string): Promise<KyceResult>;
+    }
+	namespace kcs {
+        export function kycLinkResources(kcsLinkedResources: IKcsLinkedResources): Promise<IKcsResourceResult>;
     }
     namespace skedge {
         export function getAllShiftMetadatas(): Promise<IShiftMetadata[]>;

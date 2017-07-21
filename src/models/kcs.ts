@@ -22,3 +22,39 @@ export interface IAPIKcsLink {
     tracebackUrl: string;
     warnings: string;
 }
+
+export interface IKcsLinkedResources {
+    caseNumber: string;
+    resourceId: string;
+	resourceType: string;
+	linked: boolean;
+	resourceURI: string;
+	resourceViewURI: string;
+	title: string;
+}
+
+export interface IKcsResourceResult {
+	analysisAlgorithm: string;
+	analysisAlgorithmVersion: string;
+	analysisCategory: string;
+	analysisService: string;
+	analysisServiceVersion: string;
+	bucket: string;
+	caseNumber: string;
+	caseURI: string;
+	client: string;
+	clientVersion: string;
+	externalCaseURI: string;
+	linked: boolean;
+	linkedAt: Date;
+	linkedBy: string;
+	message: string;
+	note: string;
+	origin: string;
+	resourceId: string;
+	resourceType: string;
+	resourceURI: string;
+	resourceViewURI: string;
+	title: string;
+	warnings: string[];
+}
