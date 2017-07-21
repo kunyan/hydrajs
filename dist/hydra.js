@@ -52,28 +52,29 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var comment_1 = __webpack_require__(9);
 	var insights_1 = __webpack_require__(13);
-	var roleMetadata_1 = __webpack_require__(17);
-	var testClass_1 = __webpack_require__(21);
+	var roleMetadata_1 = __webpack_require__(18);
+	var testClass_1 = __webpack_require__(22);
 	var general_1 = __webpack_require__(11);
-	var user_1 = __webpack_require__(22);
-	var kyce_1 = __webpack_require__(14);
+	var user_1 = __webpack_require__(23);
+	var kyce_1 = __webpack_require__(15);
+	var kcs_1 = __webpack_require__(14);
 	var case_1 = __webpack_require__(7);
-	var shiftMetadata_1 = __webpack_require__(19);
-	var templateMetadata_1 = __webpack_require__(20);
-	var vendorProduct_1 = __webpack_require__(24);
+	var shiftMetadata_1 = __webpack_require__(20);
+	var templateMetadata_1 = __webpack_require__(21);
+	var vendorProduct_1 = __webpack_require__(25);
 	var certification_1 = __webpack_require__(8);
-	var userShifts_1 = __webpack_require__(23);
+	var userShifts_1 = __webpack_require__(24);
 	var groupMetadata_1 = __webpack_require__(12);
 	var counts_1 = __webpack_require__(10);
-	var review_1 = __webpack_require__(16);
-	var products_1 = __webpack_require__(15);
-	var sbrs_1 = __webpack_require__(18);
+	var review_1 = __webpack_require__(17);
+	var products_1 = __webpack_require__(16);
+	var sbrs_1 = __webpack_require__(19);
 	exports.default = {
 	    general: {
 	        health: general_1.health,
@@ -156,6 +157,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    kyce: {
 	        runKyce: kyce_1.runKyce
 	    },
+	    kcs: {
+	        linkKcsResources: kcs_1.linkKcsResources
+	    },
 	    products: {
 	        getProducts: products_1.getProducts,
 	        getProductVersions: products_1.getProductVersions
@@ -167,9 +171,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -212,18 +216,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Env = (function () {
 	    function Env() {
 	    }
+	    Env.hydraHostName = hydraHostName;
+	    Env.pathPrefix = pathPrefix;
+	    Env.auth = auth;
 	    return Env;
 	}());
-	Env.hydraHostName = hydraHostName;
-	Env.pathPrefix = pathPrefix;
-	Env.auth = auth;
 	exports.default = Env;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -383,30 +387,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.deleteUriWithBody = deleteUriWithBody;
 
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = function _btoa(str) {
 	  return btoa(str)
 	}
 
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// the whatwg-fetch polyfill installs the fetch() function
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(25);
+	__webpack_require__(26);
 	module.exports = self.fetch.bind(self);
 
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	 * jsUri
@@ -870,9 +874,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(this));
 
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	// shim for using process in browser
 	var process = module.exports = {};
@@ -1044,6 +1048,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	process.removeListener = noop;
 	process.removeAllListeners = noop;
 	process.emit = noop;
+	process.prependListener = noop;
+	process.prependOnceListener = noop;
+
+	process.listeners = function (name) { return [] }
 
 	process.binding = function (name) {
 	    throw new Error('process.binding is not supported');
@@ -1056,9 +1064,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	process.umask = function() { return 0; };
 
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1117,9 +1125,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getTypes = getTypes;
 
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1143,9 +1151,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.createCertification = createCertification;
 
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1169,9 +1177,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.upsertComment = upsertComment;
 
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1256,9 +1264,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.reviews = reviews;
 
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1275,9 +1283,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.hostname = hostname;
 
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1310,9 +1318,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.deleteGroupByGroupId = deleteGroupByGroupId;
 
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1330,9 +1338,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getInsightsRules = getInsightsRules;
 
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var env_1 = __webpack_require__(1);
+	var fetch_1 = __webpack_require__(2);
+	function linkKcsResources(kcsLinkedResources) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/resource");
+	    return fetch_1.postUri(uri, kcsLinkedResources);
+	}
+	exports.linkKcsResources = linkKcsResources;
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1350,9 +1373,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.runKyce = runKyce;
 
 
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1376,9 +1399,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getProductVersions = getProductVersions;
 
 
-/***/ },
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1418,9 +1441,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.createReview = createReview;
 
 
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1433,9 +1456,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getAllRoleMetadatas = getAllRoleMetadatas;
 
 
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1454,9 +1477,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getSbrs = getSbrs;
 
 
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1484,9 +1507,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.deleteShiftMetadata = deleteShiftMetadata;
 
 
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1509,9 +1532,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.postCustomTemplateForUser = postCustomTemplateForUser;
 
 
-/***/ },
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1524,9 +1547,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getTestClasses = getTestClasses;
 
 
-/***/ },
-/* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1539,9 +1562,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getUser = getUser;
 
 
-/***/ },
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1579,9 +1602,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.deleteShiftForUsers = deleteShiftForUsers;
 
 
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -1620,9 +1643,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.upsertComponents = upsertComponents;
 
 
-/***/ },
-/* 25 */
-/***/ function(module, exports) {
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
 
 	(function(self) {
 	  'use strict';
@@ -1710,7 +1733,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      headers.forEach(function(value, name) {
 	        this.append(name, value)
 	      }, this)
-
+	    } else if (Array.isArray(headers)) {
+	      headers.forEach(function(header) {
+	        this.append(header[0], header[1])
+	      }, this)
 	    } else if (headers) {
 	      Object.getOwnPropertyNames(headers).forEach(function(name) {
 	        this.append(name, headers[name])
@@ -1929,9 +1955,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    options = options || {}
 	    var body = options.body
 
-	    if (typeof input === 'string') {
-	      this.url = input
-	    } else {
+	    if (input instanceof Request) {
 	      if (input.bodyUsed) {
 	        throw new TypeError('Already read')
 	      }
@@ -1946,6 +1970,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        body = input._bodyInit
 	        input.bodyUsed = true
 	      }
+	    } else {
+	      this.url = String(input)
 	    }
 
 	    this.credentials = options.credentials || this.credentials || 'omit'
@@ -1981,7 +2007,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  function parseHeaders(rawHeaders) {
 	    var headers = new Headers()
-	    rawHeaders.split('\r\n').forEach(function(line) {
+	    rawHeaders.split(/\r?\n/).forEach(function(line) {
 	      var parts = line.split(':')
 	      var key = parts.shift().trim()
 	      if (key) {
@@ -2084,7 +2110,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(typeof self !== 'undefined' ? self : this);
 
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;

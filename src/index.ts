@@ -4,7 +4,8 @@ import {getAllRoleMetadatas}                    from './api/roleMetadata';
 import {getTestClasses}                         from './api/testClass';
 import { health, hostname }                     from './api/general';
 import { getUser }                              from './api/user';
-import {runKyce}                                from './api/kyce';
+import { runKyce }                              from './api/kyce';
+import { linkKcsResources }                     from './api/kcs';
 
 
 import {
@@ -178,6 +179,9 @@ export default {
     },
     kyce: {
         runKyce
+    },
+    kcs: {
+        linkKcsResources
     },
     products: {
         getProducts,
