@@ -5,7 +5,7 @@ import {getTestClasses}                         from './api/testClass';
 import { health, hostname }                     from './api/general';
 import { getUser }                              from './api/user';
 import { runKyce }                              from './api/kyce';
-import { kcsLinkResources }                     from './api/kcs';
+import { linkKcsResources }                     from './api/kcs';
 
 
 import {
@@ -181,7 +181,7 @@ export default {
         runKyce
     },
     kcs: {
-        kcsLinkResources
+        linkKcsResources
     },
     products: {
         getProducts,
