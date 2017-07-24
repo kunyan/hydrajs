@@ -29,7 +29,7 @@ export function getCase(caseId: string, fields?: ICase_fields): Promise<ICase> {
     if (fields && fields.length > 0) {
         uri.addQueryParam('fields', fields.join(','));
     }
-    return getUri<ICase>(uri);
+    return getUri<Promise<ICase>>(uri);
 }
 
 export function getLinkedJiras(caseId: string, fields?: Fields<ICaseJiraLink>): Promise<Array<ICaseJiraLink>> {
@@ -37,7 +37,7 @@ export function getLinkedJiras(caseId: string, fields?: Fields<ICaseJiraLink>): 
     if (fields && fields.length > 0) {
         uri.addQueryParam('fields', fields.join(','));
     }
-    return getUri<Array<ICaseJiraLink>>(uri);
+    return getUri<Promise<ICaseJiraLink[]>>(uri);
 }
 
 export function linkJiraToCase(caseId: string, newLink: IApiNewJiraLink) {
@@ -52,35 +52,35 @@ export function deleteJiraLinkFromCase(caseId: string, issueKey: string) {
 
 export function getEscalations(caseId: string): Promise<Array<ICaseEscalation>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/escalations?caseNumber=${caseId}`);
-    return getUri<Array<ICaseEscalation>>(uri);
+    return getUri<Promise<ICaseEscalation[]>>(uri);
 }
 
 export function getLanguages(): Promise<IArrayResponse<string[]>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/languages`);
-    return getUri<IArrayResponse<string[]>>(uri);
+    return getUri<Promise<IArrayResponse<string[]>>>(uri);
 }
 
 export function getSeverities(): Promise<IArrayResponse<string[]>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/severities`);
-    return getUri<IArrayResponse<string[]>>(uri);
+    return getUri<Promise<IArrayResponse<string[]>>>(uri);
 }
 
 export function getStatuses(): Promise<IArrayResponse<string[]>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/statuses`);
-    return getUri<IArrayResponse<string[]>>(uri);
+    return getUri<Promise<IArrayResponse<string[]>>>(uri);
 }
 
 export function getTypes(): Promise<IArrayResponse<string[]>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/types`);
-    return getUri<IArrayResponse<string[]>>(uri);
+    return getUri<Promise<IArrayResponse<string[]>>>(uri);
 }
 
 export function getCaseExternalTrackers(caseId: string): Promise<IExternalTracker[]> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}/externaltrackers`);
-    return getUri<IExternalTracker[]>(uri);
+    return getUri<Promise<IExternalTracker[]>>(uri);
 }
 
 export function getCaseExternalTrackerUpdates(caseId: string): Promise<IExternalTrackerUpdate[]> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}/externaltrackerupdates`);
-    return getUri<IExternalTrackerUpdate[]>(uri);
+    return getUri<Promise<IExternalTrackerUpdate[]>>(uri);
 }

@@ -11,7 +11,7 @@ export function getExternalTrackers(externalTrackerId: string, fields?: string[]
     if (fields && fields.length > 0) {
         uri.addQueryParam('fields', fields.join(','));
     }
-    return getUri<IExternalTracker[]>(uri);
+    return getUri<Promise<IExternalTracker[]>>(uri);
 }
 
 export function getExternalTrackersUpdates(externalTrackerId: string, fields?: string[]): Promise<IExternalTrackerUpdate[]> {
@@ -19,5 +19,5 @@ export function getExternalTrackersUpdates(externalTrackerId: string, fields?: s
     if (fields && fields.length > 0) {
         uri.addQueryParam('fields', fields.join(','));
     }
-    return getUri<IExternalTrackerUpdate[]>(uri);
+    return getUri<Promise<IExternalTrackerUpdate[]>>(uri);
 }

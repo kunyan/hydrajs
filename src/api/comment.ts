@@ -10,10 +10,10 @@ export function getComments(caseNumber: string, fields?: string[], limit?: numbe
     if (limit && limit > 0) {
         uri.addQueryParam('limit', limit);
     }
-    return getUri<Array<ICaseComment>>(uri);
+    return getUri<Promise<ICaseComment[]>>(uri);
 }
 
 export function upsertComment(comment: ICaseComment): Promise<ICaseComment> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/comments`);
-    return putUri<ICaseComment>(uri, comment);
+    return putUri<Promise<ICaseComment>>(uri, comment);
 }

@@ -27,7 +27,7 @@ function getJwtToken() {
     return '';
 }
 
-function responseHandler<T>(response) {
+function responseHandler<T>(response): T {
     if (response.status === 500) {
         return errorHandler(response);
     } else if (response.status === 204) {
@@ -56,7 +56,7 @@ function responseHandler<T>(response) {
     }
 }
 
-export function getUri<T>(uri: Uri, headerParams?: IHeaderParamOption[]) {
+export function getUri<T>(uri: Uri, headerParams?: IHeaderParamOption[]): T {
     let params = {
         credentials: 'include',
         headers: {}
@@ -75,7 +75,7 @@ export function getUri<T>(uri: Uri, headerParams?: IHeaderParamOption[]) {
     return fetch(uri.toString(), params).then(responseHandler);
 }
 
-export function postUri<T>(uri: Uri, body: any) {
+export function postUri<T>(uri: Uri, body: any): T {
     let params = {
         method: 'POST',
         credentials: 'include',
@@ -94,7 +94,7 @@ export function postUri<T>(uri: Uri, body: any) {
     return fetch(uri.toString(), params).then(responseHandler);
 }
 
-export function putUri<T>(uri: Uri, body: any) {
+export function putUri<T>(uri: Uri, body: any): T {
     let params = {
         method: 'PUT',
         credentials: 'include',
@@ -113,7 +113,7 @@ export function putUri<T>(uri: Uri, body: any) {
     return fetch(uri.toString(), params).then(responseHandler);
 }
 
-export function deleteUri<T>(uri: Uri) {
+export function deleteUri<T>(uri: Uri): T {
     let params = {
         method: 'DELETE',
         credentials: 'include',
@@ -130,7 +130,7 @@ export function deleteUri<T>(uri: Uri) {
     return fetch(uri.toString(), params).then(responseHandler);
 }
 
-export function deleteUriWithBody<T>(uri: Uri, body: any) {
+export function deleteUriWithBody<T>(uri: Uri, body: any): T {
     let params = {
         method: 'DELETE',
         credentials: 'include',

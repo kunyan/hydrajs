@@ -4,5 +4,5 @@ import {IRoleMetadata}  from '../models/skedge/roleMetadata';
 
 export function getAllRoleMetadatas(): Promise<IRoleMetadata[]> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/skedge/roleMetadata/`);
-    return getUri<IRoleMetadata[]>(uri);
+    return getUri<Promise<IRoleMetadata[]>>(uri);
 }

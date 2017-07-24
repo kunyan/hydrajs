@@ -6,31 +6,31 @@ import { IComponent }               from '../models/certification/component';
 
 export function getVendorProduct(vendorProductPortalId: string | number): Promise<IVendorProduct> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/vendorproducts/${vendorProductPortalId}`);
-    return getUri<IVendorProduct>(uri);
+    return getUri<Promise<IVendorProduct>>(uri);
 }
 
 export function getCertifications(vendorProductPortalId: string | number): Promise<ICertification[]> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/vendorproducts/${vendorProductPortalId}/certifications`);
-    return getUri<Array<ICertification>>(uri);
+    return getUri<Promise<ICertification[]>>(uri);
 }
 
 export function createVendorProduct(vendorProduct: IVendorProduct): Promise<IVendorProduct> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/vendorproducts/`);
-    return postUri<IVendorProduct>(uri, vendorProduct);
+    return postUri<Promise<IVendorProduct>>(uri, vendorProduct);
 }
 
 export function updateVendorProduct(vendorProduct: IVendorProduct): Promise<IVendorProduct> {
     const vendorProductPortalId = vendorProduct.portalId;
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/vendorproducts/${vendorProductPortalId}`);
-    return putUri<IVendorProduct>(uri, vendorProduct);
+    return putUri<Promise<IVendorProduct>>(uri, vendorProduct);
 }
 
 export function getComponents(vendorProductPortalId: string | number): Promise<Array<IComponent>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/vendorproducts/${vendorProductPortalId}/components`);
-    return getUri<Array<IComponent>>(uri);
+    return getUri<Promise<IComponent[]>>(uri);
 }
 
 export function upsertComponents(vendorProductPortalId: string | number, components: Array<IComponent>): Promise<Array<IComponent>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/vendorproducts/${vendorProductPortalId}/components`);
-    return putUri<Array<IComponent>>(uri, components);
+    return putUri<Promise<IComponent[]>>(uri, components);
 }

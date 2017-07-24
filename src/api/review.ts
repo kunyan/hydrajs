@@ -11,12 +11,12 @@ import {
 
 export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/${qualityIndexType}/reviews/questions`);
-    return getUri<IReviewResponse>(uri);
+    return getUri<Promise<IReviewResponse>>(uri);
 }
 
 export function getKtQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewQuestionDependencyResponse> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/${qualityIndexType}/reviews/ktquestions`);
-    return getUri<IReviewResponse>(uri);
+    return getUri<Promise<IReviewQuestionDependencyResponse>>(uri);
 }
 
 export function getReviews(options: IReviewOptions): Promise<IReviewResponse> {
@@ -33,10 +33,10 @@ export function getReviews(options: IReviewOptions): Promise<IReviewResponse> {
     if (options.contentId) {
         uri.addQueryParam('contentId', options.contentId);
     }
-    return getUri<IReviewResponse>(uri);
+    return getUri<Promise<IReviewResponse>>(uri);
 }
 
 export function createReview(qualityIndexType: TQualityIndexType, review: IReview): Promise<IReview> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/${qualityIndexType}/reviews`);
-    return postUri(uri, review);
+    return postUri<Promise<IReview>>(uri, review);
 }
