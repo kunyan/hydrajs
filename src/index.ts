@@ -1,11 +1,11 @@
-import {getComments, upsertComment}             from './api/comment';
-import {runInsights, getInsightsRules}          from './api/insights';
-import {getAllRoleMetadatas}                    from './api/roleMetadata';
-import {getTestClasses}                         from './api/testClass';
-import { health, hostname }                     from './api/general';
-import { getUser }                              from './api/user';
-import { runKyce }                              from './api/kyce';
-import { linkKcsResources }                     from './api/kcs';
+import { getComments, upsertComment }    from './api/comment';
+import { runInsights, getInsightsRules } from './api/insights';
+import { getAllRoleMetadatas }           from './api/roleMetadata';
+import { getTestClasses }                from './api/testClass';
+import { health, hostname }              from './api/general';
+import { getUser }                       from './api/user';
+import { runKyce }                       from './api/kyce';
+import { linkKcsResources }              from './api/kcs';
 
 
 import {
@@ -45,7 +45,10 @@ import {
 import {
     getCertification,
     updateCertification,
-    createCertification
+    createCertification,
+    createOpenStackCertification,
+    updateOpenStackCertification,
+    getOpenStackCertification
 } from './api/certification';
 
 import {
@@ -160,6 +163,9 @@ export default {
         getCertification,
         createCertification,
         updateCertification,
+        createOpenStackCertification,
+        updateOpenStackCertification,
+        getOpenStackCertification,
         getCertifications,
         getVendorProduct,
         createVendorProduct,

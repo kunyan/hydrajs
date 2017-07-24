@@ -1,8 +1,8 @@
 import { IVendor } from './vendor';
 import { ICertification } from './certification';
 
-export interface IVendorProduct {
-    // common
+
+export interface IVendorProductBase {
     id?: string | number;
     portalId?: string | number;
     program?: string;
@@ -11,17 +11,18 @@ export interface IVendorProduct {
     productUrl?: string;
     status?: boolean;
     certifications?: ICertification[];
+}
 
-    // Hardware Product
+export interface IHardwareVendorProduct extends IVendorProductBase {
     make?: IMake;
     category?: string;
     supportUrl?: string;
     specification?: ISpecification;
     isPortalVisiable?: boolean;
+}
 
-    // OpenStack Product
-    component?: string;
-
+export interface IOpenStackVendorProduct extends IVendorProductBase {
+    category?: string[];
 }
 
 export interface ISpecification {
@@ -33,3 +34,5 @@ export interface IMake {
     id?: string | number;
     name?: string;
 }
+
+export type IVendorProduct = IHardwareVendorProduct | IOpenStackVendorProduct;
