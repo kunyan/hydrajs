@@ -1,28 +1,25 @@
-import {ICaseComment}                         from './models/comment';
-import {ICase, ICase_fields}                  from './models/case';
-import {IShiftMetadata, ICreateShiftMetadata} from './models/skedge/shiftMetadata';
-import {IRoleMetadata }                       from './models/skedge/roleMetadata';
-import {IUserShift}                           from './models/skedge/userShift';
-import {IUserShiftFilter}                     from './models/skedge/userShiftFilter';
-import {ICertification}                       from './models/certification/certification';
-import {IVendorProduct}                       from './models/certification/vendorProduct';
-import {ITestClass}                           from './models/certification/testClass';
-import {IComponent}                           from './models/certification/component';
-import {InsightsResult, InsightsRule}         from './models/insights';
-import {IGroupMetadata}                       from './models/skedge/groupMetadata';
-import {ITemplateMetadata}                    from './models/skedge/templateMetadata';
-import { Fields, IArrayResponse }             from './models/general';
-import { ICaseJiraLink, IApiNewJiraLink }     from './models/resource';
-import {ICaseEscalation}                      from './models/escalation';
-import { IUser }                              from './models/user';
-import { KyceResult }                         from './models/kyce';
-import { ICountOptions }                      from './models/count';
-import {
- IKcsLinkedResources,
- IKcsResourceResult 
-} from './models/kcs';
-import { IProduct }                           from './models/product';
-import { ISbr }                               from './models/sbr';
+import { ICaseComment }                            from './models/comment';
+import { ICase, ICase_fields }                     from './models/case';
+import { IShiftMetadata, ICreateShiftMetadata }    from './models/skedge/shiftMetadata';
+import { IRoleMetadata }                           from './models/skedge/roleMetadata';
+import { IUserShift }                              from './models/skedge/userShift';
+import { IUserShiftFilter }                        from './models/skedge/userShiftFilter';
+import { ICertification, IOpenStackCertification } from './models/certification/certification';
+import { IVendorProduct }                          from './models/certification/vendorProduct';
+import { ITestClass }                              from './models/certification/testClass';
+import { IComponent }                              from './models/certification/component';
+import { InsightsResult, InsightsRule }            from './models/insights';
+import { IGroupMetadata }                          from './models/skedge/groupMetadata';
+import { ITemplateMetadata }                       from './models/skedge/templateMetadata';
+import { Fields, IArrayResponse }                  from './models/general';
+import { ICaseJiraLink, IApiNewJiraLink }          from './models/resource';
+import { ICaseEscalation }                         from './models/escalation';
+import { IUser }                                   from './models/user';
+import { KyceResult }                              from './models/kyce';
+import { ICountOptions }                           from './models/count';
+import { IKcsLinkedResources, IKcsResourceResult } from './models/kcs';
+import { IProduct }                                from './models/product';
+import { ISbr }                                    from './models/sbr';
 
 import {
     TQualityIndexType,
@@ -102,6 +99,9 @@ declare namespace hydrajs {
         export function getCertification(caseNumber: string | number): Promise<ICertification>;
         export function createCertification(certification: ICertification): Promise<ICertification>;
         export function updateCertification(certification: ICertification): Promise<ICertification>;
+        export function getOpenStackCertification<T>(caseNumber: string | number): Promise<IOpenStackCertification<T>>;
+        export function createOpenStackCertification<T>(certification: IOpenStackCertification<T>): Promise<IOpenStackCertification<T>>;
+        export function updateOpenStackCertification<T>(certification: IOpenStackCertification<T>): Promise<IOpenStackCertification<T>>;
         export function getCertifications(vendorProductPortalId: string | number): Promise<ICertification[]>;
         export function getVendorProduct(vendorProductPortalId: string | number): Promise<IVendorProduct>;
         export function updateVendorProduct(vendorProduct: IVendorProduct): Promise<IVendorProduct>;
