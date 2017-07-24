@@ -57,24 +57,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var comment_1 = __webpack_require__(9);
-	var insights_1 = __webpack_require__(13);
-	var roleMetadata_1 = __webpack_require__(18);
-	var testClass_1 = __webpack_require__(22);
-	var general_1 = __webpack_require__(11);
-	var user_1 = __webpack_require__(23);
-	var kyce_1 = __webpack_require__(15);
-	var kcs_1 = __webpack_require__(14);
+	var insights_1 = __webpack_require__(14);
+	var roleMetadata_1 = __webpack_require__(19);
+	var testClass_1 = __webpack_require__(23);
+	var general_1 = __webpack_require__(12);
+	var user_1 = __webpack_require__(24);
+	var kyce_1 = __webpack_require__(16);
+	var kcs_1 = __webpack_require__(15);
 	var case_1 = __webpack_require__(7);
-	var shiftMetadata_1 = __webpack_require__(20);
-	var templateMetadata_1 = __webpack_require__(21);
-	var vendorProduct_1 = __webpack_require__(25);
+	var shiftMetadata_1 = __webpack_require__(21);
+	var templateMetadata_1 = __webpack_require__(22);
+	var vendorProduct_1 = __webpack_require__(26);
 	var certification_1 = __webpack_require__(8);
-	var userShifts_1 = __webpack_require__(24);
-	var groupMetadata_1 = __webpack_require__(12);
+	var userShifts_1 = __webpack_require__(25);
+	var groupMetadata_1 = __webpack_require__(13);
 	var counts_1 = __webpack_require__(10);
-	var review_1 = __webpack_require__(17);
-	var products_1 = __webpack_require__(16);
-	var sbrs_1 = __webpack_require__(19);
+	var review_1 = __webpack_require__(18);
+	var products_1 = __webpack_require__(17);
+	var sbrs_1 = __webpack_require__(20);
+	var externalTrackers_1 = __webpack_require__(11);
 	exports.default = {
 	    general: {
 	        health: general_1.health,
@@ -106,7 +107,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getLanguages: case_1.getLanguages,
 	        getSeverities: case_1.getSeverities,
 	        getStatuses: case_1.getStatuses,
-	        getTypes: case_1.getTypes
+	        getTypes: case_1.getTypes,
+	        getCaseExternalTrackers: case_1.getCaseExternalTrackers,
+	        getCaseExternalTrackerUpdates: case_1.getCaseExternalTrackerUpdates
 	    },
 	    insights: {
 	        runInsights: insights_1.runInsights,
@@ -170,6 +173,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    sbrs: {
 	        getSbr: sbrs_1.getSbr,
 	        getSbrs: sbrs_1.getSbrs
+	    },
+	    externalTrackers: {
+	        getExternalTrackers: externalTrackers_1.getExternalTrackers,
+	        getExternalTrackersUpdates: externalTrackers_1.getExternalTrackersUpdates
 	    }
 	};
 
@@ -407,7 +414,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(26);
+	__webpack_require__(27);
 	module.exports = self.fetch.bind(self);
 
 
@@ -1071,6 +1078,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var env_1 = __webpack_require__(1);
 	var fetch_1 = __webpack_require__(2);
+	// caseId can be id or case number
 	function getCase(caseId, fields) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId);
 	    if (fields && fields.length > 0) {
@@ -1122,6 +1130,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.getUri(uri);
 	}
 	exports.getTypes = getTypes;
+	function getCaseExternalTrackers(caseId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/externaltrackers");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getCaseExternalTrackers = getCaseExternalTrackers;
+	function getCaseExternalTrackerUpdates(caseId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/externaltrackerupdates");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getCaseExternalTrackerUpdates = getCaseExternalTrackerUpdates;
 
 
 /***/ },
@@ -1285,6 +1303,32 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
+	var fetch_1 = __webpack_require__(2);
+	var env_1 = __webpack_require__(1);
+	function getExternalTrackers(externalTrackerId, fields) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/externaltrackers/{id}");
+	    if (fields && fields.length > 0) {
+	        uri.addQueryParam('fields', fields.join(','));
+	    }
+	    return fetch_1.getUri(uri);
+	}
+	exports.getExternalTrackers = getExternalTrackers;
+	function getExternalTrackersUpdates(externalTrackerId, fields) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/externaltrackerupdates/{id}");
+	    if (fields && fields.length > 0) {
+	        uri.addQueryParam('fields', fields.join(','));
+	    }
+	    return fetch_1.getUri(uri);
+	}
+	exports.getExternalTrackersUpdates = getExternalTrackersUpdates;
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var env_1 = __webpack_require__(1);
 	var fetch_1 = __webpack_require__(2);
 	function health() {
@@ -1299,7 +1343,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1334,7 +1378,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1354,7 +1398,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1369,7 +1413,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1389,7 +1433,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1415,7 +1459,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1457,7 +1501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1472,7 +1516,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1493,7 +1537,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1523,7 +1567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1548,7 +1592,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1563,7 +1607,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1578,7 +1622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1618,7 +1662,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1659,7 +1703,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	(function(self) {
