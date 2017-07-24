@@ -3,7 +3,7 @@ import { getUri }               from '../utils/fetch';
 
 export function health(): Promise<string> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/health`);
-    return getUri<string>(uri);
+    return getUri<Promise<string>>(uri);
 }
 
 export function hostname(): string {

@@ -68,3 +68,5 @@ export interface ICaseComment {
     createdByContact?: IContact;
     lastModifiedByContact?: IContact;
 }
+
+export type TCaseCommentFields = Array<keyof ICaseComment>;

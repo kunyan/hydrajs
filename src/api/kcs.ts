@@ -7,5 +7,5 @@ import {
 
 export function linkKcsResources(kcsLinkedResources: IKcsLinkedResources): Promise<IKcsResourceResult> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/resource`);
-    return postUri(uri, kcsLinkedResources);
+    return postUri<any>(uri, kcsLinkedResources);
 }

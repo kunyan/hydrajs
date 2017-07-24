@@ -1,5 +1,5 @@
 import Env                               from '../utils/env';
-import { getUri, postUri }               from '../utils/fetch';
+import { getUri }                        from '../utils/fetch';
 import { KyceResult }                    from '../models/kyce';
 import { IHeaderParamOption }            from './../models/general';
 
@@ -10,5 +10,5 @@ export function runKyce(attachmentId: string): Promise<KyceResult> {
         key: 'Accept',
         value: 'application/vnd.api.v1+json'
     });
-    return getUri<KyceResult>(uri, headerParam);
+    return getUri<Promise<KyceResult>>(uri, headerParam);
 }

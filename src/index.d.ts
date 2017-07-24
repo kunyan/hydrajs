@@ -30,6 +30,10 @@ import {
     IReviewQuestionDependencyResponse
 } from './models/review';
 
+import {
+    IExternalTracker,
+    IExternalTrackerUpdate,
+} from './models/externalTracker';
 
 declare namespace hydrajs {
     namespace general {
@@ -63,6 +67,8 @@ declare namespace hydrajs {
         export function getSeverities(): Promise<IArrayResponse<string[]>>;
         export function getStatuses(): Promise<IArrayResponse<string[]>>;
         export function getTypes(): Promise<IArrayResponse<string[]>>;
+        export function getCaseExternalTrackers(caseId: string): Promise<IExternalTracker[]>;
+        export function getCaseExternalTrackerUpdates(caseId: string): Promise<IExternalTrackerUpdate[]>;
     }
     namespace insights {
         export function runInsights(caseNumber: string, attachmentId: string): Promise<InsightsResult>;
@@ -126,6 +132,10 @@ declare namespace hydrajs {
     namespace sbrs {
         export function getSbrs(): Promise<IArrayResponse<ISbr[]>>;
         export function getSbr(sbrId: string): Promise<ISbr[]>;
+    }
+    namespace externalTrackers {
+        export function getExternalTrackers(externalTrackerId: string, fields?: string[]): Promise<IExternalTracker[]>;
+        export function getExternalTrackersUpdates(externalTrackerId: string, fields?: string[]): Promise<IExternalTrackerUpdate[]>;
     }
 }
 

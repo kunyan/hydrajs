@@ -7,7 +7,6 @@ import { getUser }                       from './api/user';
 import { runKyce }                       from './api/kyce';
 import { linkKcsResources }              from './api/kcs';
 
-
 import {
     getCase,
     getLinkedJiras,
@@ -17,7 +16,9 @@ import {
     getLanguages,
     getSeverities,
     getStatuses,
-    getTypes
+    getTypes,
+    getCaseExternalTrackers,
+    getCaseExternalTrackerUpdates
 } from './api/case';
 
 import {
@@ -101,6 +102,11 @@ import {
     getSbrs
 } from './api/sbrs';
 
+import {
+    getExternalTrackers,
+    getExternalTrackersUpdates
+} from './api/externalTrackers';
+
 export default {
     general: {
         health,
@@ -132,7 +138,9 @@ export default {
         getLanguages,
         getSeverities,
         getStatuses,
-        getTypes
+        getTypes,
+        getCaseExternalTrackers,
+        getCaseExternalTrackerUpdates
     },
     insights: {
         runInsights,
@@ -196,5 +204,9 @@ export default {
     sbrs: {
         getSbr,
         getSbrs
+    },
+    externalTrackers: {
+        getExternalTrackers,
+        getExternalTrackersUpdates
     }
 };
