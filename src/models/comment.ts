@@ -24,7 +24,7 @@ export interface ICaseComment {
     createdWithBug?: string;
     doNotChangeSBT: boolean;
     externalCaseCommentId?: string;
-    externalCommentHandlingSystem?: string;
+    externalHandlingSystem?: string;
     externalId?: string;
     externalTrackerToPartnerPrivateMap?: string;
     fromBug?: string;
