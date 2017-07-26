@@ -100,8 +100,8 @@ export interface IOpenStackOtherComponent {
 }
 
 export interface IOpenStackVNFComponent {
-    hasToolOnboardVnf: boolean,
-    isRequireUnderlyingChange: boolean,
+    hasToolOnboardVnf: boolean;
+    isRequireUnderlyingChange: boolean;
     dataPath: string;
     isDependonSpecificHardware: boolean;
     isApplyTunedProfile: boolean;
