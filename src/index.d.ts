@@ -6,8 +6,9 @@ import { IUserShift }                              from './models/skedge/userShi
 import { IUserShiftFilter }                        from './models/skedge/userShiftFilter';
 import { ICertification, IOpenStackCertification } from './models/certification/certification';
 import { IVendorProduct }                          from './models/certification/vendorProduct';
-import { ITestClass }                              from './models/certification/testClass';
+import { ITestClass }                              from './models/certification/certificationTest';
 import { IComponent }                              from './models/certification/component';
+import { ITestPlan, ITestData }                    from './models/certification/certificationTest';
 import { InsightsResult, InsightsRule }            from './models/insights';
 import { IGroupMetadata }                          from './models/skedge/groupMetadata';
 import { ITemplateMetadata }                       from './models/skedge/templateMetadata';
@@ -115,6 +116,9 @@ declare namespace hydrajs {
         export function getTestClasses(productType: string): Promise<Array<ITestClass>>;
         export function getComponents(vendorProductPortalId: string | number): Promise<Array<IComponent>>;
         export function upsertComponents(vendorProductPortalId: string | number, components: Array<IComponent>): Promise<Array<IComponent>>;
+        export function getCertificationTestPlans(caseNumber: string | number): Promise<Array<ITestPlan>>;
+        export function upsertCertificationTestPlans(caseNumber: string | number, testplans: Array<ITestPlan>): Promise<Array<ITestPlan>>;
+        export function getCertificationTestData(caseNumber: string | number): Promise<Array<ITestData>>;
     }
     namespace review {
         export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse>;

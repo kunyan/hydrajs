@@ -53,6 +53,12 @@ import {
 } from './api/certification';
 
 import {
+    getCertificationTestPlans,
+    upsertCertificationTestPlans,
+    getCertificationTestData,
+} from './api/certificationTest';
+
+import {
     getShiftsForUserFilters,
     getAllShiftsForUsers,
     postShiftsForUsers,
@@ -181,6 +187,9 @@ export default {
         getTestClasses,
         getComponents,
         upsertComponents,
+        getCertificationTestPlans,
+        upsertCertificationTestPlans,
+        getCertificationTestData,
     },
     review: {
         getQuestions,

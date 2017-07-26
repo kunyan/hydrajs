@@ -59,7 +59,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var comment_1 = __webpack_require__(9);
 	var insights_1 = __webpack_require__(14);
 	var roleMetadata_1 = __webpack_require__(19);
-	var testClass_1 = __webpack_require__(23);
+	var certificationTest_1 = __webpack_require__(23);
 	var general_1 = __webpack_require__(12);
 	var user_1 = __webpack_require__(24);
 	var kyce_1 = __webpack_require__(16);
@@ -147,9 +147,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getVendorProduct: vendorProduct_1.getVendorProduct,
 	        createVendorProduct: vendorProduct_1.createVendorProduct,
 	        updateVendorProduct: vendorProduct_1.updateVendorProduct,
-	        getTestClasses: testClass_1.getTestClasses,
+			getTestClasses: certificationTest_1.getTestClasses,
+			getCertificationTestPlans: certificationTest_1.getCertificationTestPlans,
+			upsertCertificationTestPlans: certificationTest_1.upsertCertificationTestPlans,
+			getCertificationTestData: certificationTest_1.getCertificationTestData,		
 	        getComponents: vendorProduct_1.getComponents,
-	        upsertComponents: vendorProduct_1.upsertComponents,
+			upsertComponents: vendorProduct_1.upsertComponents,
 	    },
 	    review: {
 	        getQuestions: review_1.getQuestions,
@@ -1609,6 +1612,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	exports.getTestClasses = getTestClasses;
 
+	function getCertificationTestPlans(caseNumber) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/certcases/" + caseNumber + "/testplans");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getCertificationTestPlans = getCertificationTestPlans;
+
+	function upsertCertificationTestPlans(caseNumber, testplans) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/certcases/" + caseNumber + "/testplans");
+	    return fetch_1.putUri(uri, testplans);
+	}
+	exports.upsertCertificationTestPlans = upsertCertificationTestPlans;
+
+	function getCertificationTestData(caseNumber) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/certcases/" + caseNumber + "/testdata");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getCertificationTestData = getCertificationTestData;
 
 /***/ }),
 /* 24 */
