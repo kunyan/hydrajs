@@ -1,5 +1,4 @@
 import { IComponentBase, IFeatureBase } from './component';
-import { IUser }                        from '../user';
 
 export interface ITestClass {
     id?: string | number;
@@ -20,7 +19,7 @@ export interface ITestPlanFeature extends IFeatureBase {
     status?: string;
     componentLeverage?: number;
     testRunLeverage?: number;
-    confirmedBy?: string | IUser;
+    confirmedBy?: string;
 }
 
 export interface ITestPlan extends IComponentBase {
@@ -28,10 +27,10 @@ export interface ITestPlan extends IComponentBase {
 }
 
 export interface IResultMeta {
-    uploader?: string | IUser;
+    uploader?: string;
     uploadTime?: string;
     reviewed?: boolean;
-    reviewer?: string | IUser;
+    reviewer?: string;
     reviewTime?: string;
 }
 
