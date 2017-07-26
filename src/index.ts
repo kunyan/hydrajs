@@ -113,6 +113,11 @@ import {
     getExternalTrackersUpdates
 } from './api/externalTrackers';
 
+import {
+    getSolrAccess,
+    getSolrCases
+} from './api/solr';
+
 export default {
     general: {
         health,
@@ -217,5 +222,9 @@ export default {
     externalTrackers: {
         getExternalTrackers,
         getExternalTrackersUpdates
+    },
+    solr: {
+        getSolrAccess,
+        getSolrCases
     }
 };

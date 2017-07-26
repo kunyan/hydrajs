@@ -36,6 +36,10 @@ import {
     IExternalTrackerUpdate,
 } from './models/externalTracker';
 
+import {
+    ISolrQuery
+} from './models/solr/solr';
+
 declare namespace hydrajs {
     namespace general {
         export function health(): Promise<string>;
@@ -140,6 +144,10 @@ declare namespace hydrajs {
     namespace externalTrackers {
         export function getExternalTrackers(externalTrackerId: string, fields?: string[]): Promise<IExternalTracker[]>;
         export function getExternalTrackersUpdates(externalTrackerId: string, fields?: string[]): Promise<IExternalTrackerUpdate[]>;
+    }
+    namespace solr {
+        export function getSolrAccess<T>(solrQuery: ISolrQuery): Promise<T>;
+        export function getSolrCases<T>(solrQuery: ISolrQuery): Promise<T>;
     }
 }
 
