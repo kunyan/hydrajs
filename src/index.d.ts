@@ -103,10 +103,10 @@ declare namespace hydrajs {
         export function deleteGroupByGroupId(groupId: number): Promise<IGroupMetadata>;
     }
     namespace certification {
-        export function getCertification(caseNumber: string | number): Promise<ICertification>;
+        export function getCertification(caseNumber: string): Promise<ICertification>;
         export function createCertification(certification: ICertification): Promise<ICertification>;
         export function updateCertification(certification: ICertification): Promise<ICertification>;
-        export function getOpenStackCertification<T>(caseNumber: string | number): Promise<IOpenStackCertification<T>>;
+        export function getOpenStackCertification<T>(caseNumber: string): Promise<IOpenStackCertification<T>>;
         export function createOpenStackCertification<T>(certification: IOpenStackCertification<T>): Promise<IOpenStackCertification<T>>;
         export function updateOpenStackCertification<T>(certification: IOpenStackCertification<T>): Promise<IOpenStackCertification<T>>;
         export function getCertifications(vendorProductPortalId: string | number): Promise<ICertification[]>;
@@ -116,9 +116,9 @@ declare namespace hydrajs {
         export function getTestClasses(productType: string): Promise<Array<ITestClass>>;
         export function getComponents(vendorProductPortalId: string | number): Promise<Array<IComponent>>;
         export function upsertComponents(vendorProductPortalId: string | number, components: Array<IComponent>): Promise<Array<IComponent>>;
-        export function getCertificationTestPlans(caseNumber: string | number): Promise<Array<ITestPlan>>;
-        export function upsertCertificationTestPlans(caseNumber: string | number, testplans: Array<ITestPlan>): Promise<Array<ITestPlan>>;
-        export function getCertificationTestData(caseNumber: string | number): Promise<Array<ITestData>>;
+        export function getCertificationTestPlans(caseNumber: string): Promise<Array<ITestPlan>>;
+        export function upsertCertificationTestPlans(caseNumber: string, testplans: Array<ITestPlan>): Promise<Array<ITestPlan>>;
+        export function getCertificationTestData(caseNumber: string): Promise<Array<ITestData>>;
     }
     namespace review {
         export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse>;

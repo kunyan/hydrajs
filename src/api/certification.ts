@@ -2,7 +2,7 @@ import Env                                         from '../utils/env';
 import { getUri, putUri, postUri }                 from '../utils/fetch';
 import { ICertification, IOpenStackCertification } from '../models/certification/certification';
 
-export function getCertification(caseNumber: string | number): Promise<ICertification> {
+export function getCertification(caseNumber: string): Promise<ICertification> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/certcases/${caseNumber}`);
     return getUri<Promise<ICertification>>(uri);
 }
@@ -18,7 +18,7 @@ export function createCertification(certification: ICertification): Promise<ICer
     return postUri<Promise<ICertification>>(uri, certification);
 }
 
-export function getOpenStackCertification<T>(caseNumber: string | number): Promise<IOpenStackCertification<T>> {
+export function getOpenStackCertification<T>(caseNumber: string): Promise<IOpenStackCertification<T>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/openstack/certcases/${caseNumber}`);
     return getUri<Promise<IOpenStackCertification<T>>>(uri);
 }
