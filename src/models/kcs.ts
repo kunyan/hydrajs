@@ -1,4 +1,5 @@
-// easy-sfdc
+import { IArrayResponse } from './general';
+
 export interface IAPIKcsLink {
     caseNumber: string;
     firstSuggestedDate: string;
@@ -57,4 +58,64 @@ export interface IKcsResourceResult {
     resourceViewURI: string;
     title: string;
     warnings: string[];
+}
+
+export interface IKcsProduct {
+    product: string[];
+}
+
+export interface ICategory {
+    category: string[];
+}
+
+export interface ITag {
+    tag: string[];
+}
+
+export interface ISbr {
+    sbr: string[];
+}
+
+export interface IComponents {
+    component: string[];
+}
+
+export interface ITextHtml {
+    text?: string;
+    html?: string;
+}
+
+export interface IKcsSolution {
+    id: string;
+    teaser: boolean;
+    title: string;
+    language: string;
+    authorSSOName: string;
+    lastModifiedBySSOName: string;
+    tnid: number;
+    viewURI: string;
+    issue: ITextHtml; // actual xsd has tns:KCSComponents
+    environment: ITextHtml;
+    components: IArrayResponse<string>;
+    tags: IArrayResponse<string>;
+    products: IArrayResponse<string>;
+    categories: IArrayResponse<string>;
+    resolution: ITextHtml;
+    rootCause: ITextHtml;
+    diagnosticSteps: ITextHtml;
+    privateNotes: ITextHtml;
+    hasPublishedRevision: boolean;
+    currentModerationState: string;
+    moderationState: string;
+    sbrs: IArrayResponse<string>;
+    isLocked: boolean;
+    lockedBy: string;
+    lockedAt: string;
+    lockExpiresAt: string;
+    accessState: string;
+    KCSState: string;
+    lastModifiedDate: string;
+    createdDate: string;
+    // Custom fields.
+    type: 'Solution'
 }
