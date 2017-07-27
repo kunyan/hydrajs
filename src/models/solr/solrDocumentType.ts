@@ -1,4 +1,5 @@
 import { LinkType, LinkTypes }  from './linkType';
+import { IKcsSolution }         from '../kcs';
 
 import { 
     ISolrDocument, 
@@ -55,6 +56,10 @@ export function isSolrVideo(doc: ISolrDocument): doc is ISolrVideo {
 
 export function isSolr(resource: any | ISolrDocument): resource is ISolrDocument {
     return (resource as ISolrDocument).documentKind != null;
+}
+
+export function isSolution(resource: any): resource is IKcsSolution {
+    return (resource as IKcsSolution).type === 'Solution';
 }
 
 export function getSolrDocumentKinds(resourceType: LinkType) {

@@ -5,7 +5,11 @@ import { getTestClasses }                from './api/testClass';
 import { health, hostname }              from './api/general';
 import { getUser }                       from './api/user';
 import { runKyce }                       from './api/kyce';
-import { linkKcsResources }              from './api/kcs';
+
+import {
+    linkKcsResources,
+    getSolution
+} from './api/kcs';
 
 import {
     getCase,
@@ -209,7 +213,8 @@ export default {
         runKyce
     },
     kcs: {
-        linkKcsResources
+        linkKcsResources,
+        getSolution
     },
     products: {
         getProducts,

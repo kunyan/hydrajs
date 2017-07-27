@@ -169,7 +169,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        runKyce: kyce_1.runKyce
 	    },
 	    kcs: {
-	        linkKcsResources: kcs_1.linkKcsResources
+	        linkKcsResources: kcs_1.linkKcsResources,
+	        getSolution: kcs_1.getSolution
 	    },
 	    products: {
 	        getProducts: products_1.getProducts,
@@ -1444,6 +1445,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.postUri(uri, kcsLinkedResources);
 	}
 	exports.linkKcsResources = linkKcsResources;
+	function getSolution(id) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/solutions/" + id);
+	    return fetch_1.getUri(uri);
+	}
+	exports.getSolution = getSolution;
 
 
 /***/ },
