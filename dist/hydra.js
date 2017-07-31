@@ -1151,11 +1151,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.getUri(uri);
 	}
 	exports.getCaseExternalTrackerUpdates = getCaseExternalTrackerUpdates;
-	function getCaseContacts(caseId) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/externaltrackerupdates");
-	    return fetch_1.getUri(uri);
-	}
-	exports.getCaseContacts = getCaseContacts;
 
 
 /***/ },
