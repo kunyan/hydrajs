@@ -19,6 +19,10 @@ export interface IReview {
 
 // The below pertains to questions
 export interface IReviewResponse {
+    items: IReview[];
+}
+
+export interface IQuestionResponse {
     items: IReviewQuestionSet[];
 }
 

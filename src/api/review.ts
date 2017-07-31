@@ -6,12 +6,13 @@ import {
     IReviewResponse,
     TQualityIndexType,
     IReviewOptions,
-    IReviewQuestionDependencyResponse
+    IReviewQuestionDependencyResponse,
+    IQuestionResponse
 } from '../models/review';
 
-export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse> {
+export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IQuestionResponse> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/${qualityIndexType}/reviews/questions`);
-    return getUri<Promise<IReviewResponse>>(uri);
+    return getUri<Promise<IQuestionResponse>>(uri);
 }
 
 export function getKtQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewQuestionDependencyResponse> {

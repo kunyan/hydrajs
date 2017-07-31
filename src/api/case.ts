@@ -84,3 +84,8 @@ export function getCaseExternalTrackerUpdates(caseId: string): Promise<IExternal
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}/externaltrackerupdates`);
     return getUri<Promise<IExternalTrackerUpdate[]>>(uri);
 }
+
+export function getCaseContacts(caseId: string): Promise<IExternalTrackerUpdate[]> {
+    const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cases/${caseId}/externaltrackerupdates`);
+    return getUri<Promise<IExternalTrackerUpdate[]>>(uri);
+}
