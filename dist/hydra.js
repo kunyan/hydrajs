@@ -163,7 +163,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        createReview: review_1.createReview
 	    },
 	    users: {
-	        getUser: user_1.getUser
+	        getUserById: user_1.getUserById,
+	        getUserBySSO: user_1.getUserBySSO
 	    },
 	    kyce: {
 	        runKyce: kyce_1.runKyce
@@ -1712,11 +1713,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var fetch_1 = __webpack_require__(2);
 	var env_1 = __webpack_require__(1);
-	function getUser(id) {
+	function getUserBySSO(sso) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/users/sso/" + sso);
+	    return fetch_1.getUri(uri);
+	}
+	exports.getUserBySSO = getUserBySSO;
+	function getUserById(id) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/users/" + id);
 	    return fetch_1.getUri(uri);
 	}
-	exports.getUser = getUser;
+	exports.getUserById = getUserById;
 
 
 /***/ },

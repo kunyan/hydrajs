@@ -28,7 +28,8 @@ import {
     IReview,
     IReviewQuestionSet,
     IReviewResponse,
-    IReviewQuestionDependencyResponse
+    IReviewQuestionDependencyResponse,
+    IQuestionResponse
 } from './models/review';
 
 import {
@@ -128,13 +129,14 @@ declare namespace hydrajs {
         export function getCertificationTestData(caseNumber: string): Promise<Array<ITestData>>;
     }
     namespace review {
-        export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewResponse>;
+        export function getQuestions(qualityIndexType: TQualityIndexType): Promise<IQuestionResponse>;
         export function getKtQuestions(qualityIndexType: TQualityIndexType): Promise<IReviewQuestionDependencyResponse>;
         export function getReviews(options: IReviewOptions): Promise<IReviewResponse>;
         export function createReview(qualityIndexType: TQualityIndexType, review: IReview): Promise<IReview>;
     }
     namespace users {
-        export function getUser(id: string): Promise<IUser>;
+        export function getUserById(id: string): Promise<IUser>;
+        export function getUserBySSO(sso: string): Promise<IUser>;
     }
     namespace products {
         export function getProducts(sso: string): Promise<IProduct[]>;

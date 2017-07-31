@@ -3,7 +3,7 @@ import { runInsights, getInsightsRules } from './api/insights';
 import { getAllRoleMetadatas }           from './api/roleMetadata';
 import { getTestClasses }                from './api/testClass';
 import { health, hostname }              from './api/general';
-import { getUser }                       from './api/user';
+import { getUserById, getUserBySSO }     from './api/user';
 import { runKyce }                       from './api/kyce';
 
 import {
@@ -207,7 +207,8 @@ export default {
         createReview
     },
     users: {
-        getUser
+        getUserById,
+        getUserBySSO
     },
     kyce: {
         runKyce
