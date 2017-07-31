@@ -1,6 +1,6 @@
-import { getUri } from '../utils/fetch';
-import Env from '../utils/env';
-import { IUser } from '../models/user';
+import { getUri }   from '../utils/fetch';
+import Env          from '../utils/env';
+import { IUser }    from '../models/user';
 
 export function getUserBySSO(sso: string): Promise<IUser> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/users/sso/${sso}`);
