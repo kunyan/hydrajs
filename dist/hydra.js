@@ -1187,8 +1187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.getUri(uri);
 	}
 	exports.createOpenStackCertification = createOpenStackCertification;
-	function updateOpenStackCertification(certification) {
-	    var caseNumber = certification.kase.caseNumber;
+	function updateOpenStackCertification(caseNumber, certification) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/openstack/certcases/" + caseNumber);
 	    return fetch_1.getUri(uri);
 	}
