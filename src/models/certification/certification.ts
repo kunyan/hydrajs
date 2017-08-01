@@ -1,4 +1,4 @@
-import { ICase } from '../case';
+import { ICase }          from '../case';
 import { IVendorProduct } from './vendorProduct';
 
 
@@ -19,8 +19,8 @@ export interface IHardwareCertification extends ICertificationBase {
 }
 
 export interface IOpenStackCertification<T> extends ICertificationBase {
-    version?: string;
     component?: string;
+    componentVersion?: string;
     packageFormat?: string;
     sourceCodeUrl?: string;
     blueprintUrl?: string;

@@ -37,10 +37,10 @@ import {
     IExternalTrackerUpdate,
 } from './models/externalTracker';
 
-import { 
-    IKcsLinkedResources, 
-    IKcsResourceResult, 
-    IKcsSolution 
+import {
+    IKcsLinkedResources,
+    IKcsResourceResult,
+    IKcsSolution
 } from './models/kcs';
 
 declare namespace hydrajs {
@@ -111,12 +111,12 @@ declare namespace hydrajs {
         export function deleteGroupByGroupId(groupId: number): Promise<IGroupMetadata>;
     }
     namespace certification {
-        export function getCertification(caseNumber: string): Promise<ICertification>;
+        export function getCertification(caseNumber: string | number): Promise<ICertification>;
         export function createCertification(certification: ICertification): Promise<ICertification>;
         export function updateCertification(certification: ICertification): Promise<ICertification>;
         export function getOpenStackCertification<T>(caseNumber: string): Promise<IOpenStackCertification<T>>;
         export function createOpenStackCertification<T>(certification: IOpenStackCertification<T>): Promise<IOpenStackCertification<T>>;
-        export function updateOpenStackCertification<T>(certification: IOpenStackCertification<T>): Promise<IOpenStackCertification<T>>;
+        export function updateOpenStackCertification<T>(caseNumber: string | number, certification: IOpenStackCertification<T>): Promise<IOpenStackCertification<T>>;
         export function getCertifications(vendorProductPortalId: string | number): Promise<ICertification[]>;
         export function getVendorProduct(vendorProductPortalId: string | number): Promise<IVendorProduct>;
         export function updateVendorProduct(vendorProduct: IVendorProduct): Promise<IVendorProduct>;

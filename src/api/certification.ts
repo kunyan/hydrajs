@@ -28,8 +28,7 @@ export function createOpenStackCertification<T>(certification: IOpenStackCertifi
     return getUri<Promise<IOpenStackCertification<T>>>(uri);
 }
 
-export function updateOpenStackCertification<T>(certification: IOpenStackCertification<T>): Promise<IOpenStackCertification<T>> {
-    const caseNumber = certification.kase.caseNumber;
+export function updateOpenStackCertification<T>(caseNumber: string | number, certification: IOpenStackCertification<T>): Promise<IOpenStackCertification<T>> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/cwe/openstack/certcases/${caseNumber}`);
     return getUri<Promise<IOpenStackCertification<T>>>(uri);
 }
