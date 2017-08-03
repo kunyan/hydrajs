@@ -1518,8 +1518,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.getKtQuestions = getKtQuestions;
 	function getReviews(options) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/" + options.qualityIndexType + "/reviews");
-	    if (options.userId) {
-	        uri.addQueryParam('userId', options.userId);
+	    if (options.createdBy) {
+	        uri.addQueryParam('createdBy', options.createdBy);
 	    }
 	    if (options.createdFrom) {
 	        uri.addQueryParam('createdFrom', options.createdFrom);

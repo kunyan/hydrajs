@@ -2,7 +2,7 @@ export type TQualityIndexType  = 'cqi' | 'sqi';
 
 export interface IReviewOptions {
     qualityIndexType: TQualityIndexType;
-    userId?: string;
+    createdBy?: string;
     createdFrom?: string;
     createdTo?: string;
     contentId?: string;

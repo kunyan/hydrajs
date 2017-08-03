@@ -22,8 +22,8 @@ export function getKtQuestions(qualityIndexType: TQualityIndexType): Promise<IRe
 
 export function getReviews(options: IReviewOptions): Promise<IReviewResponse> {
     const uri = Env.hydraHostName.clone().setPath(`${Env.pathPrefix}/${options.qualityIndexType}/reviews`);
-    if (options.userId) {
-        uri.addQueryParam('userId', options.userId);
+    if (options.createdBy) {
+        uri.addQueryParam('createdBy', options.createdBy);
     }
     if (options.createdFrom) {
         uri.addQueryParam('createdFrom', options.createdFrom);
