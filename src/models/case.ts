@@ -55,6 +55,7 @@ export interface ICase {
     certVendorProductName: string;
     certVendorProductPortalId: string;
     certVersion: string;
+    certProgram: string;
     closeDate: string;
     closedDateGainsight: string;
     commentCount: number;
